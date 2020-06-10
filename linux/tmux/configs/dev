@@ -1,0 +1,25 @@
+new -s dev -n vim vim 
+neww -n 'docker'
+selectw -t 2 #go to new window
+selectp -t 0 #select first pane
+
+#Grid layout for docker / database / gulp
+splitw -h -p 30 -t 1 
+splitw -v -p 50 -t 2
+splitw -v -p 50 -t 1
+
+#set app for each pane
+selectp -t 1
+send-keys 'cd ~/Works/docker && docker-compose run php-fpm bash' C-m
+
+selectp -t 4
+send-keys 'mysql -h 127.0.0.1 -u root -pteste123' C-m
+
+selectp -t 2
+send-keys 'cd ~/Works/docker && docker-compose up' C-m
+
+selectp -t 3
+send-keys 'cd ~/Works/WebDev' C-m
+
+#extra window for any shell stuff
+neww -n 'shell'

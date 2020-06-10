@@ -1,0 +1,101 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            50
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           true
+/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=14
+URxvt*boldFont: xft:Source Code Pro for Powerline:pixelsize=15
+
+! Fix font space
+URxvt*letterSpace: -1
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Perl extensions 
+URxvt.perl-ext-common:      default,matcher,resize-font,clipboard, tabbed 
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+!copy paste
+URxvt.iso14755: False
+URxvt.keysym.C-c: perl:clipboard:copy
+URxvt.keysym.C-v: perl:clipboard:paste
+URxvt.keysym.C-a-v: perl:clipboard:paste_escaped
+
+!------------------------------------------------------------------------------
+! c o l o r -  s e t t i n g s
+
+! special
+*.foreground:   #e1e1e1
+*.background:   #2a2e35
+*.cursorColor:  #e1e1e1
+
+! black
+*.color0:       #5a5a5a
+*.color8:       #8c8c8c
+
+! red
+*.color1:	#de8990
+*.color9:	#d0a8ab
+
+! green
+*.color2:	#94daa9
+*.color10:	#bae8d2
+
+! yellow
+*.color3:	#dee7aa
+*.color11:	#d7c96b
+
+! blue
+*.color4:	#9cdbdf
+*.color12:	#6cb4dd
+
+! magenta
+*.color5:	#cca8c9
+*.color13:	#db79bf
+
+! cyan
+*.color6:	#9ad4c8
+*.color14:	#59b0b2
+
+! white
+*.color7:	#e1e1e1
+*.color15:	#f0f0f0
+
+
