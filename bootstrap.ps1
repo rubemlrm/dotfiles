@@ -26,5 +26,8 @@ Get-ChildItem -Path ./windows/powershell/autoload/* -Include "*.ps1" | ForEach-O
 }
 Copy-Item -Path ./shared/** -Destination $home -Include **
 
+#copy window terminal settings
+Copy-Item -Path ./windows/terminal/*  -Destination $env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Include **
+
 Remove-Variable profileDir
 Remove-Variable powershellAutoLoad
