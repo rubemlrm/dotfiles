@@ -4,4 +4,4 @@ Set-Theme Honukai
 
 $profileDir = Split-Path -parent $profile
 # load all 'autoload' scripts
-Get-ChildItem "${profileDir}\*.ps1" -Exclude "profile.ps1", "Microsoft.PowerShell_profile.ps1" | % { .$_ }
+Get-ChildItem "${profileDir}\autoload\*.ps1" | % { .$_ }
