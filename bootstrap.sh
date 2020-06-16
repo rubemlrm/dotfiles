@@ -30,15 +30,13 @@ echo "cloning oh-my-zsh"
 if [ ! -e ~/.oh-my-zsh/ ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
-if [ -e ~/.config/zsh ]; then
+if [ ! -e ~/.config/zsh ]; then
     ln -f -s $CWD/linux/zsh/zshrc ~/.zshrc
     ln -f -s $CWD/linux/zsh/p10.zsh ~/.p10.zsh
-fi
-if [ ! -e ~/.config/zsh/configs ]; then
     ln -f -s $CWD/linux/zsh/configs ~/.config/zsh
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/plugins/zsh-syntax-highlighting
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/themes/powerlevel10k
     touch ~/.config/zsh/development.zsh
 fi
 
