@@ -14,6 +14,10 @@ if (-Not (Get-Module -ListAvailable -Name oh-my-posh)) {
     Install-Module oh-my-posh -Scope CurrentUser
 }
 
+If (-Not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
+    Install-Module PSWindowsUpdate -Scope CurrentUser
+}
+
 if(-Not (Test-Path $home)) {
     New-Item $profileDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 }

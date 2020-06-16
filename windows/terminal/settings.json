@@ -1,7 +1,7 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "alwaysShowTabs": true,
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "defaultProfile": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
     "initialCols": 120,
     "initialRows": 30,
     "keybindings": [
@@ -196,17 +196,18 @@
             "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
             "hidden": false,
             "name": "PowerShell",
-            "source": "Windows.Terminal.PowershellCore"
+            "colorScheme": "One Half Dark",
+            "source": "Windows.Terminal.PowershellCore",
+            "fontFace": "MesloLGS NF"
         },
         {
             "acrylicOpacity" : 1,
             "background" : "#171717",
             "closeOnExit" : true,
-            "colorScheme" : "cyberpunk",
+            "colorScheme" : "One Half Dark",
             "commandline" : "powershell.exe",
             "cursorColor" : "#FFFFFF",
             "cursorShape" : "bar",
-            "fontFace" : "FuraCode NF",
             "fontSize" : 11,
             "guid" : "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
             "historySize" : 9001,
@@ -215,25 +216,32 @@
             "padding" : "0, 0, 0, 0",
             "snapOnInput" : true,
             "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
+            "useAcrylic" : true,
+            "fontFace": "MesloLGS NF"
         },
         {
+            "colorScheme": "One Half Dark",
             "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
             "hidden": false,
             "name": "Debian",
-            "source": "Windows.Terminal.Wsl"
+            "source": "Windows.Terminal.Wsl",
+            "fontFace": "MesloLGS NF"
         },
         {
+            "colorScheme": "One Half Dark",
             "guid": "{d3f31bee-5823-5ed8-8e04-f31ed54f2cd9}",
             "hidden": false,
             "name": "fedoraremix",
-            "source": "Windows.Terminal.Wsl"
+            "source": "Windows.Terminal.Wsl",
+            "fontFace": "MesloLGS NF"
         },
         {
+            "colorScheme": "One Half Dark",
             "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
             "hidden": false,
             "name": "Azure Cloud Shell",
-            "source": "Windows.Terminal.Azure"
+            "source": "Windows.Terminal.Azure",
+            "fontFace": "MesloLGS NF"
         }
     ],
     "schemes" :
