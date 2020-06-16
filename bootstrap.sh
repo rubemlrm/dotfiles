@@ -17,7 +17,6 @@ fi
 #Create base structure
 echo "Creating base strucure"
 mkdir -p ~/bin
-mkdir -p ~/.config/{zsh,tmux}/configs
 
 echo "cloning needed packages"
 echo "Cloning urxvt perl extensions"
@@ -32,7 +31,7 @@ if [ ! -e ~/.oh-my-zsh/ ]; then
 fi
 if [ ! -e ~/.config/zsh ]; then
     ln -f -s $CWD/linux/zsh/zshrc ~/.zshrc
-    ln -f -s $CWD/linux/zsh/p10.zsh ~/.p10.zsh
+    ln -f -s $CWD/linux/zsh/p10.zsh ~/.p10k.zsh
     ln -f -s $CWD/linux/zsh/configs ~/.config/zsh
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/plugins/zsh-syntax-highlighting
