@@ -11,6 +11,7 @@ export ZSH=~/.oh-my-zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+ZSH_DISABLE_COMPFIX=true
 # set options commands
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP

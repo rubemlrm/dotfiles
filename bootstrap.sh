@@ -27,9 +27,10 @@ fi
 
 echo "cloning oh-my-zsh"
 if [ ! -e ~/.oh-my-zsh/ ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 if [ ! -e ~/.config/zsh ]; then
+    mkdir ~/.config/zsh
     ln -f -s $CWD/linux/zsh/zshrc ~/.zshrc
     ln -f -s $CWD/linux/zsh/p10.zsh ~/.p10k.zsh
     ln -f -s $CWD/linux/zsh/configs ~/.config/zsh
