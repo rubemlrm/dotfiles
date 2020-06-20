@@ -8,7 +8,7 @@ APT_GET_CMD=$(which apt-get)
 if [[ ! -z $YUM_CMD ]]; then
     sudo yum install -y  tmux zsh vim screenfetch adobe-source-code-pro-fonts automake cmake ctags gcc-c++ gcc htop git powerline-fonts powerline tmux-powerline tmux
 elif [[ ! -z $APT_GET_CMD ]]; then
-    sudo apt-get install -y  tmux zsh vim screenfetch powerline fonts-powerline wget
+    sudo apt-get install -y  tmux zsh vim screenfetch powerline fonts-powerline wget build-essential libssl-dev libreadline-dev zlib1g-dev
 else
     echo "error can't install package $PACKAGE"
     exit 1;
@@ -59,6 +59,16 @@ fi
 
 if [ ! -e ~/.config/tmux ]; then
     ln -f -s $CWD/linux/tmux/configs ~/.config/tmux
+fi
+
+
+echo "clonning rbenv"
+if [ ! -e ~/.rbenv]; then
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    cd ~/.rbenv && src/configure && make -C src
+    ~/.rbenv/bin/rbenv init
+    source ~/.zshrc
+    curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 fi
 
 echo "creating shared hosts configs"
