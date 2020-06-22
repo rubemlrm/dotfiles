@@ -64,7 +64,7 @@ fi
 
 
 echo "clonning rbenv"
-if [ ! -e ~/.rbenv]; then
+if [ ! -e ~/.rbenv ]; then
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
     cd ~/.rbenv && src/configure && make -C src
     ~/.rbenv/bin/rbenv init
