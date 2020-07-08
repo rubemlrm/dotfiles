@@ -28,8 +28,6 @@ fi
 echo "cloning oh-my-zsh"
 if [ ! -e ~/.oh-my-zsh/ ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-if [ ! -e ~/.config/zsh ]; then
     mkdir ~/.config/zsh
     ln -f -s $CWD/linux/zsh/zshrc ~/.zshrc
     ln -f -s $CWD/linux/zsh/p10.zsh ~/.p10k.zsh
@@ -38,20 +36,21 @@ if [ ! -e ~/.config/zsh ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/plugins/zsh-syntax-highlighting
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/themes/powerlevel10k
     touch ~/.config/zsh/development.zsh
+    mkdir -p ~/.local/share/fonts
+    cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+    cd $CWD
 fi
 
 
 echo "creating symlinks"
 if [ ! -e ~/.vimrc ]; then
-    ln -s -f $CWD/linux/vim/vimrc ~/.vimrc
-fi
-
-if [ ! -e ~/.vim ]; then
+    ln -s -f $CWD/linux/vim/vimrc ~/.vimrc    
     ln -s -f $CWD/linux/vim/vim ~/.vim
+    vim +'PlugInstall' +qa
 fi
 
 if [ ! -e ~/.Xdefaults ]; then
-    ln -s -f $CWD/linux/Xsutff/Xdefaults ~/.Xdefaults
+    ln -s -f $CWD/linux/Xstuff/Xdefaults ~/.Xdefaults
 fi
 
 if [ ! -e ~/.tmux.conf ]; then
@@ -84,4 +83,3 @@ fi
 if [ ! -e ~/.npmrc ]; then
     ln -s -f $CWD/shared/.npmrc ~/.npmrc
 fi
-
