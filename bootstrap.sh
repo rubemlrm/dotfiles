@@ -44,7 +44,7 @@ fi
 
 echo "creating symlinks"
 if [ ! -e ~/.vimrc ]; then
-    ln -s -f $CWD/linux/vim/vimrc ~/.vimrc    
+    ln -s -f $CWD/linux/vim/vimrc ~/.vimrc
     ln -s -f $CWD/linux/vim/vim ~/.vim
     vim +'PlugInstall' +qa
 fi
