@@ -20,4 +20,3 @@ alias ze='vim ~/.zshrc'
 alias op="nautilus . > /dev/null 2>&1"
 #apps
 alias irssi='TERM=screen-256color irssi'
-
