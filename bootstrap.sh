@@ -1,6 +1,7 @@
+#!/bin/bash
+
 CWD=$(pwd)
 USERHOME="/home/$(whoami)"
-echo $USERHOME
 echo install base terminal software
 YUM_CMD=$(which yum)
 APT_GET_CMD=$(which apt-get)
@@ -31,9 +32,9 @@ echo "cloning oh-my-zsh"
 if [ ! -e  "$USERHOME/.oh-my-zsh/ " ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     mkdir "$USERHOME/.config/zsh"
-    ln -f -s $CWD/linux/zsh/zshrc  "$USERHOME/.zshrc"
-    ln -f -s $CWD/linux/zsh/p10.zsh "$USERHOME/.p10k.zsh"
-    ln -f -s $CWD/linux/zsh/configs  "$USERHOME/.config/zsh"
+    ln -f -s "$CWD/linux/zsh/zshrc"  "$USERHOME/.zshrc"
+    ln -f -s "$CWD/linux/zsh/p10.zsh" "$USERHOME/.p10k.zsh"
+    ln -f -s "$CWD/linux/zsh/configs"  "$USERHOME/.config/zsh"
     git clone https://github.com/zsh-users/zsh-autosuggestions  "$USERHOME/.config/zsh/plugins/zsh-autosuggestions"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$USERHOME/.config/zsh/plugins/zsh-syntax-highlighting"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$USERHOME/.config/zsh/themes/powerlevel10k"
@@ -69,7 +70,7 @@ if [ ! -e ~/.rbenv ]; then
     git clone https://github.com/rbenv/rbenv.git  "$USERHOME/.rbenv"
     cd ~/.rbenv && src/configure && make -C src
     ~/.rbenv/bin/rbenv init
-    source  "$USEROME/.zshrc"
+    source  "$USERHOME/.zshrc"
     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 fi
 
