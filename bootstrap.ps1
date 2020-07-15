@@ -1,19 +1,4 @@
 $profileDir = Split-Path -parent $profile
-function Refresh-Environment {
-    $locations = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
-    'HKCU:\Environment'
-
-    $locations | ForEach-Object {
-        $k = Get-Item $_
-        $k.GetValueNames() | ForEach-Object {
-            $name = $_
-            $value = $k.GetValue($_)
-            Set-Item -Path Env:\$name -Value $value
-        }
-    }
-
-    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-}
 
 Write-Host "Install powershell modules"
 #install posh
@@ -52,5 +37,3 @@ Write-Host "Restore windows terminal settings"
 New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/windows/terminal/" -Force
 
 Remove-Variable profileDir
-
-

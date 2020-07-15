@@ -12,7 +12,7 @@ $chocoBrowsers = @("GoogleChrome", "firefox")
     }
 }
 
-Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
+Write-Host "Installing Chocolatey util..." -ForegroundColor "Yellow"
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 # Make `refreshenv` available right away, by defining the $env:ChocolateyInstall
 # variable and importing the Chocolatey profile module.
@@ -28,7 +28,6 @@ refreshenv
 choco feature enable -n=allowGlobalConfirmation
 
 # system and cli
-
 Write-Information "Installing Languages SDK's"
 chocoInstallHelper $chocoLanguageSDK
 Write-Information "Installing Utils"
