@@ -70,6 +70,7 @@ if [ ! -e ~/.rbenv ]; then
     git clone https://github.com/rbenv/rbenv.git  "$USERHOME/.rbenv"
     cd ~/.rbenv && src/configure && make -C src
     ~/.rbenv/bin/rbenv init
+    # shellcheck disable=SC1090
     source  "$USERHOME/.zshrc"
     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 fi
