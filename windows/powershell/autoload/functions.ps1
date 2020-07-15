@@ -1,5 +1,6 @@
 # Reload the Shell
-function Reload-Powershell {
+#PSSCRIPTANALYZER -PSUseApprovedVerbs
+function Get-Session {
     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = "-nologo";
     [System.Diagnostics.Process]::Start($newProcess);
@@ -7,8 +8,8 @@ function Reload-Powershell {
 }
 
 # Common Editing needs
-function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
-function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $profile" }
+function Edit-Hosts { & "sudo $(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
+function Edit-Profile { & "$(if($null -ne $env:EDITORl)  {$env:EDITOR } else { 'notepad' }) $profile" }
 
 # Sudo
 function sudo() {
@@ -20,7 +21,8 @@ function sudo() {
     }
 }
 
-function Refresh-Environment {
+#PSSCRIPTANALYZER -PSUseApprovedVerbs
+function Get-ENV {
     $locations = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
     'HKCU:\Environment'
 

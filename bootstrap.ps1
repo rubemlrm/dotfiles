@@ -1,6 +1,6 @@
 $profileDir = Split-Path -parent $profile
 
-Write-Host "Install powershell modules"
+Write-Information "Install powershell modules"
 #install posh
 if (-Not (Get-Module -ListAvailable -Name PSUtil)) {
     Install-Module PSUtil -Scope CurrentUser
@@ -21,7 +21,7 @@ if(-Not (Test-Path $home)) {
     New-Item $profileDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 }
 
-Write-Host "Restore powershell scripts"
+Write-Information "Restore powershell scripts"
 #Copy base powershell
 Get-ChildItem -Path ./windows/powershell/* -Include "*.ps1" | ForEach-Object {
     $fileName = $_.BaseName
@@ -33,7 +33,7 @@ New-Item -Itemtype SymbolicLink -Path "${profileDir}/helpers"  -Target "${pwd}/w
 Copy-Item -Path ./shared/** -Destination $home -Include **
 
 #copy window terminal settings
-Write-Host "Restore windows terminal settings"
+Write-Information "Restore windows terminal settings"
 New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/windows/terminal/" -Force
 
 Remove-Variable profileDir

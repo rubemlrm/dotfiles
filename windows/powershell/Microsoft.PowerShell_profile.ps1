@@ -4,4 +4,4 @@ Set-Theme Honukai
 
 $profileDir = Split-Path -parent $profile
 # load all 'autoload' scripts
-Get-ChildItem "${profileDir}\autoload\*.ps1" | % { .$_ }
+Get-ChildItem "${profileDir}\autoload\*.ps1" |  ForEach-Object -Process { .$_ }

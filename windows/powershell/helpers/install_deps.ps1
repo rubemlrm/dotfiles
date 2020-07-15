@@ -7,13 +7,12 @@ $chocoBrowsers = @("GoogleChrome", "firefox")
  function chocoInstallHelper {
     Param ($softwareList)
     foreach ($item in $softwareList) {
-        Write-Output $item
         choco install $item --limit-output
     }
 }
 
-Write-Host "Installing Chocolatey util..." -ForegroundColor "Yellow"
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+Write-Information "Installing Chocolatey util..." -ForegroundColor "Yellow"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; &  ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 # Make `refreshenv` available right away, by defining the $env:ChocolateyInstall
 # variable and importing the Chocolatey profile module.
 # Note: Using `. $PROFILE` instead *may* work, but isn't guaranteed to.
