@@ -34,6 +34,7 @@ Copy-Item -Path ./shared/** -Destination $home -Include **
 
 #copy window terminal settings
 Write-Information "Restore windows terminal settings"
+Remove-Item "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Force -Recurse
 New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/windows/terminal/" -Force
 
 Remove-Variable profileDir
