@@ -34,7 +34,7 @@ if [ ! -e  "$USERHOME/.oh-my-zsh/ " ]; then
     mkdir "$USERHOME/.config/zsh"
     ln -f -s "$CWD/linux/zsh/zshrc"  "$USERHOME/.zshrc"
     ln -f -s "$CWD/linux/zsh/p10.zsh" "$USERHOME/.p10k.zsh"
-    ln -f -s "$CWD/linux/zsh/configs"  "$USERHOME/.config/zsh"
+    ln -f -s "$CWD/linux/zsh/configs"  "$USERHOME/.config/zsh/aliases"
     git clone https://github.com/zsh-users/zsh-autosuggestions  "$USERHOME/.config/zsh/plugins/zsh-autosuggestions"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$USERHOME/.config/zsh/plugins/zsh-syntax-highlighting"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$USERHOME/.config/zsh/themes/powerlevel10k"

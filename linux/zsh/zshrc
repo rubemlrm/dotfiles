@@ -36,6 +36,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ENABLE_CORRECTION="true"
 ZSH_CUSTOM=~/.config/zsh
 plugins=(git common-aliases docker tmux history python dnf systemd zsh-autosuggestions zsh-syntax-highlighting)
+source ~/.config/zsh/aliases/*
 source $ZSH/oh-my-zsh.sh
 # fix to load snap apps
 emulate sh -c '. /etc/profile'
