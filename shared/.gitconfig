@@ -1,6 +1,7 @@
 [user]
 	name = Rubem Mota
 	email = rubemmota89@gmail.com
+	signingkey=2CDB2D4BFF54D8B2
 [core]
     # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.gitignore
