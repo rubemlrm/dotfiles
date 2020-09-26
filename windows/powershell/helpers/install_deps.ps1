@@ -1,8 +1,30 @@
-$chocoUtils = @("bitwarden", "7zip", "vlc", "wireshark", "steam")
-$chocoDevelopmentUtils = @("docker-desktop", "notepadplusplus.install", "vscode", "curl", "nuget.commandline", "git.install")
-$chocoLanguageSDK = @("nodejs", "python", "ruby", "php", "dotnetcore-sdk")
-$chocoFonts = @("sourcecodepro", "meslolg.dz")
-$chocoBrowsers = @("GoogleChrome", "firefox")
+
+$chocoPackages = @("curl", "nuget.commandline", "php", "sourcecodepro", "meslolg.dz")
+$wingetPackages = @(
+    "Microsoft.Powershell"
+    "Microsoft.PowerToys",
+    "Microsoft.WindowsTerminal",
+    "Debian.Debian",
+    "Canonical.Ubuntu"
+    "Microsoft.VisualStudioCode",
+    "vim.vim",
+    "Git.Git",
+    "Notepad++.Notepad++",
+    "VideloLan.VLC"
+    "7zip.7zip"
+    "WiresharkFoundation.Wireshark",
+    "Valve.Steam",
+    "Bitwarden.Bitwarden",
+    "Docker.DockerDesktop"
+    "OpenJS.NodeJS",
+    "Python.Python",
+    "RubyInstallerTeam.RubyWithDevKit",
+    "Microsoft.dotnet",
+    "Google.Chrome",
+    "Google.ChromeBeta"
+    "Mozilla.FirefoxDeveloperEdition"
+    "Google.BackupAndSync"
+    )
 
  function chocoInstallHelper {
     Param ($softwareList)
@@ -11,29 +33,22 @@ $chocoBrowsers = @("GoogleChrome", "firefox")
     }
 }
 
-Write-Information "Installing Chocolatey util..." -ForegroundColor "Yellow"
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; &  ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-# Make `refreshenv` available right away, by defining the $env:ChocolateyInstall
-# variable and importing the Chocolatey profile module.
-# Note: Using `. $PROFILE` instead *may* work, but isn't guaranteed to.
-$env:ChocolateyInstall = Convert-Path "$((Get-Command choco).Path)\..\.."
-Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+function wingetInstallHelper {
+    Param ($softwareList)
+    foreach ($item in $softwareList) {
+        winget install $item
+    }
+}
 
-# refreshenv is now an alias for Update-SessionEnvironment
-# (rather than invoking refreshenv.cmd, the *batch file* for use with cmd.exe)
-# This should make git.exe accessible via the refreshed $env:PATH, so that it
-# can be called by name only.
 refreshenv
 choco feature enable -n=allowGlobalConfirmation
 
 # system and cli
-Write-Information "Installing Languages SDK's"
-chocoInstallHelper $chocoLanguageSDK
-Write-Information "Installing Utils"
-chocoInstallHelper $chocoUtils
-Write-Information "Installing development utils"
-chocoInstallHelper $chocoDevelopmentUtils
-Write-Information "Installing  Fonts"
-chocoInstallHelper $chocoFonts
-Write-Information "Installing  Browsers"
-chocoInstallHelper $chocoBrowsers
+Write-Information "Installing Choco Packages"
+chocoInstallHelper $chocoPackages
+Write-Information "Install packages with winget"
+wingetInstallHelper $wingetPackages
+Write-Information "Install npm packages"
+npm install -g eslint standard
+Write-Information "Install php packages"
+composer global require phpmd/phpmd "squizlabs/php_codesniffer=*"
