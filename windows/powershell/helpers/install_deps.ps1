@@ -1,37 +1,58 @@
+Write-Information "Enable WSL"
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+wsl --set-default-version 2
 
-$chocoPackages = @("curl", "nuget.commandline", "php", "sourcecodepro", "meslolg.dz")
-$wingetPackages = @(
+
+Write-Information "install chocolatey"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Write-Information "Install chocolatey packages"
+choco feature enable -n=allowGlobalConfirmation
+choco install php composer sourcecodepro --limit-output
+
+$wingetUtilsPackages = @(
+    "VideloLan.VLC"
+    "7zip.7zip"
+    "Valve.Steam",
+    "Bitwarden.Bitwarden",
+    "Google.Chrome",
+    "Google.ChromeBeta"
+    "Google.BackupAndSync",
+    "NordVPN.NordVPN"
+)
+
+$wingetFontPackages = @(
+    "SourceFoundry.HackFonts"
+)
+
+$wingetWSLPackages = @(
+    "Debian.Debian",
+    "Canonical.Ubuntu"
+)
+
+$wingetLanguagesSDK = @(
+    "OpenJS.NodeJS",
+    "Python.Python",
+    "RubyInstallerTeam.RubyWithDevKit",
+    "Microsoft.dotnet"
+)
+
+$wingetDevelopmentTools = @(
     "Microsoft.Powershell"
     "Microsoft.PowerToys",
     "Microsoft.WindowsTerminal",
-    "Debian.Debian",
-    "Canonical.Ubuntu"
     "Microsoft.VisualStudioCode",
     "vim.vim",
     "Git.Git",
     "Notepad++.Notepad++",
-    "VideloLan.VLC"
-    "7zip.7zip"
-    "WiresharkFoundation.Wireshark",
-    "Valve.Steam",
-    "Bitwarden.Bitwarden",
     "Docker.DockerDesktop"
-    "OpenJS.NodeJS",
-    "Python.Python",
-    "RubyInstallerTeam.RubyWithDevKit",
-    "Microsoft.dotnet",
-    "Google.Chrome",
-    "Google.ChromeBeta"
     "Mozilla.FirefoxDeveloperEdition"
-    "Google.BackupAndSync"
-    )
+    "WiresharkFoundation.Wireshark",
+    "Microsoft.VisualStudio.Community",
+    "ApacheFriends.Xampp"
+)
 
- function chocoInstallHelper {
-    Param ($softwareList)
-    foreach ($item in $softwareList) {
-        choco install $item --limit-output
-    }
-}
+
 
 function wingetInstallHelper {
     Param ($softwareList)
@@ -41,13 +62,17 @@ function wingetInstallHelper {
 }
 
 refreshenv
-choco feature enable -n=allowGlobalConfirmation
-
 # system and cli
-Write-Information "Installing Choco Packages"
-chocoInstallHelper $chocoPackages
-Write-Information "Install packages with winget"
-wingetInstallHelper $wingetPackages
+Write-Information "Install utils packages with winget"
+wingetInstallHelper $wingetUtilsPackages
+Write-Information "Install fonts packages with winget"
+wingetInstallHelper $wingetFontPackages
+Write-Information "Install wsl packages with winget"
+wingetInstallHelper $wingetWSLPackages
+Write-Information "Install languages SDK packages with winget"
+wingetInstallHelper $wingetLanguagesSDK
+Write-Information "Install development tools SDK packages with winget"
+wingetInstallHelper $wingetDevelopmentTools
 Write-Information "Install npm packages"
 npm install -g eslint standard
 Write-Information "Install php packages"
