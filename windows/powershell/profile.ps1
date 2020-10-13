@@ -1,6 +1,6 @@
 Import-Module posh-git
 Import-Module oh-my-posh
-Set-Theme Honukai
+Set-Theme Operator
 
 $profileDir = Split-Path -parent $profile
 # load all 'autoload' scripts
