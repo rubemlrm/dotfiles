@@ -15,9 +15,6 @@ set autoindent
 "disable comp with vi
 set nocompatible
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -144,7 +141,7 @@ set wildignore+=*.orig "Merge resolution files"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                    Auto Commands                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""                    
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MakeSession()
   let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
   if (filewritable(b:sessiondir) != 2)
@@ -322,7 +319,6 @@ Plug 'pearofducks/ansible-vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-polyglot'
 Plug 'vim-scripts/grep.vim'
 Plug 'mhinz/vim-startify'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
@@ -336,9 +332,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
 Plug 'scrooloose/syntastic'
 
-"language stuff
-"Plug 'valloric/YouCompleteMe'
-
 "libs
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Shougo/vimproc.vim'
@@ -347,6 +340,7 @@ Plug 'xolox/vim-misc'
 Plug 'tomtom/tlib_vim'
 
 "Optional
+Plug 'rainglow/vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'trusktr/seti.vim'
@@ -462,7 +456,7 @@ let g:syntastic_php_checkers = ["php","phpcs","phpmd"]
 let g:syntastic_php_phpcs_args="--standard=psr2"
 let g:syntastic_php_phpmd_post_args="cleancode,codesize,controversial,design,naming,unusedcode"
 
-"icons 
+"icons
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = 'se'
 let g:syntastic_warning_symbol = 'w'
@@ -560,12 +554,6 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-"================================================
-"               EMMET
-"================================================
-let g:user_emmet_install_global = 1
-let g:user_emmet_leader_key='<C-Z>'
-
 "===============================================
 "               UTILSNIPS
 "===============================================
@@ -577,4 +565,3 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "==================================
 " END SETTINGS PLUGIN
 "==================================
-
