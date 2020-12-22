@@ -1,0 +1,24 @@
+#!/bin/bash
+
+setup_nvm()
+{
+    print_message "Check if NVM exists"
+    if [ ! -e "$USERHOME/.nvm" ]; then
+        echo cloning NVM
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+    fi
+    print_sucess_message "Check if NVM exists"
+}
+install_npm_packages()
+{
+    print_message "Installing NPM and Packages"
+    if ! [ -x "$(command -v node)" ]; then
+        . "$HOME/.nvm/nvm.sh" &&  nvm install node
+    fi
+    . "$HOME/.nvm/nvm.sh" && $(command -v npm) install -g webpack jshint eslint standard > /dev/null
+    print_sucess_message "Installing NPM and Packages"
+}
+
+print_message "Setup Javascript Dev Environment"
+setup_nvm
+install_npm_packages

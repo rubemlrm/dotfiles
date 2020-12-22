@@ -1,0 +1,13 @@
+#!/bin/bash
+
+setup_python() {
+    print_message "Install Python packages"
+    sudo apt-get install -y python3-pip virtualenvwrapper > /dev/null
+    print_sucess_message "Install Python packages"
+    print_message "install PIP packages"
+    pip3 install --user cookiecutter > /dev/null
+    print_sucess_message "install PIP packages"
+}
+
+print_message "Setup Python Dev Environment"
+setup_python

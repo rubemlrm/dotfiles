@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #Create base structure
-echo "Creating base strucure"
+print_message "Creating base strucure"
 mkdir -p "$USERHOME/bin"
 
 if [ ! -e  "$USERHOME/.oh-my-zsh/" ]; then
-    echo "cloning oh-my-zsh"
+    print_message "cloning oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     mkdir "$USERHOME/.config/zsh"
     ln -f -s "$CWD/linux/zsh/zshrc"  "$USERHOME/.zshrc"
@@ -27,7 +27,7 @@ if [ ! -e  "$USERHOME/.oh-my-zsh/" ]; then
 fi
 
 
-echo "creating vim symlinks"
+print_message "creating vim symlinks"
 if [ ! -e ~/.vimrc ]; then
     ln -s -f "$CWD/linux/vim/vimrc"  "$USERHOME/.vimrc"
     ln -s -f "$CWD/linux/vim/vim"  "$USERHOME/.vim"
@@ -36,7 +36,7 @@ if [ ! -e ~/.vimrc ]; then
     vim +'PlugInstall' +qa
 fi
 
-echo "creating tmux symlinks"
+print_message "creating tmux symlinks"
 if [ ! -e ~/.tmux.conf ]; then
     ln -s -f "$CWD/linux/tmux/tmux.conf" "$USERHOME/.tmux.conf"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -46,7 +46,7 @@ if [ ! -e ~/.config/tmux ]; then
     ln -f -s "$CWD/linux/tmux/configs"  "$USERHOME/.config/tmux"
 fi
 
-echo "creating shared hosts configs"
+print_message "creating shared hosts configs"
 if [ ! -e ~/.gitconfig ]; then
     ln -s -f "$CWD/shared/.gitconfig"  "$USERHOME/.gitconfig"
 fi

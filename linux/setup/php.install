@@ -1,0 +1,25 @@
+#!/bin/bash
+
+setup_php() {
+    print_message "Install PHP"
+    sudo apt-get install -y php php-gd php-fpm php-common php-json php-zip php-mbstring php-xml > /dev/null
+    print_sucess_message "Install PHP"
+}
+
+install_composer_packages() {
+    print_message "install php composer packages"
+    PHP_PACKAGES=("phpunit/phpunit" "phing/phing" "phploc/phploc" "phpmd/phpmd" "squizlabs/php_codesniffer")
+    INSTALLED_PACKAGES=$(composer global show)
+    for i in "${PHP_PACKAGES[@]}"
+    do
+        if [ "$(echo "$INSTALLED_PACKAGES" | grep -c "$i")" -ne 1 ]; then
+            composer global require "$i" -q
+        fi
+    # or do whatever with individual element of the array
+    done
+    print_sucess_message "install php composer packages"
+}
+
+print_message "Setup PHP Dev Environment"
+setup_php
+install_composer_packages
