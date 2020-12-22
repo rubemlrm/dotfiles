@@ -2,14 +2,23 @@
 
 setup_rbenv()
 {
+    MESSAGE="Setup rbenv"
     if [ ! -e ~/.rbenv ]; then
-        echo "clonning rbenv"
+
         git clone https://github.com/rbenv/rbenv.git  "$USERHOME/.rbenv"
         cd ~/.rbenv && src/configure && make -C src
         ~/.rbenv/bin/rbenv init
         # shellcheck disable=SC1090
         source  "$USERHOME/.zshrc"
-        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+        # shellcheck disable=SC2181
+        if [ $? -eq 0 ]; then
+            print_sucess_message "$MESSAGE"
+        else
+            print_failed_message "$MESSAGE"
+        fi
+    else
+        print_sucess_message "$MESSAGE"
     fi
 }
 

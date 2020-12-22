@@ -1,13 +1,27 @@
 #!/bin/bash
 
 setup_python() {
-    print_message "Install Python packages"
-    sudo apt-get install -y python3-pip virtualenvwrapper > /dev/null
-    print_sucess_message "Install Python packages"
-    print_message "install PIP packages"
-    pip3 install --user cookiecutter > /dev/null
-    print_sucess_message "install PIP packages"
+    MESSAGE="Install Python packages"
+    sudo apt-get install -y python3-pip virtualenvwrapper >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
+}
+
+setup_pip_packages() {
+    MESSAGE="install PIP packages"
+    pip3 install --user cookiecutter >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
 }
 
 print_message "Setup Python Dev Environment"
 setup_python
+setup_pip_packages

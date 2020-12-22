@@ -1,23 +1,32 @@
 #!/bin/bash
 
 setup_php() {
-    print_message "Install PHP"
-    sudo apt-get install -y php php-gd php-fpm php-common php-json php-zip php-mbstring php-xml > /dev/null
-    print_sucess_message "Install PHP"
+    MESSAGE="Install PHP"
+    sudo apt-get install -y php php-gd php-fpm php-common php-json php-zip php-mbstring php-xml >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
 }
 
 install_composer_packages() {
-    print_message "install php composer packages"
+    MESSAGE="install php composer packages"
     PHP_PACKAGES=("phpunit/phpunit" "phing/phing" "phploc/phploc" "phpmd/phpmd" "squizlabs/php_codesniffer")
     INSTALLED_PACKAGES=$(composer global show)
     for i in "${PHP_PACKAGES[@]}"
     do
         if [ "$(echo "$INSTALLED_PACKAGES" | grep -c "$i")" -ne 1 ]; then
-            composer global require "$i" -q
+            composer global require "$i" -q > /dev/null >> bootstrap_install.logs 2>>bootstrap_error_install.logs
         fi
-    # or do whatever with individual element of the array
     done
-    print_sucess_message "install php composer packages"
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
 }
 
 print_message "Setup PHP Dev Environment"

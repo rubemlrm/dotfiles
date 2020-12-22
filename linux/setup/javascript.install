@@ -2,23 +2,53 @@
 
 setup_nvm()
 {
-    print_message "Check if NVM exists"
+    MESSAGE="Setup NVM"
     if [ ! -e "$USERHOME/.nvm" ]; then
-        echo cloning NVM
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+        # shellcheck disable=SC2181
+        if [ $? -eq 0 ]; then
+            print_sucess_message "$MESSAGE"
+        else
+            print_failed_message "$MESSAGE"
+        fi
+    else
+        print_sucess_message "$MESSAGE"
     fi
-    print_sucess_message "Check if NVM exists"
 }
-install_npm_packages()
+install_node()
 {
     print_message "Installing NPM and Packages"
+    MESSAGE="Installing Node"
     if ! [ -x "$(command -v node)" ]; then
-        . "$HOME/.nvm/nvm.sh" &&  nvm install node
+        # shellcheck disable=SC1090
+        . "$HOME/.nvm/nvm.sh" &&  nvm install node >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+        # shellcheck disable=SC2181
+        if [ $? -eq 0 ]; then
+            print_sucess_message "$MESSAGE"
+        else
+            print_failed_message "$MESSAGE"
+        fi
+    else
+        print_sucess_message "$MESSAGE"
     fi
-    . "$HOME/.nvm/nvm.sh" && $(command -v npm) install -g webpack jshint eslint standard > /dev/null
-    print_sucess_message "Installing NPM and Packages"
 }
+
+install_npm_packages()
+{
+    MESSAGE="Installing NPM packages"
+    # shellcheck disable=SC1090
+    . "$HOME/.nvm/nvm.sh" && $(command -v npm) install -g webpack jshint eslint standard >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
+}
+
+
 
 print_message "Setup Javascript Dev Environment"
 setup_nvm
+install_node
 install_npm_packages

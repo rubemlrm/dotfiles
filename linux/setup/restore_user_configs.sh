@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo -e "
+#===========================================#
+#           HOME SETUP                      #
+#===========================================#"
 #Create base structure
 print_message "Creating base strucure"
 mkdir -p "$USERHOME/bin"

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+update_system() {
+    MESSAGE="Update System"
+    sudo apt-get update >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
+}
+
+
+install_base_packages() {
+    MESSAGE="Install base terminal software"
+    sudo apt-get install -y aspell \
+        aspell-pt \
+        automake \
+        cmake \
+        ctags \
+        gcc \
+        git \
+        htop \
+        ruby \
+        tmux \
+        vim \
+        nano \
+        zsh \
+        numlockx \
+        wget \
+        exfat-utils \
+        screenfetch \
+        python3-pip \
+        python3-oauth2client \
+        curl \
+        powerline \
+        fonts-powerline \
+        build-essential \
+        libssl-dev \
+        libreadline-dev \
+        zlib1g-dev \
+        ufw  >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    # shellcheck disable=SC2181
+    if [ $? -eq 0 ]; then
+        print_sucess_message "$MESSAGE"
+    else
+        print_failed_message "$MESSAGE"
+    fi
+}
+
+update_system
+install_base_packages
