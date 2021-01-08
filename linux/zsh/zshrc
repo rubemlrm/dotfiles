@@ -40,7 +40,7 @@ source $ZSH/oh-my-zsh.sh
 # fix to load snap apps
 emulate sh -c '. /etc/profile'
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:/home/rubemlrm/.rbenv/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/.config/composer/vendor/bin:~/.local/bin:~/.rbenv/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

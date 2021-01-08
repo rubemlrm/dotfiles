@@ -23,3 +23,6 @@ alias ze='vim ~/.zshrc'
 alias op="nautilus . > /dev/null 2>&1"
 #apps
 alias irssi='TERM=screen-256color irssi'
+
+alias checkBranchesToRemove='git branch -r | awk "{print $1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print $1}"'
+alias removeMergedBranches='git branch -r | awk "{print $1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print $1}" | xargs git branch -d'

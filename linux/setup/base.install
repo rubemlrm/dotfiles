@@ -1,5 +1,10 @@
 #!/bin/bash
 
+clean_user_directory() {
+    print_message "Cleaning old files"
+    rm -rf ~/"{.gitconfig, .gitignore, .npmrc,.p10k.zsh,.rbenv, .tmux ,tmux.conf ,.viminfo ,vimrc ,.zshrc,.config/zsh/}"
+}
+
 update_system() {
     MESSAGE="Update System"
     sudo apt-get update >> bootstrap_install.logs 2>>bootstrap_error_install.logs
@@ -49,5 +54,6 @@ install_base_packages() {
     fi
 }
 
+clean_user_directory
 update_system
 install_base_packages

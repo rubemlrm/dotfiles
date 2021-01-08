@@ -2,7 +2,7 @@
 
 setup_python() {
     MESSAGE="Install Python packages"
-    sudo apt-get install -y python3-pip virtualenvwrapper >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    sudo apt-get install -y python3-pip virtualenvwrapper >> bootstrap_install.logs 2>> bootstrap_error_install.logs
     # shellcheck disable=SC2181
     if [ $? -eq 0 ]; then
         print_sucess_message "$MESSAGE"

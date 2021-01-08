@@ -18,7 +18,7 @@ install_composer_packages() {
     for i in "${PHP_PACKAGES[@]}"
     do
         if [ "$(echo "$INSTALLED_PACKAGES" | grep -c "$i")" -ne 1 ]; then
-            composer global require "$i" -q > /dev/null >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+            composer global require "$i" -q -n > /dev/null >> bootstrap_install.logs 2>>bootstrap_error_install.logs
         fi
     done
     # shellcheck disable=SC2181
