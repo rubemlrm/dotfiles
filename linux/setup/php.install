@@ -2,13 +2,9 @@
 
 setup_php() {
     MESSAGE="Install PHP"
+    # shellcheck disable=SC2024
     sudo apt-get install -y php php-gd php-fpm php-common php-json php-zip php-mbstring php-xml >> bootstrap_install.logs 2>>bootstrap_error_install.logs
-    # shellcheck disable=SC2181
-    if [ $? -eq 0 ]; then
-        print_sucess_message "$MESSAGE"
-    else
-        print_failed_message "$MESSAGE"
-    fi
+    print_feedback_message $? "$MESSAGE"
 }
 
 install_composer_packages() {
@@ -21,12 +17,7 @@ install_composer_packages() {
             composer global require "$i" -q -n > /dev/null >> bootstrap_install.logs 2>>bootstrap_error_install.logs
         fi
     done
-    # shellcheck disable=SC2181
-    if [ $? -eq 0 ]; then
-        print_sucess_message "$MESSAGE"
-    else
-        print_failed_message "$MESSAGE"
-    fi
+    print_feedback_message $? "$MESSAGE"
 }
 
 print_message "Setup PHP Dev Environment"

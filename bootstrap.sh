@@ -11,5 +11,4 @@ bash ./linux/setup/base.install
 bash ./linux/setup/javascript.install
 bash ./linux/setup/php.install
 bash ./linux/setup/python.install
-bash ./linux/setup/ruby.install
 bash ./linux/setup/restore_user_configs.sh

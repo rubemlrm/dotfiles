@@ -2,23 +2,34 @@
 
 clean_user_directory() {
     print_message "Cleaning old files"
-    rm -rf ~/"{.gitconfig, .gitignore, .npmrc,.p10k.zsh,.rbenv, .tmux ,tmux.conf ,.viminfo ,vimrc ,.zshrc,.config/zsh/}"
+    rm -rf "$USERHOME/.oh-my-zsh/"
+    rm -rf "$USERHOME/.zshrc"
+    rm -rf "$USERHOME/.p10k.zsh"
+    rm -rf "$USERHOME/.config/zsh"
+    rm -rf "$USERHOME/.config/tmux"
+    rm -rf "$USERHOME/.local/share/fonts"
+    rm -rf "$USERHOME/.vimrc"
+    rm -rf "$USERHOME/.vim"
+    rm -rf "$USERHOME/.nvm"
+    rm -rf "$USERHOME/.tmux.conf"
+    rm -rf "$USERHOME/.tmux/"
+    rm -rf "$USERHOME/.gitconfig"
+    rm -rf "$USERHOME/.gitignore"
+    rm -rf "$USERHOME/.gitattributes"
+    rm -rf "$USERHOME/.npmrc"
 }
 
 update_system() {
     MESSAGE="Update System"
+    # shellcheck disable=SC2024
     sudo apt-get update >> bootstrap_install.logs 2>>bootstrap_error_install.logs
-    # shellcheck disable=SC2181
-    if [ $? -eq 0 ]; then
-        print_sucess_message "$MESSAGE"
-    else
-        print_failed_message "$MESSAGE"
-    fi
+    print_feedback_message $? "$MESSAGE"
 }
 
 
 install_base_packages() {
     MESSAGE="Install base terminal software"
+    # shellcheck disable=SC2024
     sudo apt-get install -y aspell \
         aspell-pt \
         automake \
@@ -47,11 +58,7 @@ install_base_packages() {
         zlib1g-dev \
         ufw  >> bootstrap_install.logs 2>>bootstrap_error_install.logs
     # shellcheck disable=SC2181
-    if [ $? -eq 0 ]; then
-        print_sucess_message "$MESSAGE"
-    else
-        print_failed_message "$MESSAGE"
-    fi
+    print_feedback_message $? "$MESSAGE"
 }
 
 clean_user_directory

@@ -2,24 +2,15 @@
 
 setup_python() {
     MESSAGE="Install Python packages"
+    # shellcheck disable=SC2024
     sudo apt-get install -y python3-pip virtualenvwrapper >> bootstrap_install.logs 2>> bootstrap_error_install.logs
-    # shellcheck disable=SC2181
-    if [ $? -eq 0 ]; then
-        print_sucess_message "$MESSAGE"
-    else
-        print_failed_message "$MESSAGE"
-    fi
+    print_feedback_message $? "$MESSAGE"
 }
 
 setup_pip_packages() {
     MESSAGE="install PIP packages"
     pip3 install --user cookiecutter >> bootstrap_install.logs 2>>bootstrap_error_install.logs
-    # shellcheck disable=SC2181
-    if [ $? -eq 0 ]; then
-        print_sucess_message "$MESSAGE"
-    else
-        print_failed_message "$MESSAGE"
-    fi
+    print_feedback_message $? "$MESSAGE"
 }
 
 print_message "Setup Python Dev Environment"
