@@ -29,7 +29,6 @@ Get-ChildItem -Path ./windows/powershell/* -Include "*.ps1" | ForEach-Object {
 }
 #Copy powershell alias and functions
 New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/windows/powershell/autoload" -Force
-New-Item -Itemtype SymbolicLink -Path "${profileDir}/helpers"  -Target "${pwd}/windows/powershell/helpers" -Force
 Copy-Item -Path ./shared/** -Destination $home -Include **
 
 #copy window terminal settings

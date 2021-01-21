@@ -254,6 +254,18 @@
             "hidden": false,
             "name": "Ubuntu-20.04",
             "source": "Windows.Terminal.Wsl"
+        },
+        {
+            "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+            "hidden": false,
+            "name": "Arch",
+            "source": "Windows.Terminal.Wsl"
+        },
+        {
+            "guid": "{926758ba-8c4a-5c36-a9c6-0c4943cd78a1}",
+            "hidden": false,
+            "name": "Fedora-33",
+            "source": "Windows.Terminal.Wsl"
         }
     ],
     "schemes" :

@@ -1,5 +1,5 @@
 
-if (-not (Test-Path -Path '${HOME}\scoop')) {
+if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
     Write-Information "Installing scoop"
     iwr -useb get.scoop.sh | iex
     scoop checkup
