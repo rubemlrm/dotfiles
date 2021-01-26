@@ -17,6 +17,9 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
-vim/auload
+vim/autoload
 vim/plugged
 *.logs
+
+# autoload ignores for powershell
+work.ps1
