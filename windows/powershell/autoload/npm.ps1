@@ -11,7 +11,7 @@ ${function:npmRS} = { npm run server }
 #Run npm build
 ${function:npmB} = { npm run build }
 
-function New-Laravel-VueJs-Compilation() {
+function Get-Laravel-VueJs-Compilation() {
     $currentDir = Get-Location
     $appsDir = Join-Path -Path $currentDir -ChildPath "\resources\apps"
     Get-ChildItem $appsDir | ForEach-Object { Set-Location $_.FullName; npm run build }

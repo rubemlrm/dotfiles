@@ -1,7 +1,7 @@
 
 if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
     Write-Information "Installing scoop"
-    iwr -useb get.scoop.sh | iex
+    Invoke-WebRequest -useb get.scoop.sh | Invoke-Expression
     scoop checkup
 }
 
