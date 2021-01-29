@@ -6,15 +6,9 @@ call plug#begin('~/.vim/plugged')
 set t_Co=256
 set term=screen-256color
 colorscheme space-vim-dark
-au BufWritePost .vimrc so $MYVIMRC
-
-
-
 set autoindent
-
 "disable comp with vi
 set nocompatible
-
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -197,6 +191,8 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 autocmd BufEnter * silent! lcd %:p:h "hanges the window-local current directory to be the same as the directory of the current file
 "vim function
 
+au BufWritePost .vimrc so $MYVIMRC
+
 "============================================
 "               KeyBinding
 "============================================
@@ -309,28 +305,15 @@ nmap :ed :edit %:p:h/
 "set rtp+=~/.vim/bundle/vundle/
 
 "call vundle#begin()
-Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
-Plug 'pearofducks/ansible-vim'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/grep.vim'
 Plug 'mhinz/vim-startify'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'scrooloose/nerdcommenter'
-Plug 'sjl/gundo.vim'
-Plug 'scrooloose/syntastic'
 
 "libs
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -341,8 +324,6 @@ Plug 'tomtom/tlib_vim'
 
 "Optional
 Plug 'rainglow/vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'trusktr/seti.vim'
 call plug#end()
 
@@ -353,52 +334,6 @@ call plug#end()
 "==================================="
 "  PLUGIN SETTINGS		    "
 "==================================="
-
-"===============================================================================
-" Unite
-"===============================================================================
-
-" Set up some custom ignores
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'google/obj/',
-      \ 'tmp/',
-      \ 'vendor/',
-      \ '.sass-cache',
-      \ 'node_modules/',
-      \ 'bower_components/',
-      \ 'dist/',
-      \ '.git5_specs/',
-      \ '.pyc',
-      \ ], '\|'))
-
-"recent edited files
-nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
-
-"recent buffers
-nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
-
-nnoremap <Leader>f :Unite grep:.<cr>
-
-
-" Start in insert mode
-let g:unite_enable_start_insert = 1
-
-let g:unite_data_directory = "~/.unite"
-
-" Open in bottom right
-let g:unite_split_rule = "botright"
-
-" Shorten the default update date of 500ms
-let g:unite_update_time = 200
-
-let g:unite_source_file_mru_limit = 1000
-let g:unite_cursor_line_highlight = 'TabLineSel'
-
-let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_file_mru_time_format = ''
 
 
 "=========================================================
@@ -411,11 +346,6 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-
-"================================================
-"               TAGBAR
-"================================================
-nmap <F8> :TagbarToggle<CR>
 
 "===========================================
 "          Fugitive
@@ -433,134 +363,12 @@ nnoremap <Leader>gv :Gpull origin
 nnoremap <Leader>gx :Gcommit -m ""
 nnoremap <Leader>gc :Gpush origin
 
-"===============================================
-"			SYNTASTIC
-"===============================================
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_mode_map = {
-  \ 'mode': 'active',
-  \ "active_filetypes": ["ruby", "php","css", "coffee", "sass", "js"],
-  \ "passive_filetypes": ["puppet"],
-  \}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_save = 1
-let g:syntastic_check_on_wq = 0
-
-" agregatte multiple linter erros
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_php_checkers = ["php","phpcs","phpmd"]
-let g:syntastic_php_phpcs_args="--standard=psr2"
-let g:syntastic_php_phpmd_post_args="cleancode,codesize,controversial,design,naming,unusedcode"
-
-"icons
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_style_error_symbol = 'se'
-let g:syntastic_warning_symbol = 'w'
-let g:syntastic_style_warning_symbol = 'sw'
-
-" Lighline
-set laststatus=2
-set ttimeoutlen=1
-
-let g:lightline = {
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-            \   'right': [ [ 'ale', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'component_function': {
-            \   'fugitive': 'LightlineFugitive',
-            \   'filename': 'LightlineFilename',
-            \   'fileformat': 'LightlineFileformat',
-            \   'filetype': 'LightlineFiletype',
-            \   'fileencoding': 'LightlineFileencoding',
-            \   'mode': 'LightlineMode',
-            \   'ctrlpmark': 'CtrlPMark',
-            \ },
-            \ 'component_expand': {
-            \   'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \   'syntastic': 'error',
-            \ },
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '', 'right': '' }
-            \ }
-
-function! LightlineModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-    return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! LightlineFilename()
-    let fname = expand('%:t')
-    return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
-                \ fname == '__Tagbar__' ? g:lightline.fname :
-                \ fname =~ '__Gundo\|NERD_tree' ? '' :
-                \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \ &ft == 'unite' ? unite#get_status_string() :
-                \ &ft == 'vimshell' ? vimshell#get_status_string() :
-                \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-                \ ('' != fname ? fname : '[No Name]') .
-                \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-    try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = ''  " edit here for cool mark
-            let branch = fugitive#head()
-            return branch !=# '' ? mark.branch : ''
-        endif
-    catch
-    endtry
-    return ''
-endfunction
-
-function! LightlineFileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightlineFiletype()
-    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightlineFileencoding()
-    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineMode()
-    let fname = expand('%:t')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-                \ fname == 'ControlP' ? 'CtrlP' :
-                \ fname == '__Gundo__' ? 'Gundo' :
-                \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-                \ fname =~ 'NERD_tree' ? 'NERDTree' :
-                \ &ft == 'unite' ? 'Unite' :
-                \ &ft == 'vimfiler' ? 'VimFiler' :
-                \ &ft == 'vimshell' ? 'VimShell' :
-                \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
 "================================================
 "              GIT GUTTER
 "================================================
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
-
-"===============================================
-"               UTILSNIPS
-"===============================================
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "==================================
 " END SETTINGS PLUGIN
