@@ -43,6 +43,12 @@ setup_git()
     ln -s -f "$CWD/shared/.npmrc" "$USERHOME/.npmrc"
 }
 
+setup_utils()
+{
+    curl -L https://yt-dl.org/downloads/latest/youtube-dl -o "$USERHOME/bin/youtube-dl"
+    chmod a+rx "$USERHOME/bin/youtube-dl"
+}
+
 
 #Create base structure
 print_message "Creating base strucure"
@@ -51,3 +57,4 @@ setup_zsh
 setup_git
 setup_tmux
 setup_vim
+setup_utils
