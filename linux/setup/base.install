@@ -56,11 +56,26 @@ install_base_packages() {
         libssl-dev \
         libreadline-dev \
         zlib1g-dev \
-        ufw  >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+        ufw  \
+        php \
+        php-gd \
+        php-fpm \
+        php-common \
+        php-json \
+        php-zip \
+        php-mbstring \
+        php-xml
+        python3-pip \
+        virtualenvwrapper >> bootstrap_install.logs 2>>bootstrap_error_install.logs
     # shellcheck disable=SC2181
     print_feedback_message $? "$MESSAGE"
 }
 
+
+
 clean_user_directory
-update_system
-install_base_packages
+if ! command -v ansible &> /dev/null
+then
+    update_system
+    install_base_packages
+fi

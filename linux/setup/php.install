@@ -1,25 +1,13 @@
 #!/bin/bash
 
-setup_php() {
-    MESSAGE="Install PHP"
-    # shellcheck disable=SC2024
-    sudo apt-get install -y php php-gd php-fpm php-common php-json php-zip php-mbstring php-xml >> bootstrap_install.logs 2>>bootstrap_error_install.logs
-    print_feedback_message $? "$MESSAGE"
-}
-
-install_composer_packages() {
-    MESSAGE="install php composer packages"
-    PHP_PACKAGES=("phpunit/phpunit" "phing/phing" "phploc/phploc" "phpmd/phpmd" "squizlabs/php_codesniffer")
-    INSTALLED_PACKAGES=$(composer global show)
-    for i in "${PHP_PACKAGES[@]}"
-    do
-        if [ "$(echo "$INSTALLED_PACKAGES" | grep -c "$i")" -ne 1 ]; then
-            composer global require "$i" -q -n > /dev/null >> bootstrap_install.logs 2>>bootstrap_error_install.logs
-        fi
-    done
-    print_feedback_message $? "$MESSAGE"
-}
-
 print_message "Setup PHP Dev Environment"
-setup_php
-install_composer_packages
+MESSAGE="install php composer packages"
+PHP_PACKAGES=("phpunit/phpunit" "phing/phing" "phploc/phploc" "phpmd/phpmd" "squizlabs/php_codesniffer")
+INSTALLED_PACKAGES=$(composer global show)
+for i in "${PHP_PACKAGES[@]}"
+do
+    if [ "$(echo "$INSTALLED_PACKAGES" | grep -c "$i")" -ne 1 ]; then
+        composer global require "$i" -q -n > /dev/null >> bootstrap_install.logs 2>>bootstrap_error_install.logs
+    fi
+done
+print_feedback_message $? "$MESSAGE"
