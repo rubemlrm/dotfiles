@@ -6,8 +6,8 @@ $wingetUtilsPackages = @(
     "Bitwarden.Bitwarden",
     "Google.Chrome",
     "Google.ChromeBeta"
-    "Google.BackupAndSync",
-    "NordVPN.NordVPN"
+    "NordVPN.NordVPN",
+    "Microsoft.RemoteDesktopClient"
 )
 
 $wingetFontPackages = @(
@@ -38,7 +38,13 @@ $wingetDevelopmentTools = @(
     "Mozilla.FirefoxDeveloperEdition"
     "WiresharkFoundation.Wireshark",
     "Microsoft.VisualStudio.Community",
-    "ApacheFriends.Xampp"
+    "ApacheFriends.Xampp",
+    "JetBrains.PHPStorm",
+    "dbeaver.dbeaver"
+    "TimKosse.FileZillaClient"
+    "JetBrains.PHPStorm",
+    "Arduino.Arduino",
+    "gerardog.gsudo"
 )
 
 
