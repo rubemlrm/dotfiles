@@ -202,7 +202,8 @@ function WingetInstallHelper {
         "TimKosse.FileZillaClient"
         "Arduino.Arduino",
         "gerardog.gsudo",
-        "WhatsApp.WhatsApp"
+        "WhatsApp.WhatsApp",
+        "Adobe.AdobeAcrobatReaderDC"
     )
     Write-Information "Install packages with winget"
     foreach ($item in $wingetPackages) {
