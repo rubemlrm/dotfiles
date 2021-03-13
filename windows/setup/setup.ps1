@@ -1,18 +1,18 @@
 ##### FUNCTIONS
 # Hide Task View button
 Function HideTaskView {
-    Write-Output "Hiding Task View button..."
+    Write-Information "Hiding Task View button..."
     Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 0
 }
 # Show small icons in taskbar
 Function ShowSmallTaskbarIcons {
-    Write-Output "Showing small icons in taskbar..."
+    Write-Information "Showing small icons in taskbar..."
     Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarSmallIcons" -Type DWord -Value 1
 }
 
 # Hide Taskbar People icon
 Function HideTaskbarPeopleIcon {
-    Write-Output "Hiding People icon..."
+    Write-Information "Hiding People icon..."
     If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People")) {
         New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
     }
@@ -20,7 +20,7 @@ Function HideTaskbarPeopleIcon {
 }
 # Show all tray icons
 Function ShowTrayIcons {
-    Write-Output "Showing all tray icons..."
+    Write-Information "Showing all tray icons..."
     If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
         New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" | Out-Null
     }
@@ -28,7 +28,7 @@ Function ShowTrayIcons {
 }
 # Set Control Panel view to Small icons (Classic)
 Function SetControlPanelSmallIcons {
-    Write-Output "Setting Control Panel view to small icons..."
+    Write-Information "Setting Control Panel view to small icons..."
     If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel")) {
         New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel" | Out-Null
     }
@@ -37,7 +37,7 @@ Function SetControlPanelSmallIcons {
 }
 
 Function InstallHyperV {
-    Write-Output "Installing Hyper-V..."
+    Write-Information "Installing Hyper-V..."
     If ((Get-CimInstance -Class "Win32_OperatingSystem").ProductType -eq 1) {
         Get-WindowsOptionalFeature -Online | Where-Object { $_.FeatureName -eq "Microsoft-Hyper-V-All" } | Enable-WindowsOptionalFeature -Online -NoRestart -WarningAction SilentlyContinue | Out-Null
     }
@@ -48,7 +48,7 @@ Function InstallHyperV {
 
 # Uninstall default Microsoft applications
 Function UninstallMsftBloat {
-    Write-Output "Uninstalling default Microsoft applications..."
+    Write-Information "Uninstalling default Microsoft applications..."
     Get-AppxPackage "Microsoft.3DBuilder" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage
     Get-AppxPackage "Microsoft.BingFinance" | Remove-AppxPackage
@@ -111,7 +111,7 @@ Function UninstallMsftBloat {
 
 # Uninstall default third party applications
 function UninstallThirdPartyBloat {
-    Write-Output "Uninstalling default third party applications..."
+    Write-Information "Uninstalling default third party applications..."
     Get-AppxPackage "2414FC7A.Viber" | Remove-AppxPackage
     Get-AppxPackage "41038Axilesoft.ACGMediaPlayer" | Remove-AppxPackage
     Get-AppxPackage "46928bounde.EclipseManager" | Remove-AppxPackage
@@ -164,9 +164,9 @@ Function UnpinStart {
     (New-Object -Com Shell.Application).
     NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
     Items() |
-    % { $_.Verbs() } |
-    ? { $_.Name -match 'Un.*pin from Start' } |
-    % { $_.DoIt() }
+    ForEach-Object { $_.Verbs() } |
+    Where-Object { $_.Name -match 'Un.*pin from Start' } |
+    ForEach-Object { $_.DoIt() }
 }
 
 function WingetInstallHelper {
@@ -215,6 +215,7 @@ function SetupScoop() {
     Write-Information "Install packages with Scoop"
 	if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
 		Write-Information "Installing scoop"
+
 		Invoke-WebRequest -useb get.scoop.sh | Invoke-Expression
 		scoop checkup
 	}
@@ -243,6 +244,8 @@ function ScoopInstallPackages {
         "FiraCode",
         "FiraCode-NF",
         "Cascadia-Code",
+        "CascadiaCode-NF-Mono",
+        "CascadiaCode-NF",
         "meslo-nf",
         "composer"
     }
@@ -264,18 +267,18 @@ function InstallNpmPackages()
     npm install -g eslint standard
 }
 #### EXECUTE
-UninstallMsftBloat
-UninstallThirdPartyBloat
-SetControlPanelSmallIcons
-ShowTrayIcons
-HideTaskbarPeopleIcon
-ShowSmallTaskbarIcons
-HideTaskView
-InstallHyperV
+#UninstallMsftBloat
+#UninstallThirdPartyBloat
+#SetControlPanelSmallIcons
+#ShowTrayIcons
+#HideTaskbarPeopleIcon
+#ShowSmallTaskbarIcons
+#HideTaskView
+#InstallHyperV
 # system and cli
-WingetInstallHelper
+#WingetInstallHelper
 SetupScoop
-ScoopAddBucket
-ScoopInstallPackages
-EnableWsl
-InstallNpmPackages
+#ScoopAddBucket
+#ScoopInstallPackages
+#EnableWsl
+#InstallNpmPackages

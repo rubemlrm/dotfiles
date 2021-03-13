@@ -3,11 +3,12 @@
 setup_zsh()
 {
     print_message "cloning oh-my-zsh"
+    chsh -s /usr/bin/zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended >> bootstrap_install.logs 2>>bootstrap_error_install.logs
     mkdir "$USERHOME/.config/zsh"
     ln -f -s "$CWD/linux/zsh/zshrc"  "$USERHOME/.zshrc"
     ln -f -s "$CWD/linux/zsh/p10.zsh" "$USERHOME/.p10k.zsh"
-    ln -f -s "$CWD/linux/zsh/configs"  "$USERHOME/.config/zsh/aliases"
+    ln -f -s "$CWD/linux/zsh/configs/"  "$USERHOME/.config/zsh/aliases"
     clone_repo https://github.com/zsh-users/zsh-autosuggestions  "$USERHOME/.config/zsh/plugins/zsh-autosuggestions"
     clone_repo https://github.com/zsh-users/zsh-syntax-highlighting.git "$USERHOME/.config/zsh/plugins/zsh-syntax-highlighting"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$USERHOME/.config/zsh/themes/powerlevel10k" >> bootstrap_install.logs 2>>bootstrap_error_install.logs

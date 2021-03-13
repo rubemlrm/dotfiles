@@ -64,8 +64,7 @@ install_base_packages() {
         php-json \
         php-zip \
         php-mbstring \
-        php-xml
-        python3-pip \
+        php-xml \
         virtualenvwrapper >> bootstrap_install.logs 2>>bootstrap_error_install.logs
     # shellcheck disable=SC2181
     print_feedback_message $? "$MESSAGE"
@@ -74,8 +73,5 @@ install_base_packages() {
 
 
 clean_user_directory
-if ! command -v ansible &> /dev/null
-then
-    update_system
-    install_base_packages
-fi
+update_system
+install_base_packages
