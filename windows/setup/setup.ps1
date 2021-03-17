@@ -160,7 +160,7 @@ function UninstallThirdPartyBloat {
 Function UnpinStart {
     #https://superuser.com/questions/1068382/how-to-remove-all-the-tiles-in-the-windows-10-start-menu
     #Unpins all tiles from the Start Menu
-    Write-Host "Unpinning all tiles from the start menu"
+    Write-Information "Unpinning all tiles from the start menu"
     (New-Object -Com Shell.Application).
     NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
     Items() |
@@ -216,7 +216,8 @@ function SetupScoop() {
 	if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
 		Write-Information "Installing scoop"
 
-		Invoke-WebRequest -useb get.scoop.sh | Invoke-Expression
+        Invoke-WebRequest get.scoop.sh -OutFile scoop.ps1
+        ./scoop.ps1
 		scoop checkup
 	}
 	scoop install 7zip
