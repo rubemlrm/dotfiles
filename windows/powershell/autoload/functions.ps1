@@ -8,7 +8,7 @@ function Get-Session {
 }
 
 # Common Editing needs
-function Edit-Hosts { & "sudo $(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
+function Edit-Hosts { & "$(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
 function Edit-Profile { & "$(if($null -ne $env:EDITORl)  {$env:EDITOR } else { 'notepad' }) $profile" }
 
 # Sudo
@@ -37,3 +37,7 @@ function Get-ENV {
 
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 }
+
+function Which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
+function Touch($file) { "" | Out-File $file -Encoding ASCII }
+function Show-Wlan { Param([string]$a)netsh.exe wlan show profile name=$a key=clear }

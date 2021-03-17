@@ -1,6 +1,6 @@
 Import-Module posh-git
 Import-Module oh-my-posh
-Set-PoshPrompt -Theme AgnosterPlus
+Set-PoshPrompt -Theme Sorin
 
 $profileDir = Split-Path -parent $profile
 # load all 'autoload' scripts

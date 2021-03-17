@@ -1,3 +1,6 @@
+# Set execution policy to remote signed
+Set-ExecutionPolicy RemoteSigned
+
 $profileDir = Split-Path -parent $profile
 
 Write-Information "Install powershell modules"
