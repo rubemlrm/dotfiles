@@ -49,6 +49,7 @@ install_base_packages() {
         screenfetch \
         python3-pip \
         python3-oauth2client \
+        python-virtualenv \
         curl \
         powerline \
         fonts-powerline \

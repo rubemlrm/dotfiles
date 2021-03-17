@@ -1,7 +1,8 @@
 # Set execution policy to remote signed
 Set-ExecutionPolicy RemoteSigned
-
+$dotfilesDir = Get-Location
 $profileDir = Split-Path -parent $profile
+[System.Environment]::SetEnvironmentVariable('dotfilesDir', $dotfilesDir , [System.EnvironmentVariableTarget]::User)
 
 Write-Information "Install powershell modules"
 #install posh
