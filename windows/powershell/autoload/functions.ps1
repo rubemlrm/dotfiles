@@ -42,7 +42,7 @@ function Which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select
 function Touch($file) { "" | Out-File $file -Encoding ASCII }
 function Show-Wlan { Param([string]$a)netsh.exe wlan show profile name=$a key=clear }
 
-function Update-DotFiles {
+function Get-DotFiles {
     Set-Location $env:dotfilesDir
     git pull origin main
 }

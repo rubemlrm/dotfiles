@@ -42,7 +42,7 @@ Function InstallHyperV {
         Get-WindowsOptionalFeature -Online | Where-Object { $_.FeatureName -eq "Microsoft-Hyper-V-All" } | Enable-WindowsOptionalFeature -Online -NoRestart -WarningAction SilentlyContinue | Out-Null
     }
     Else {
-        Install-WindowsFeature -Name "Hyper-V" -IncludeManagementTools -WarningAction SilentlyContinue | Out-Null
+        Install-WindowsFeature -Name "Hyper-V" -IncludeManagementTools -WarningAction | Out-Null
     }
 }
 
@@ -225,34 +225,9 @@ function SetupScoop() {
 	sudo Add-MpPreference -ExclusionPath '${HOME}\scoop'
 	sudo Add-MpPreference -ExclusionPath 'C:\ProgramData\scoop'
 	sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
-}
-
-function ScoopAddBucket {
-    $scoopBuckets = {
-        "extras",
-        "nerd-fonts"
-    }
-    foreach ($item in $scoopBuckets) {
-        scoop bucket add $item
-    }
-}
-
-function ScoopInstallPackages {
-    Write-Information "Installing scoop packages"
-    $scoopPackages = {
-        "php",
-        "nano",
-        "FiraCode",
-        "FiraCode-NF",
-        "Cascadia-Code",
-        "CascadiaCode-NF-Mono",
-        "CascadiaCode-NF",
-        "meslo-nf",
-        "composer"
-    }
-    foreach ($item in $scoopPackages) {
-        sudo scoop install $item
-    }
+    scoop bucket add extras
+    scoop bucket add nerd-fonts
+    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf
 }
 
 function EnableWsl() {
@@ -268,18 +243,16 @@ function InstallNpmPackages()
     npm install -g eslint standard
 }
 #### EXECUTE
-#UninstallMsftBloat
-#UninstallThirdPartyBloat
-#SetControlPanelSmallIcons
-#ShowTrayIcons
-#HideTaskbarPeopleIcon
-#ShowSmallTaskbarIcons
-#HideTaskView
-#InstallHyperV
+UninstallMsftBloat
+UninstallThirdPartyBloat
+SetControlPanelSmallIcons
+ShowTrayIcons
+HideTaskbarPeopleIcon
+ShowSmallTaskbarIcons
+HideTaskView
 # system and cli
-#WingetInstallHelper
+WingetInstallHelper
 SetupScoop
-#ScoopAddBucket
-#ScoopInstallPackages
-#EnableWsl
-#InstallNpmPackages
+InstallNpmPackages
+EnableWsl
+InstallHyperV

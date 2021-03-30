@@ -24,3 +24,4 @@ linux/vim/vim/plugged
 # autoload ignores for powershell
 work.ps1
 composer*
+scoop*
