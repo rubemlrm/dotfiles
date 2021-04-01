@@ -1,28 +1,6 @@
-# Reload the Shell
+# Environment
 #PSSCRIPTANALYZER -PSUseApprovedVerbs
-function Get-Session {
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = "-nologo";
-    [System.Diagnostics.Process]::Start($newProcess);
-    exit
-}
-
-# Common Editing needs
-function Edit-Hosts { & "$(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
-function Edit-Profile { & "$(if($null -ne $env:EDITORl)  {$env:EDITOR } else { 'notepad' }) $profile" }
-
-# Sudo
-function sudo() {
-    if ($args.Length -eq 1) {
-        start-process $args[0] -verb "runAs"
-    }
-    if ($args.Length -gt 1) {
-        start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
-    }
-}
-
-#PSSCRIPTANALYZER -PSUseApprovedVerbs
-function Get-ENV {
+function Get-env {
     $locations = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
     'HKCU:\Environment'
 
@@ -38,24 +16,48 @@ function Get-ENV {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 }
 
-function Which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
-function Touch($file) { "" | Out-File $file -Encoding ASCII }
-function Show-Wlan { Param([string]$a)netsh.exe wlan show profile name=$a key=clear }
-
-function Get-DotFiles {
-    Set-Location $env:dotfilesDir
-    git pull origin main
-}
-
-# Reload the Shell
-function Reload-Powershell {
+#PSSCRIPTANALYZER -PSUseApprovedVerbs
+function Get-Session {
     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = "-nologo";
     [System.Diagnostics.Process]::Start($newProcess);
     exit
 }
 
-function CreateAndSet-Directory([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
+# General Configs
+function sudo() {
+    if ($args.Length -eq 1) {
+        start-process $args[0] -verb "runAs"
+    }
+    if ($args.Length -gt 1) {
+        start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
+    }
+}
+
+function Which($name) {
+    Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
+}
+function Get-DotFiles {
+    Set-Location $env:dotfilesDir
+    git pull origin main
+}
+
+# Config Edition
+function Edit-Hosts {
+    vim --nofork $env:windir\system32\drivers\etc\hosts
+}
+function Edit-Profile {
+    vim --nofork $profile
+}
+
+# Shell
+function Reload-Powershell {
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = "-nologo";
+    [System.Diagnostics.Process]::Start($newProcess);
+    exit
+}
+# File Management
 function Get-DiskUsage([string] $path=(Get-Location).Path) {
     Convert-ToDiskSize `
         ( `
@@ -72,3 +74,21 @@ function Empty-RecycleBin {
     $RecBin = (New-Object -ComObject Shell.Application).Namespace(0xA)
     $RecBin.Items() | %{Remove-Item $_.Path -Recurse -Confirm:$false}
 }
+function Touch($file) { "" | Out-File $file -Encoding ASCII }
+function CreateAndSet-Directory([String] $path) {
+    New-Item $path -ItemType Directory -ErrorAction SilentlyContinue;
+    Set-Location $path
+}
+# Network
+function Show-Wlan {
+    Param([string]$a)
+    netsh.exe wlan show profile name=$a key=clear
+}
+
+# Alias for the above methods
+Set-Alias reload Reload-Powershell
+Set-Alias mkd CreateAndSet-Directory
+Set-Alias fs Get-DiskUsage
+Set-Alias emptytrash Empty-RecycleBin
+Set-Alias cleandisks Clean-Disks
+Set-Alias time Measure-Command

@@ -189,7 +189,7 @@ function WingetInstallHelper {
         "Microsoft.Powershell"
         "Microsoft.PowerToys",
         "Microsoft.WindowsTerminal",
-        "Microsoft.VisualStudioCode-User-x64",
+        "Microsoft.VisualStudioCode.User-x64",
         "vim.vim",
         "Git.Git",
         "Notepad++.Notepad++",
