@@ -46,3 +46,29 @@ function Get-DotFiles {
     Set-Location $env:dotfilesDir
     git pull origin main
 }
+
+# Reload the Shell
+function Reload-Powershell {
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = "-nologo";
+    [System.Diagnostics.Process]::Start($newProcess);
+    exit
+}
+
+function CreateAndSet-Directory([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
+function Get-DiskUsage([string] $path=(Get-Location).Path) {
+    Convert-ToDiskSize `
+        ( `
+            Get-ChildItem .\ -recurse -ErrorAction SilentlyContinue `
+            | Measure-Object -property length -sum -ErrorAction SilentlyContinue
+        ).Sum `
+        1
+}
+function Clean-Disks {
+    Start-Process "$(Join-Path $env:WinDir 'system32\cleanmgr.exe')" -ArgumentList "/sagerun:6174" -Verb "runAs"
+}
+
+function Empty-RecycleBin {
+    $RecBin = (New-Object -ComObject Shell.Application).Namespace(0xA)
+    $RecBin.Items() | %{Remove-Item $_.Path -Recurse -Confirm:$false}
+}

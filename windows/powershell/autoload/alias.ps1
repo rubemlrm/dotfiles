@@ -11,9 +11,6 @@ Set-Alias emptytrash Empty-RecycleBin
 Set-Alias cleandisks Clean-Disks
 # Missing Bash aliases
 Set-Alias time Measure-Command
-# http://xkcd.com/530/
-Set-Alias mute Set-SoundMute
-Set-Alias unmute Set-SoundUnmute
 
 # Navigation Shortcuts
 ${function:desktop} = { Set-Location ~\Desktop }

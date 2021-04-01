@@ -26,7 +26,7 @@
   "profiles": {
     "defaults": {
       "fontFace": "Cascadia Code PL",
-      "colorScheme" : "Dracula",
+      "colorScheme": "Dracula",
       "fontSize": 11
     },
     "list": [
@@ -34,7 +34,7 @@
         // Make changes here to the powershell.exe profile.
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "name": "Windows PowerShell",
-        "commandline": "powershell.exe",
+        "commandline": "powershell.exe -nologo",
         "hidden": false
       },
       {
@@ -48,7 +48,7 @@
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
         "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
+        "source": "Windows.Terminal.PowershellCore -nologo"
       },
       {
         "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
@@ -65,7 +65,7 @@
       {
         "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
         "hidden": false,
-        "name": "Debian",
+        "name": "Debian"
       },
       {
         "guid": "{63e31163-583f-5850-9c1e-24e227dd2da9}",
@@ -102,6 +102,12 @@
         "hidden": false,
         "name": "openSUSE-Leap-15.2",
         "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+        "hidden": false,
+        "name": "PowerShell",
+        "source": "Windows.Terminal.PowershellCore"
       }
     ]
   },
@@ -110,27 +116,27 @@
   // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
   "schemes": [
     {
-        "name": "Dracula",
-        "cursorColor": "#F8F8F2",
-        "selectionBackground": "#44475A",
-        "background": "#282A36",
-        "foreground": "#F8F8F2",
-        "black": "#21222C",
-        "blue": "#BD93F9",
-        "cyan": "#8BE9FD",
-        "green": "#50FA7B",
-        "purple": "#FF79C6",
-        "red": "#FF5555",
-        "white": "#F8F8F2",
-        "yellow": "#F1FA8C",
-        "brightBlack": "#6272A4",
-        "brightBlue": "#D6ACFF",
-        "brightCyan": "#A4FFFF",
-        "brightGreen": "#69FF94",
-        "brightPurple": "#FF92DF",
-        "brightRed": "#FF6E6E",
-        "brightWhite": "#FFFFFF",
-        "brightYellow": "#FFFFA5"
+      "name": "Dracula",
+      "cursorColor": "#F8F8F2",
+      "selectionBackground": "#44475A",
+      "background": "#282A36",
+      "foreground": "#F8F8F2",
+      "black": "#21222C",
+      "blue": "#BD93F9",
+      "cyan": "#8BE9FD",
+      "green": "#50FA7B",
+      "purple": "#FF79C6",
+      "red": "#FF5555",
+      "white": "#F8F8F2",
+      "yellow": "#F1FA8C",
+      "brightBlack": "#6272A4",
+      "brightBlue": "#D6ACFF",
+      "brightCyan": "#A4FFFF",
+      "brightGreen": "#69FF94",
+      "brightPurple": "#FF92DF",
+      "brightRed": "#FF6E6E",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFFFA5"
     }
   ],
 
