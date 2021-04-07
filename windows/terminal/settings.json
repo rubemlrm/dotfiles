@@ -48,7 +48,7 @@
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
         "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore -nologo"
+        "source": "Windows.Terminal.PowershellCore -NoLogo"
       },
       {
         "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",

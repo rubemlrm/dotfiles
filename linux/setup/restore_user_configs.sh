@@ -53,6 +53,7 @@ setup_utils()
 
 #Create base structure
 print_message "Creating base strucure"
+# save current directory to path
 mkdir -p "$USERHOME/bin"
 setup_zsh
 setup_git
