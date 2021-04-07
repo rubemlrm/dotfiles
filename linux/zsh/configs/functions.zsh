@@ -16,18 +16,21 @@ function mkdcd () {
     mkdir -p "$1" && cd "$1"
  }
 
+function djangoInit() {
+ mkvirtualenv $1; workon $1; pip3 install django
+}
  # Docker Functions
-clear_containers() {
+function clear_containers() {
 	docker stop $(docker ps -a -q)
 	docker rm $(docker ps -a -q)
 }
 
-clear_images() {
+function clear_images() {
 	docker rmi -f $(docker images -a -q)
 }
 
 # archive compress
-compress() {
+function compress() {
     if [[ -n "$1" ]]; then
         local file=$1
         shift
@@ -46,7 +49,7 @@ compress() {
 }
 
 # archive extract
-extract() {
+function extract() {
     if [[ -f "$1" ]] ; then
         local filename=$(basename "$1")
         local foldername=${filename%%.*}

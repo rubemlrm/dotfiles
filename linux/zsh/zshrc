@@ -47,3 +47,9 @@ emulate sh -c '. /etc/profile'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+#python virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PROJECT_HOME=$HOME/Works
+source $HOME/.local/bin/virtualenvwrapper.sh
