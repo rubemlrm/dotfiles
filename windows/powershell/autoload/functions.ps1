@@ -37,7 +37,7 @@ function sudo() {
 function Which($name) {
     Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
 }
-function Get-DotFiles {
+function Sync-DotFiles {
     Set-Location $env:dotfilesDir
     git pull origin main
 }
@@ -51,31 +51,31 @@ function Edit-Profile {
 }
 
 # Shell
-function Reload-Powershell {
+function Sync-Powershell {
     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = "-nologo";
     [System.Diagnostics.Process]::Start($newProcess);
     exit
 }
 # File Management
-function Get-DiskUsage([string] $path=(Get-Location).Path) {
+function Get-DiskUsage([string] $path = (Get-Location).Path) {
     Convert-ToDiskSize `
-        ( `
+    ( `
             Get-ChildItem .\ -recurse -ErrorAction SilentlyContinue `
-            | Measure-Object -property length -sum -ErrorAction SilentlyContinue
-        ).Sum `
+        | Measure-Object -property length -sum -ErrorAction SilentlyContinue
+    ).Sum `
         1
 }
-function Clean-Disks {
+function Clear-Disks {
     Start-Process "$(Join-Path $env:WinDir 'system32\cleanmgr.exe')" -ArgumentList "/sagerun:6174" -Verb "runAs"
 }
 
-function Empty-RecycleBin {
+function Clear-RecycleBin {
     $RecBin = (New-Object -ComObject Shell.Application).Namespace(0xA)
-    $RecBin.Items() | %{Remove-Item $_.Path -Recurse -Confirm:$false}
+    $RecBin.Items() | ForEach-Object { Remove-Item $_.Path -Recurse -Confirm:$false }
 }
 function Touch($file) { "" | Out-File $file -Encoding ASCII }
-function CreateAndSet-Directory([String] $path) {
+function Add-Directory([String] $path) {
     New-Item $path -ItemType Directory -ErrorAction SilentlyContinue;
     Set-Location $path
 }
@@ -89,6 +89,7 @@ function Show-Wlan {
 Set-Alias reload Reload-Powershell
 Set-Alias mkd CreateAndSet-Directory
 Set-Alias fs Get-DiskUsage
-Set-Alias emptytrash Empty-RecycleBin
-Set-Alias cleandisks Clean-Disks
+Set-Alias emptytrash Clear-RecycleBin
+Set-Alias cleandisks Clear-Disks
 Set-Alias time Measure-Command
+Set-Alias syncDotFiles Sync-DotFiles

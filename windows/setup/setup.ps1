@@ -213,32 +213,31 @@ function WingetInstallHelper {
 
 function SetupScoop() {
     Write-Information "Install packages with Scoop"
-	if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
-		Write-Information "Installing scoop"
+    if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
+        Write-Information "Installing scoop"
 
         Invoke-WebRequest get.scoop.sh -OutFile scoop.ps1
         ./scoop.ps1
-		scoop checkup
-	}
-	scoop install 7zip
-	scoop install sudo
-	sudo Add-MpPreference -ExclusionPath '${HOME}\scoop'
-	sudo Add-MpPreference -ExclusionPath 'C:\ProgramData\scoop'
-	sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
+        scoop checkup
+    }
+    scoop install 7zip
+    scoop install sudo
+    sudo Add-MpPreference -ExclusionPath '${HOME}\scoop'
+    sudo Add-MpPreference -ExclusionPath 'C:\ProgramData\scoop'
+    sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
     scoop bucket add extras
     scoop bucket add nerd-fonts
-    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf
+    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf act
 }
 
 function EnableWsl() {
     Write-Information "Enable WSL"
-	dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-	dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-	wsl --set-default-version 2
+    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    wsl --set-default-version 2
 }
 
-function InstallNpmPackages()
-{
+function InstallNpmPackages() {
     Write-Information "install npm packages"
     npm install -g eslint standard
 }
