@@ -1,4 +1,4 @@
-function tSession
+function tSession()
 {
     tmux has-session -t dev 2 >/dev/null
     if [ "$?" -eq 1 ]; then
@@ -12,25 +12,25 @@ function tSession
 }
 
 # create directory and enter on it
-function mkdcd () {
+function  mkdcd () {
     mkdir -p "$1" && cd "$1"
  }
 
-function djangoInit() {
+function  djangoInit() {
  mkvirtualenv $1; workon $1; pip3 install django
 }
  # Docker Functions
-function clear_containers() {
+function  clear_containers() {
 	docker stop $(docker ps -a -q)
 	docker rm $(docker ps -a -q)
 }
 
-function clear_images() {
+function  clear_images() {
 	docker rmi -f $(docker images -a -q)
 }
 
 # archive compress
-function compress() {
+function  compress() {
     if [[ -n "$1" ]]; then
         local file=$1
         shift
@@ -49,7 +49,7 @@ function compress() {
 }
 
 # archive extract
-function extract() {
+function  extract() {
     if [[ -f "$1" ]] ; then
         local filename=$(basename "$1")
         local foldername=${filename%%.*}

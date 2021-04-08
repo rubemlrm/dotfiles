@@ -4,11 +4,33 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Path to your oh-my-zsh installation.
+########################
+# Export Variables     #
+########################
 export ZSH=~/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/.config/composer/vendor/bin:~/.local/bin:~/.rbenv/bin:~/bin"
+#python virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PROJECT_HOME=$HOME/Works
+########################
+# source files         #
+########################
+source ~/.config/zsh/aliases/*
+source $ZSH/oh-my-zsh.sh
+source $HOME/.local/bin/virtualenvwrapper.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+########################
+#     ZSH CONFIGS      #
+########################
+ZSH_CUSTOM=~/.config/zsh
+plugins=(git common-aliases ansible docker django tmux history python systemd zsh-autosuggestions zsh-syntax-highlighting dojo)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -35,21 +57,6 @@ setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
-ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases docker tmux history python systemd zsh-autosuggestions zsh-syntax-highlighting)
-source ~/.config/zsh/aliases/*
-source $ZSH/oh-my-zsh.sh
 # fix to load snap apps
 emulate sh -c '. /etc/profile'
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-#python virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export PROJECT_HOME=$HOME/Works
-source $HOME/.local/bin/virtualenvwrapper.sh
