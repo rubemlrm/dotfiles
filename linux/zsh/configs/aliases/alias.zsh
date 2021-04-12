@@ -28,3 +28,5 @@ alias syncDotFiles=""
 alias irssi='TERM=screen-256color irssi'
 alias checkBranchesToRemove='git branch -r | awk "{print $1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print $1}"'
 alias removeMergedBranches='git branch -r | awk "{print $1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print $1}" | xargs git branch -d'
+#docker
+alias updateDockerImages='docker images --format "{{.Repository}}:{{.Tag}}" | grep ":latest" | xargs -L1 docker pull'
