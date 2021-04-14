@@ -9,9 +9,9 @@
 
 #vim folders
 vim/autoload
-linux/vim/vim/plugged
-linux/vim/vim/sessions
-linux/vim/vim/bundle
+configs/vim/vim/plugged
+configs/vim/vim/sessions
+configs/vim/vim/bundle
 Session.vim
 Sessionx.vim
 

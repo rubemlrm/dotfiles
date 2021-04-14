@@ -241,6 +241,11 @@ function InstallNpmPackages() {
     Write-Information "install npm packages"
     npm install -g eslint standard
 }
+
+function InstallPythonPackages() {
+    Write-Information "install python packages"
+    pip install virtualenv cookiecutter
+}
 #### EXECUTE
 UninstallMsftBloat
 UninstallThirdPartyBloat
@@ -253,5 +258,6 @@ HideTaskView
 WingetInstallHelper
 SetupScoop
 InstallNpmPackages
+InstallPythonPackages
 EnableWsl
 InstallHyperV

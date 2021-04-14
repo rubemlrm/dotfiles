@@ -10,16 +10,11 @@ fi
 export ZSH=~/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/.config/composer/vendor/bin:~/.local/bin:~/.rbenv/bin:~/bin"
-#python virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export PROJECT_HOME=$HOME/Works
 ########################
 # source files         #
 ########################
 source ~/.config/zsh/aliases/*
 source $ZSH/oh-my-zsh.sh
-source $HOME/.local/bin/virtualenvwrapper.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
