@@ -31,7 +31,7 @@ Get-ChildItem -Path ./configs/powershell/* -Include "*.ps1" | ForEach-Object {
 }
 #Copy powershell alias and functions
 New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/configs/powershell/autoload" -Force
-Copy-Item -Path ./shared/** -Destination $home -Include **
+#Copy-Item -Path ./shared/** -Destination $home -Include **
 
 #copy window terminal settings
 Write-Information "Restore windows terminal settings"

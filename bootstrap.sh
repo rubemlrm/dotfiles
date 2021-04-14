@@ -1,8 +1,32 @@
 #!/bin/bash
+CWD=$(pwd)
+USERHOME="/home/$(whoami)"
+export CWD
+export USERHOME
+
+
+clean_user_directory() {
+    echo -e "\033[1;33m Cleaning old files \033[0m"
+    rm -rf "$USERHOME/.oh-my-zsh/"
+    rm -rf "$USERHOME/.zshrc"
+    rm -rf "$USERHOME/.p10k.zsh"
+    rm -rf "$USERHOME/.config/zsh"
+    rm -rf "$USERHOME/.config/tmux"
+    rm -rf "$USERHOME/.local/share/fonts"
+    rm -rf "$USERHOME/.vimrc"
+    rm -rf "$USERHOME/.vim"
+    rm -rf "$USERHOME/.nvm"
+    rm -rf "$USERHOME/.tmux.conf"
+    rm -rf "$USERHOME/.tmux/"
+    rm -rf "$USERHOME/.gitconfig"
+    rm -rf "$USERHOME/.gitignore"
+    rm -rf "$USERHOME/.gitattributes"
+    rm -rf "$USERHOME/.npmrc"
+}
 
 setup_zsh()
 {
-    print_message "cloning oh-my-zsh"
+    echo -e "\033[1;33m cloning oh-my-zsh \033[0m"
     chsh -s /usr/bin/zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended >> bootstrap_install.logs 2>>bootstrap_error_install.logs
     mkdir -p "$USERHOME/.config/zsh/aliases"
@@ -11,8 +35,8 @@ setup_zsh()
     ln -f -s "$CWD/configs/zsh/p10.zsh" "$USERHOME/.p10k.zsh"
     ln -f -s "$CWD"/configs/zsh/configs/aliases/*.zsh  "$USERHOME/.config/zsh/aliases/"
     ln -f -s "$CWD"/configs/zsh/configs/plugins/*  "$USERHOME/.config/zsh/plugins/"
-    clone_repo https://github.com/zsh-users/zsh-autosuggestions  "$USERHOME/.config/zsh/plugins/zsh-autosuggestions"
-    clone_repo https://github.com/zsh-users/zsh-syntax-highlighting.git "$USERHOME/.config/zsh/plugins/zsh-syntax-highlighting"
+    git clone https://github.com/zsh-users/zsh-autosuggestions  "$USERHOME/.config/zsh/plugins/zsh-autosuggestions"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$USERHOME/.config/zsh/plugins/zsh-syntax-highlighting"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$USERHOME/.config/zsh/themes/powerlevel10k" >> bootstrap_install.logs 2>>bootstrap_error_install.logs
     touch "$USERHOME/.config/zsh/development.zsh"
     mkdir -p "$USERHOME/.local/share/fonts"
@@ -22,7 +46,7 @@ setup_zsh()
 
 setup_vim()
 {
-    print_message "creating vim symlinks"
+    echo -e "\033[1;33m creating vim symlinks \033[0m"
     ln -s -f "$CWD/configs/vim/vimrc"  "$USERHOME/.vimrc"
     ln -s -f "$CWD/configs/vim/vim"  "$USERHOME/.vim"
     curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >> bootstrap_install.logs 2>>bootstrap_error_install.logs
@@ -31,19 +55,19 @@ setup_vim()
 
 setup_tmux()
 {
-    print_message "creating tmux symlinks"
+    echo -e "\033[1;33m creating tmux symlinks \033[0m"
     ln -s -f "$CWD/configs/tmux/tmux.conf" "$USERHOME/.tmux.conf"
-    clone_repo https://github.com/tmux-plugins/tpm.git "$USERHOME/.tmux/plugins/tpm"
+    git clone https://github.com/tmux-plugins/tpm.git "$USERHOME/.tmux/plugins/tpm"
     ln -f -s "$CWD/configs/tmux/configs"  "$USERHOME/.config/tmux"
 }
 
 setup_git()
 {
-    print_message "creating shared hosts configs"
-    ln -s -f "$CWD/shared/.gitconfig"  "$USERHOME/.gitconfig"
-    ln -s -f "$CWD/shared/.gitignore" "$USERHOME/.gitignore"
-    ln -s -f "$CWD/shared/.gitattributes" "$USERHOME/.gitattributes"
-    ln -s -f "$CWD/shared/.npmrc" "$USERHOME/.npmrc"
+    echo -e "\033[1;33m creating shared hosts configs \033[0m"
+    ln -s -f "$CWD/configs/git/.gitconfig"  "$USERHOME/.gitconfig"
+    ln -s -f "$CWD/configs/git/.gitignore" "$USERHOME/.gitignore"
+    ln -s -f "$CWD/configs/git/.gitattributes" "$USERHOME/.gitattributes"
+    ln -s -f "$CWD/configs/npm/.npmrc" "$USERHOME/.npmrc"
 }
 
 setup_utils()
@@ -54,9 +78,11 @@ setup_utils()
 
 
 #Create base structure
-print_message "Creating base strucure"
+echo -e "\033[1;33m Creating base strucure \033[0m"
 # save current directory to path
 mkdir -p "$USERHOME/bin"
+clean_user_directory
+./setup/setup_machine.sh
 setup_zsh
 setup_git
 setup_tmux
