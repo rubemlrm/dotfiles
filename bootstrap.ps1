@@ -25,16 +25,16 @@ New-Item $profileDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 Write-Information "Restore powershell scripts"
 #Copy base powershell
-Get-ChildItem -Path ./windows/powershell/* -Include "*.ps1" | ForEach-Object {
+Get-ChildItem -Path ./configs/powershell/* -Include "*.ps1" | ForEach-Object {
     $fileName = $_.BaseName
     New-Item -Itemtype SymbolicLink -Path $profileDir -Name "$fileName.ps1" -Target $_.FullName -Force
 }
 #Copy powershell alias and functions
-New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/windows/powershell/autoload" -Force
+New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/configs/powershell/autoload" -Force
 Copy-Item -Path ./shared/** -Destination $home -Include **
 
 #copy window terminal settings
 Write-Information "Restore windows terminal settings"
-New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/windows/terminal/" -Force
+New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/configs/terminal/" -Force
 
 Remove-Variable profileDir
