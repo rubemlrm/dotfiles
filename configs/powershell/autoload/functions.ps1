@@ -24,15 +24,6 @@ function Get-Session {
     exit
 }
 
-# General Configs
-function sudo() {
-    if ($args.Length -eq 1) {
-        start-process $args[0] -verb "runAs"
-    }
-    if ($args.Length -gt 1) {
-        start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
-    }
-}
 
 function Which($name) {
     Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition

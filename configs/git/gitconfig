@@ -24,3 +24,6 @@
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
+[user]
+	email = rubemmota89@gmail.com
+	name = Rubem Mota

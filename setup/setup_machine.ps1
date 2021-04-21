@@ -174,9 +174,6 @@ function WingetInstallHelper {
         "VideloLan.VLC"
         "7zip.7zip"
         "Valve.Steam",
-        "Bitwarden.Bitwarden",
-        "Google.Chrome",
-        "Google.ChromeBeta"
         "NordVPN.NordVPN",
         "Microsoft.RemoteDesktopClient"
         "SourceFoundry.HackFonts"
@@ -188,22 +185,19 @@ function WingetInstallHelper {
         "Microsoft.dotnet"
         "Microsoft.Powershell"
         "Microsoft.PowerToys",
-        "Microsoft.WindowsTerminal",
         "Microsoft.VisualStudioCode.User-x64",
-        "vim.vim",
         "Git.Git",
         "Notepad++.Notepad++",
         "Docker.DockerDesktop"
-        "Mozilla.FirefoxDeveloperEdition"
         "WiresharkFoundation.Wireshark",
-        "Microsoft.VisualStudio.Community",
-        "JetBrains.PHPStorm",
         "dbeaver.dbeaver"
         "TimKosse.FileZillaClient"
         "Arduino.Arduino",
-        "gerardog.gsudo",
         "WhatsApp.WhatsApp",
         "Adobe.AdobeAcrobatReaderDC"
+		"GitHub.cli"
+		"Xampp",
+        "Microsoft.VisualStudio.Community",
     )
     Write-Information "Install packages with winget"
     foreach ($item in $wingetPackages) {
@@ -227,7 +221,8 @@ function SetupScoop() {
     sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
     scoop bucket add extras
     scoop bucket add nerd-fonts
-    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf act gpg
+    scoop bucket add jetbrains
+    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf act gpg PhpStorm windows-terminal bitwarden googlechrome dbeaver vim
 }
 
 function EnableWsl() {
