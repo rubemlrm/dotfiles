@@ -195,9 +195,9 @@ function WingetInstallHelper {
         "Arduino.Arduino",
         "WhatsApp.WhatsApp",
         "Adobe.AdobeAcrobatReaderDC"
-		"GitHub.cli"
-		"Xampp",
-        "Microsoft.VisualStudio.Community",
+        "GitHub.cli"
+        "Xampp",
+        "Microsoft.VisualStudio.Community"
     )
     Write-Information "Install packages with winget"
     foreach ($item in $wingetPackages) {

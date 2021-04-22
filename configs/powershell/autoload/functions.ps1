@@ -31,6 +31,7 @@ function Which($name) {
 function Sync-DotFiles {
     Set-Location $env:dotfilesDir
     git pull origin main
+    Sync-Powershell
 }
 
 # Config Edition
