@@ -197,7 +197,7 @@ function WingetInstallHelper {
         "Adobe.AdobeAcrobatReaderDC"
 		"GitHub.cli"
 		"Xampp",
-        "Microsoft.VisualStudio.Community",
+        "Microsoft.VisualStudio.Community"
     )
     Write-Information "Install packages with winget"
     foreach ($item in $wingetPackages) {
@@ -241,6 +241,14 @@ function InstallPythonPackages() {
     Write-Information "install python packages"
     pip install virtualenv cookiecutter
 }
+
+# system and cli
+#WingetInstallHelper
+SetupScoop
+InstallNpmPackages
+InstallPythonPackages
+EnableWsl
+InstallHyperV
 #### EXECUTE
 UninstallMsftBloat
 UninstallThirdPartyBloat
@@ -249,10 +257,3 @@ ShowTrayIcons
 HideTaskbarPeopleIcon
 ShowSmallTaskbarIcons
 HideTaskView
-# system and cli
-WingetInstallHelper
-SetupScoop
-InstallNpmPackages
-InstallPythonPackages
-EnableWsl
-InstallHyperV
