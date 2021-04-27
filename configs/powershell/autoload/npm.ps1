@@ -11,6 +11,7 @@ ${function:npmRS} = { npm run server }
 #Run npm build
 ${function:npmB} = { npm run build }
 
+#PSSCRIPTANALYZER -PSUseShouldProcessForStateChangingF
 function Remove-Node-Modules { get-childitem -Include node_modules -Recurse -force | Remove-Item -Force -Recurse }
 
 function Get-Laravel-VueJs-Compilation() {
