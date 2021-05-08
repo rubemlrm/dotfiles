@@ -7,7 +7,7 @@
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4
     untrackedCache = true
 [commit]
-  	gpgsign = false
+  	gpgsign = true
 [color]
 	ui = true
 [color "branch"]
@@ -27,5 +27,6 @@
 [user]
 	email = rubemmota89@gmail.com
 	name = Rubem Mota
+	signingkey = 1ED3FD2833406104
 [credential]
 	helper = manager-core

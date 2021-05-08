@@ -27,14 +27,13 @@ rm -rf "$USERHOME/.gitattributes"
 rm -rf "$USERHOME/.npmrc"
 
 echo -e "\033[1;33m cloning oh-my-zsh \033[0m"
-chsh -s /usr/bin/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended >> bootstrap_install.logs 2>>bootstrap_error_install.logs
 mkdir -p "$USERHOME/.config/zsh/aliases"
 mkdir -p "$USERHOME/.config/zsh/plugins"
 ln -f -s "$CWD/configs/zsh/zshrc"  "$USERHOME/.zshrc"
 ln -f -s "$CWD/configs/zsh/p10.zsh" "$USERHOME/.p10k.zsh"
 ln -f -s "$CWD/configs/zsh/configs/aliases/"  "$USERHOME/.config/zsh/aliases/"
-ln -f -s "$CWD/configs/zsh/configs/plugins/"  "$USERHOME/.config/zsh/plugins/"
+ln -f -s "$CWD/configs/zsh/configs/plugins/dojo"  "$USERHOME/.config/zsh/plugins/dojo"
 git clone https://github.com/zsh-users/zsh-autosuggestions  "$USERHOME/.config/zsh/plugins/zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$USERHOME/.config/zsh/plugins/zsh-syntax-highlighting"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$USERHOME/.config/zsh/themes/powerlevel10k" >> bootstrap_install.logs 2>>bootstrap_error_install.logs
@@ -60,6 +59,18 @@ ln -s -f "$CWD/configs/git/gitconfig" "$USERHOME/.gitconfig"
 ln -s -f "$CWD/configs/git/gitignore" "$USERHOME/.gitignore"
 ln -s -f "$CWD/configs/npm/npmrc" "$USERHOME/.npmrc"
 touch "$USERHOME/.gitconfig-default"
+
+echo -e "Restore kde settings"
+ln -s -f "$CWD/configs/kde/kdeglobals" "$USERHOME/.config/kdeglobals"
+ln -s -f "$CWD/configs/kde/kwinrc" "$USERHOME/.config/kwinrc"
+ln -s -f "$CWD/configs/kde/plasma-org.kde.plasma.desktop-appletsrc" "$USERHOME/.config/kwiplasma-org.kde.plasma.desktop-appletsrcnrc"
+ln -s -f "$CWD/configs/kde/plasmarc" "$USERHOME/.config/plasmarc"
+ln -s -f "$CWD/configs/kde/plasmashellrc" "$USERHOME/.config/plasmashellrc"
+wget -O /home/rubemlrm/Pictures/wallhaven-8ogod1.jpg https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg
+
+echo -e "Restore latte settings"
+ln -s -f "$CWD/configs/latteDock/lattedockrc" "$USERHOME/.config/lattedockrc"
+ln -s -f "$CWD/configs/latteDock/latte/custom.layout.latte" "$USERHOME/.config/latte/custom.layout.latte"
 
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o "$USERHOME/bin/youtube-dl"
 chmod a+rx "$USERHOME/bin/youtube-dl"
