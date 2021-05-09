@@ -1,3 +1,8 @@
+[KFileDialog Settings]
+Recent Files[$e]=CustomDock.layout.latte,file:$HOME/.config/latte/CustomDock.layout.latte
+Recent URLs[$e]=file:$HOME/.config/latte/,file:$HOME/
+detailViewIconSize=16
+
 [PlasmaThemeExtended]
 outlineWidth=1
 
@@ -7,12 +12,12 @@ outlineWidth=1
 [UniversalSettings]
 badges3DStyle=false
 canDisableBorders=false
-currentLayout=custom
+currentLayout=Default
 downloadWindowSize=800,550
-lastNonAssignedLayout=custom
+lastNonAssignedLayout=Default
 launchers=
-layoutsColumnWidths=
-layoutsWindowSize=700,450
+layoutsColumnWidths=135,88,79,0
+layoutsWindowSize=700,613
 memoryUsage=0
 metaPressAndHoldEnabled=true
 mouseSensitivity=2

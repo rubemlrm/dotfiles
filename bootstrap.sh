@@ -70,7 +70,7 @@ wget -O /home/rubemlrm/Pictures/wallhaven-8ogod1.jpg https://w.wallhaven.cc/full
 
 echo -e "Restore latte settings"
 ln -s -f "$CWD/configs/latteDock/lattedockrc" "$USERHOME/.config/lattedockrc"
-ln -s -f "$CWD/configs/latteDock/latte/custom.layout.latte" "$USERHOME/.config/latte/custom.layout.latte"
+ln -s -f "$CWD/configs/latteDock/latte/Default.layout.latte" "$USERHOME/.config/latte/Default.layout.latte"
 
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o "$USERHOME/bin/youtube-dl"
 chmod a+rx "$USERHOME/bin/youtube-dl"
