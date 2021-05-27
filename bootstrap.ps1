@@ -21,6 +21,11 @@ if (-Not (Get-Module -ListAvailable -Name oh-my-posh)) {
 If (-Not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
     Install-Module PSWindowsUpdate -Scope CurrentUser -Confirm:$False -Force
 }
+
+If (-Not (Get-Module -ListAvailable -Name PSScriptAnalyzer)) {
+    Install-Module PSScriptAnalyzer -Scope CurrentUser -Confirm:$False -Force
+}
+
 New-Item $profileDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 

@@ -47,146 +47,134 @@ Function InstallHyperV {
 }
 
 # Uninstall default Microsoft applications
-Function UninstallMsftBloat {
+Function UninstallBloat {
     Write-Information "Uninstalling default Microsoft applications..."
-    Get-AppxPackage "Microsoft.3DBuilder" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingFinance" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingFoodAndDrink" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingHealthAndFitness" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingMaps" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingNews" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingSports" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingTranslator" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingTravel" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.BingWeather" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.ConnectivityStore" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.FreshPaint" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.GetHelp" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Getstarted" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.HelpAndTips" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Media.PlayReadyClient.2" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Microsoft3DViewer" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MicrosoftOfficeHub" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MicrosoftPowerBIForWindows" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MicrosoftSolitaireCollection" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MicrosoftStickyNotes" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MinecraftUWP" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MixedReality.Portal" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MoCamera" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.MSPaint" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.NetworkSpeedTest" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.OfficeLens" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Office.Sway" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.OneConnect" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.People" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Print3D" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Reader" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.RemoteDesktop" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Todos" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Wallet" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WebMediaExtensions" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Whiteboard" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsAlarms" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage
-    Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsFeedbackHub" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsReadingList" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsScan" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WinJS.1.0" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.WinJS.2.0" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.YourPhone" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage
-    Get-AppxPackage "Microsoft.Advertising.Xaml" | Remove-AppxPackage # Dependency for microsoft.windowscommunicationsapps, Microsoft.BingWeather
+    $packages = @(
+        "Microsoft.3DBuilder",
+        "Microsoft.AppConnector",
+        "Microsoft.BingFinance",
+        "Microsoft.BingFoodAndDrink",
+        "Microsoft.BingHealthAndFitness",
+        "Microsoft.BingMaps",
+        "Microsoft.BingNews",
+        "Microsoft.BingSports",
+        "Microsoft.BingTranslator",
+        "Microsoft.BingTravel",
+        "Microsoft.BingWeather",
+        "Microsoft.CommsPhone",
+        "Microsoft.ConnectivityStore",
+        "Microsoft.FreshPaint",
+        "Microsoft.GetHelp",
+        "Microsoft.Getstarted",
+        "Microsoft.HelpAndTips",
+        "Microsoft.Media.PlayReadyClient.2",
+        "Microsoft.Messaging",
+        "Microsoft.Microsoft3DViewer",
+        "Microsoft.MicrosoftOfficeHub",
+        "Microsoft.MicrosoftPowerBIForWindows",
+        "Microsoft.MicrosoftSolitaireCollection",
+        "Microsoft.MicrosoftStickyNotes",
+        "Microsoft.MinecraftUWP",
+        "Microsoft.MixedReality.Portal",
+        "Microsoft.MoCamera",
+        "Microsoft.MSPaint",
+        "Microsoft.NetworkSpeedTest",
+        "Microsoft.OfficeLens",
+        "Microsoft.Office.OneNote",
+        "Microsoft.Office.Sway",
+        "Microsoft.OneConnect",
+        "Microsoft.People",
+        "Microsoft.Print3D",
+        "Microsoft.Reader",
+        "Microsoft.RemoteDesktop",
+        "Microsoft.SkypeApp",
+        "Microsoft.Todos",
+        "Microsoft.Wallet",
+        "Microsoft.WebMediaExtensions",
+        "Microsoft.Whiteboard",
+        "Microsoft.WindowsAlarms",
+        "Microsoft.WindowsCamera",
+        "microsoft.windowscommunicationsapps",
+        "Microsoft.WindowsFeedbackHub",
+        "Microsoft.WindowsMaps",
+        "Microsoft.WindowsPhone",
+        "Microsoft.Windows.Photos",
+        "Microsoft.WindowsReadingList",
+        "Microsoft.WindowsScan",
+        "Microsoft.WindowsSoundRecorder",
+        "Microsoft.WinJS.1.0",
+        "Microsoft.WinJS.2.0",
+        "Microsoft.YourPhone",
+        "Microsoft.ZuneMusic",
+        "Microsoft.ZuneVideo",
+        "Microsoft.Advertising.Xaml",
+        "2414FC7A.Viber",
+        "41038Axilesoft.ACGMediaPlayer",
+        "46928bounde.EclipseManager",
+        "4DF9E0F8.Netflix",
+        "64885BlueEdge.OneCalendar",
+        "7EE7776C.LinkedInforWindows",
+        "828B5831.HiddenCityMysteryofShadows",
+        "89006A2E.AutodeskSketchBook",
+        "9E2F88E3.Twitter",
+        "A278AB0D.DisneyMagicKingdoms",
+        "A278AB0D.DragonManiaLegends",
+        "A278AB0D.MarchofEmpires",
+        "ActiproSoftwareLLC.562882FEEB491",
+        "AD2F1837.GettingStartedwithWindows8",
+        "AD2F1837.HPJumpStart",
+        "AD2F1837.HPRegistration",
+        "AdobeSystemsIncorporated.AdobePhotoshopExpress",
+        "Amazon.com.Amazon",
+        "C27EB4BA.DropboxOEM",
+        "CAF9E577.Plex",
+        "CyberLinkCorp.hs.PowerMediaPlayer14forHPConsumerPC",
+        "D52A8D61.FarmVille2CountryEscape",
+        "D5EA27B7.Duolingo-LearnLanguagesforFree",
+        "DB6EA5DB.CyberLinkMediaSuiteEssentials",
+        "DolbyLaboratories.DolbyAccess",
+        "Drawboard.DrawboardPDF",
+        "Facebook.Facebook",
+        "Fitbit.FitbitCoach",
+        "flaregamesGmbH.RoyalRevolt2",
+        "GAMELOFTSA.Asphalt8Airborne",
+        "KeeperSecurityInc.Keeper",
+        "king.com.BubbleWitch3Saga",
+        "king.com.CandyCrushFriends",
+        "king.com.CandyCrushSaga",
+        "king.com.CandyCrushSodaSaga",
+        "king.com.FarmHeroesSaga",
+        "Nordcurrent.CookingFever",
+        "PandoraMediaInc.29680B314EFC2",
+        "PricelinePartnerNetwork.Booking.comBigsavingsonhot",
+        "SpotifyAB.SpotifyMusic",
+        "ThumbmunkeysLtd.PhototasticCollage",
+        "WinZipComputing.WinZipUniversal",
+        "XINGAG.XING"
+    )
+    foreach ($item in $packages) {
+        Get-AppxPackage $item | Remove-AppxPackage
+    }
 }
-
-# Uninstall default third party applications
-function UninstallThirdPartyBloat {
-    Write-Information "Uninstalling default third party applications..."
-    Get-AppxPackage "2414FC7A.Viber" | Remove-AppxPackage
-    Get-AppxPackage "41038Axilesoft.ACGMediaPlayer" | Remove-AppxPackage
-    Get-AppxPackage "46928bounde.EclipseManager" | Remove-AppxPackage
-    Get-AppxPackage "4DF9E0F8.Netflix" | Remove-AppxPackage
-    Get-AppxPackage "64885BlueEdge.OneCalendar" | Remove-AppxPackage
-    Get-AppxPackage "7EE7776C.LinkedInforWindows" | Remove-AppxPackage
-    Get-AppxPackage "828B5831.HiddenCityMysteryofShadows" | Remove-AppxPackage
-    Get-AppxPackage "89006A2E.AutodeskSketchBook" | Remove-AppxPackage
-    Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage
-    Get-AppxPackage "A278AB0D.DisneyMagicKingdoms" | Remove-AppxPackage
-    Get-AppxPackage "A278AB0D.DragonManiaLegends" | Remove-AppxPackage
-    Get-AppxPackage "A278AB0D.MarchofEmpires" | Remove-AppxPackage
-    Get-AppxPackage "ActiproSoftwareLLC.562882FEEB491" | Remove-AppxPackage
-    Get-AppxPackage "AD2F1837.GettingStartedwithWindows8" | Remove-AppxPackage
-    Get-AppxPackage "AD2F1837.HPJumpStart" | Remove-AppxPackage
-    Get-AppxPackage "AD2F1837.HPRegistration" | Remove-AppxPackage
-    Get-AppxPackage "AdobeSystemsIncorporated.AdobePhotoshopExpress" | Remove-AppxPackage
-    Get-AppxPackage "Amazon.com.Amazon" | Remove-AppxPackage
-    Get-AppxPackage "C27EB4BA.DropboxOEM" | Remove-AppxPackage
-    Get-AppxPackage "CAF9E577.Plex" | Remove-AppxPackage
-    Get-AppxPackage "CyberLinkCorp.hs.PowerMediaPlayer14forHPConsumerPC" | Remove-AppxPackage
-    Get-AppxPackage "D52A8D61.FarmVille2CountryEscape" | Remove-AppxPackage
-    Get-AppxPackage "D5EA27B7.Duolingo-LearnLanguagesforFree" | Remove-AppxPackage
-    Get-AppxPackage "DB6EA5DB.CyberLinkMediaSuiteEssentials" | Remove-AppxPackage
-    Get-AppxPackage "DolbyLaboratories.DolbyAccess" | Remove-AppxPackage
-    Get-AppxPackage "Drawboard.DrawboardPDF" | Remove-AppxPackage
-    Get-AppxPackage "Facebook.Facebook" | Remove-AppxPackage
-    Get-AppxPackage "Fitbit.FitbitCoach" | Remove-AppxPackage
-    Get-AppxPackage "flaregamesGmbH.RoyalRevolt2" | Remove-AppxPackage
-    Get-AppxPackage "GAMELOFTSA.Asphalt8Airborne" | Remove-AppxPackage
-    Get-AppxPackage "KeeperSecurityInc.Keeper" | Remove-AppxPackage
-    Get-AppxPackage "king.com.BubbleWitch3Saga" | Remove-AppxPackage
-    Get-AppxPackage "king.com.CandyCrushFriends" | Remove-AppxPackage
-    Get-AppxPackage "king.com.CandyCrushSaga" | Remove-AppxPackage
-    Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage
-    Get-AppxPackage "king.com.FarmHeroesSaga" | Remove-AppxPackage
-    Get-AppxPackage "Nordcurrent.CookingFever" | Remove-AppxPackage
-    Get-AppxPackage "PandoraMediaInc.29680B314EFC2" | Remove-AppxPackage
-    Get-AppxPackage "PricelinePartnerNetwork.Booking.comBigsavingsonhot" | Remove-AppxPackage
-    Get-AppxPackage "SpotifyAB.SpotifyMusic" | Remove-AppxPackage
-    Get-AppxPackage "ThumbmunkeysLtd.PhototasticCollage" | Remove-AppxPackage
-    Get-AppxPackage "WinZipComputing.WinZipUniversal" | Remove-AppxPackage
-    Get-AppxPackage "XINGAG.XING" | Remove-AppxPackage
-}
-
-Function UnpinStart {
-    #https://superuser.com/questions/1068382/how-to-remove-all-the-tiles-in-the-windows-10-start-menu
-    #Unpins all tiles from the Start Menu
-    Write-Information "Unpinning all tiles from the start menu"
-    (New-Object -Com Shell.Application).
-    NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
-    Items() |
-    ForEach-Object { $_.Verbs() } |
-    Where-Object { $_.Name -match 'Un.*pin from Start' } |
-    ForEach-Object { $_.DoIt() }
-}
-
 function WingetInstallHelper {
     $wingetPackages = @(
+        "Bitwarden.Bitwarden",
         "VideloLan.VLC"
         "7zip.7zip"
         "Valve.Steam",
         "NordVPN.NordVPN",
         "Microsoft.RemoteDesktopClient"
         "SourceFoundry.HackFonts"
-        "Debian.Debian",
-        "Canonical.Ubuntu"
         "OpenJS.NodeJS",
         "Python.Python",
+        "Jetbrains.PHPStorm",
         "RubyInstallerTeam.RubyWithDevKit",
         "Microsoft.dotnet"
         "Microsoft.Powershell"
         "Microsoft.PowerToys",
         "Microsoft.VisualStudioCode.User-x64",
         "Git.Git",
+        "Google.Chrome",
         "Notepad++.Notepad++",
         "Docker.DockerDesktop"
         "WiresharkFoundation.Wireshark",
@@ -195,16 +183,17 @@ function WingetInstallHelper {
         "Arduino.Arduino",
         "WhatsApp.WhatsApp",
         "Adobe.AdobeAcrobatReaderDC"
-		"GitHub.cli"
-		"Xampp",
-        "Microsoft.VisualStudio.Community"
+        "GitHub.cli"
+        "Xampp",
+        "Microsoft.VisualStudio.Community",
+        "vim.vim",
+        "GnuPG.GnuPG"
     )
     Write-Information "Install packages with winget"
     foreach ($item in $wingetPackages) {
         winget install --silent $item
     }
 }
-
 function SetupScoop() {
     Write-Information "Install packages with Scoop"
     if (-not (Test-Path -LiteralPath '${HOME}\scoop')) {
@@ -221,37 +210,51 @@ function SetupScoop() {
     sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
     scoop bucket add extras
     scoop bucket add nerd-fonts
-    scoop bucket add jetbrains
-    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf act gpg PhpStorm windows-terminal bitwarden googlechrome dbeaver vim
+    sudo scoop install php nano FiraCode FiraCode-NF Cascadia-Code CascadiaCode-NF-Mono CascadiaCode-NF meslo-nf act
+}
+
+Function UnpinStart {
+    #https://superuser.com/questions/1068382/how-to-remove-all-the-tiles-in-the-windows-10-start-menu
+    #Unpins all tiles from the Start Menu
+    Write-Information "Unpinning all tiles from the start menu"
+    (New-Object -Com Shell.Application).
+    NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').
+    Items() |
+    ForEach-Object { $_.Verbs() } |
+    Where-Object { $_.Name -match 'Un.*pin from Start' } |
+    ForEach-Object { $_.DoIt() }
 }
 
 function EnableWsl() {
     Write-Information "Enable WSL"
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    ./wslKernel.msi
     wsl --set-default-version 2
+    winget install --silent Debian.Debian
+    winget install --silent Canonical.Ubuntu
+    winget install --silent suse.opensuse-leap-42
 }
 
 function InstallNpmPackages() {
     Write-Information "install npm packages"
-    npm install -g eslint standard
+    npm install -g eslint standard @vue/cli
 }
 
 function InstallPythonPackages() {
     Write-Information "install python packages"
-    pip install virtualenv cookiecutter
+    pip install virtualenv cookiecutter ansible
 }
 
 # system and cli
-#WingetInstallHelper
+UninstallBloat
+WingetInstallHelper
 SetupScoop
 InstallNpmPackages
 InstallPythonPackages
 EnableWsl
 InstallHyperV
-#### EXECUTE
-UninstallMsftBloat
-UninstallThirdPartyBloat
+#### Visual Tweaks
 SetControlPanelSmallIcons
 ShowTrayIcons
 HideTaskbarPeopleIcon
