@@ -3,21 +3,24 @@ Recent Files[$e]=wallhaven-8ogod1.jpg,file:$HOME/Pictures/wallhaven-8ogod1.jpg
 Recent URLs[$e]=file:$HOME/Pictures/
 detailViewIconSize=16
 
+[PlasmaTransientsConfig]
+PreloadWeight=84
+
 [PlasmaViews][Panel 2][Defaults]
-thickness=42
+thickness=44
 
 [PlasmaViews][Panel 2][Horizontal2560]
-thickness=42
+thickness=44
 
 [ScreenConnectors]
-0=DP-2
+0=HDMI-0
 1=:0.0
 
 [Theme]
 name=breeze-dark
 
 [Updates]
-performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/00-start-here-2.js
 
 [Wallpapers]
 usersWallpapers=/home/rubemlrm/Pictures/wallhaven-j8lkxw.png

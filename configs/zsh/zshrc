@@ -54,3 +54,4 @@ source $ZSH/oh-my-zsh.sh
 # nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
+emulate sh -c "source /etc/profile"

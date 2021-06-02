@@ -11,18 +11,20 @@ Rows=1
 
 [NightColor]
 Active=true
-LatitudeAuto=39.598
-LongitudeAuto=-8.8355
+LatitudeAuto=39.6649
+LongitudeAuto=-8.8234
 
 [Plugins]
 flipswitchEnabled=true
 highlightwindowEnabled=true
 
 [TabBox]
-LayoutName=thumbnail_grid
+DesktopLayout=org.kde.breeze.desktop
+DesktopListLayout=org.kde.breeze.desktop
+LayoutName=thumbnails
 
 [org.kde.kdecoration2]
 BorderSize=None
 BorderSizeAuto=false
 library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Nordic
+theme=__aurorae__svg__Ant-Dark
