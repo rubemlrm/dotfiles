@@ -4,13 +4,22 @@ Recent URLs[$e]=file:$HOME/Pictures/
 detailViewIconSize=16
 
 [PlasmaTransientsConfig]
-PreloadWeight=84
+PreloadWeight=0
 
 [PlasmaViews][Panel 2][Defaults]
-thickness=44
+thickness=50
 
 [PlasmaViews][Panel 2][Horizontal2560]
+thickness=50
+
+[PlasmaViews][Panel 2][Vertical1440]
 thickness=44
+
+[PlasmaViews][Panel 24][Defaults]
+thickness=48
+
+[PlasmaViews][Panel 24][Horizontal2560]
+thickness=48
 
 [ScreenConnectors]
 0=HDMI-0

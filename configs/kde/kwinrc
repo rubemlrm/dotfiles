@@ -9,6 +9,9 @@ Id_1=8be15731-c838-4d58-9375-a53548615253
 Number=1
 Rows=1
 
+[Effect-PresentWindows]
+BorderActivateAll=9
+
 [NightColor]
 Active=true
 LatitudeAuto=39.6649
@@ -19,12 +22,13 @@ flipswitchEnabled=true
 highlightwindowEnabled=true
 
 [TabBox]
+BorderActivate=9
 DesktopLayout=org.kde.breeze.desktop
 DesktopListLayout=org.kde.breeze.desktop
 LayoutName=thumbnails
 
 [org.kde.kdecoration2]
-BorderSize=None
+BorderSize=Tiny
 BorderSizeAuto=false
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Ant-Dark
+library=org.kde.breeze
+theme=__aurorae__svg__Arc-Dark
