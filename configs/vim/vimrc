@@ -1,0 +1,375 @@
+syntax on
+filetype off
+filetype plugin indent on
+call plug#begin('~/.vim/plugged')
+
+set t_Co=256
+set term=screen-256color
+colorscheme space-vim-dark
+set autoindent
+"disable comp with vi
+set nocompatible
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set t_Co=256
+
+"===============================
+"        Visual configs        "
+"===============================
+
+highlight Search cterm=underline
+
+"set status line
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+"buffer is hinden on iddle
+set hidden
+
+"always show status line
+set laststatus=2
+
+"highlight matching
+set showmatch
+set number " line numbers
+"dont redraw on maracos
+set lazyredraw
+
+"enable mouse
+set mouse=a
+
+"allways show current postion
+set ruler
+
+"text dont wrap
+set wrap
+
+"show cmd
+set showcmd
+
+"highlight line with cursor
+set cursorline
+
+set showmode
+
+set softtabstop=4
+
+"set number of colors
+set t_Co=256
+
+"enable folding
+set foldenable
+
+set foldlevelstart=10
+set foldnestmax=10      " 10 nested fold max
+set foldmethod=indent   " fold based on indent level
+set guifont=Source\ Code\ Pro:h12
+
+"===============================
+"      search configs          "
+"===============================
+"highlight search results
+set hlsearch
+
+"makes search with modern behavious
+set incsearch
+
+
+"============================="
+"    MISC                     "
+"============================="
+"disable backup temp files
+set nobackup
+set nowb
+set noswapfile
+
+"set max history
+set history=500
+
+"set backspace to work as it should
+set backspace=indent,eol,start
+set colorcolumn=120
+
+"text enconding
+"set encoding=utf-8
+
+"text formating
+set formatoptions=qrn1
+
+set matchtime=3
+set modelines=0
+
+"set number of lines above and below the cursor
+set scrolloff=3
+
+"site of tab in spaces
+set tabstop=4 shiftwidth=4 expandtab
+
+set ttyfast
+"ruler at 120 chars
+"set tw=120
+
+set undolevels=250
+set visualbell
+
+"paste
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+"===================================
+"      wildmenu completion          "
+"==================================="
+set wildmenu
+set wildmode=list:longest
+set wildignore+=.hg,.git,.svn " Version Controls"
+set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest "Compiled Object files"
+set wildignore+=*.spl "Compiled speolling world list"
+set wildignore+=*.sw? "Vim swap files"
+set wildignore+=*.DS_Store "OSX SHIT"
+set wildignore+=*.luac "Lua byte code"
+set wildignore+=migrations "Django migrations"
+set wildignore+=*.orig "Merge resolution files"
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                    Auto Commands                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MakeSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  if (filewritable(b:sessiondir) != 2)
+    exe 'silent !mkdir -p ' b:sessiondir
+    redraw!
+  endif
+  let b:filename = b:sessiondir . '/session.vim'
+  exe "mksession! " . b:filename
+endfunction
+
+function! LoadSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  let b:sessionfile = b:sessiondir . "/session.vim"
+  if (filereadable(b:sessionfile))
+    exe 'source ' b:sessionfile
+  else
+    echo "No session loaded."
+  endif
+endfunction
+au VimEnter * nested :call LoadSession()
+au VimLeave * :call MakeSession()
+
+"" The PC is fast enough, do syntax highlight syncing from start
+augroup vimrc-sync-fromstart
+  autocmd!
+  autocmd BufEnter * :syntax sync fromstart
+augroup END
+
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+"" txt
+augroup vimrc-wrapping
+  autocmd!
+  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
+augroup END
+
+"" make/cmake
+augroup vimrc-make-cmake
+  autocmd!
+  autocmd FileType make setlocal noexpandtab
+  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+augroup END
+
+
+"auto +x in scripts
+au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
+
+"source all vim files files
+autocmd BufEnter * silent! lcd %:p:h "hanges the window-local current directory to be the same as the directory of the current file
+"vim function
+
+au BufWritePost .vimrc so $MYVIMRC
+
+"============================================
+"               KeyBinding
+"============================================
+"Rebing <leader>key
+let mapleader = ","
+
+"I can type :help on my own, thanks.
+noremap <F1> <Esc>
+
+"map esc to jk
+inoremap <S-CR> <Esc>
+
+"change saving shortcut
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+
+"change quit shortcut::w
+noremap <Leader>q :quit<CR> "Quit current window
+noremap <leader><F4> :qa!<CR> "quit all windows
+
+
+"past mode
+set pastetoggle=<F2>
+
+"bind ctrl movement
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+"map sort function to a key
+noremap <Leader>s :sort<CR>
+
+" ,ev Shortcut to edit .vimrc file on the fly on a vertical window.
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+
+"<Ctrl-X> -- cut (goto visual mode and cut)
+imap <C-X> <C-O>vgG
+vmap <C-X> "*x<Esc>im
+
+"<Ctrl-C> -- copy (goto visual mode and copy)
+imap <C-C> <C-O>vgG
+vmap <C-C> "*y<Esc>i
+
+"<Ctrl-A> -- copy all
+imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
+vmap <C-A> <Esc>gggH<C-O>G<Esc>i
+
+"<Ctrl-V> -- paste
+nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
+imap <C-V> x<Esc>\\paste\\"_s
+vmap <C-V> "-cx<Esc>\\paste\\"_x"""""""""""
+
+
+"======================================="
+"          SPLITS                       "
+"======================================"
+
+"Resize vsplit
+nmap <C-y> :vertical resize +5<cr>
+"nmap <C-h> :horizontal resize +5<cr>
+nmap 25 :vertical resize 40<cr>
+nmap 50 <c-w>=
+nmap 75 :vertical resize 120<cr>
+
+"fullscreen
+map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+
+" Working with split screen nicely
+" Resize Split When the window is resized"
+au VimResized * :wincmd =
+au VimResized * exe "normal! \<c-w>="
+
+" Open splits
+nmap vs :vsplit<cr>
+nmap sp :split<cr>
+
+" Create split below
+nmap :sp :rightbelow sp<cr>
+
+"====================================="
+"           BUFFER                    "
+"====================================="
+
+" Quickly go forward or backward to buffer
+nmap :bp :BufSurfBack<cr>
+nmap :bn :BufSurfForward<cr>
+
+"switch to last file in buffer
+nmap <leader><leader> :b#<cr>
+
+
+"===================================="
+"            VISUAL                  "
+"===================================="
+
+nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
+" space open/closes folds
+nnoremap <leader> za
+
+" Create/edit file in the current directory
+nmap :ed :edit %:p:h/
+
+"=============================================="
+" PLUGIN STUFF
+"=============================================="
+" Usual quickstart instructions
+"set rtp+=~/.vim/bundle/vundle/
+
+"call vundle#begin()
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'ervandew/supertab'
+Plug 'mhinz/vim-startify'
+Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+"libs
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'Shougo/vimproc.vim'
+
+Plug 'xolox/vim-misc'
+Plug 'tomtom/tlib_vim'
+
+"Optional
+Plug 'rainglow/vim'
+Plug 'trusktr/seti.vim'
+call plug#end()
+
+"===================================
+" END PLUGIN
+"===================================
+
+"==================================="
+"  PLUGIN SETTINGS		    "
+"==================================="
+
+
+"=========================================================
+"        NerdTree
+"=======
+"autocmd vimenter * NERDTree
+nmap <silent> <F9> :NERDTreeToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+"===========================================
+"          Fugitive
+"===========================================
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gr :Gremove<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gm :Gmove
+nnoremap <Leader>gp :Ggrep
+nnoremap <Leader>gR :Gread<CR>
+nnoremap <Leader>gg :Git
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gv :Gpull origin
+nnoremap <Leader>gx :Gcommit -m ""
+nnoremap <Leader>gc :Gpush origin
+
+"================================================
+"              GIT GUTTER
+"================================================
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterRevertHunk
+nmap <Leader>hv <Plug>GitGutterPreviewHunk
+
+"==================================
+" END SETTINGS PLUGIN
+"==================================
