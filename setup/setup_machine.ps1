@@ -158,36 +158,42 @@ Function UninstallBloat {
 }
 function WingetInstallHelper {
     $wingetPackages = @(
+        "7zip.7zip",
+        "Adobe.AdobeAcrobatReaderDC",
+        "Arduino.Arduino",
         "Bitwarden.Bitwarden",
-        "VideloLan.VLC"
-        "7zip.7zip"
-        "Valve.Steam",
+        "dbeaver.dbeaver",
+        "Docker.DockerDesktop",
+        "Git.Git",
+        "GitHub.cli",
+        "GnuPG.GnuPG",
+        "Google.Chrome",
+        "Jetbrains.PHPStorm",
+        "Microsoft.dotnet",
+        "Microsoft.Powershell",
+        "Microsoft.PowerToys",
+        "Microsoft.RemoteDesktopClient",
+        "Microsoft.VisualStudio.Community",
+        "Microsoft.VisualStudioCode.User-x64",
         "NordVPN.NordVPN",
-        "Microsoft.RemoteDesktopClient"
-        "SourceFoundry.HackFonts"
+        "Notepad++.Notepad++",
         "OpenJS.NodeJS",
         "Python.Python",
-        "Jetbrains.PHPStorm",
         "RubyInstallerTeam.RubyWithDevKit",
-        "Microsoft.dotnet"
-        "Microsoft.Powershell"
-        "Microsoft.PowerToys",
-        "Microsoft.VisualStudioCode.User-x64",
-        "Git.Git",
-        "Google.Chrome",
-        "Notepad++.Notepad++",
-        "Docker.DockerDesktop"
-        "WiresharkFoundation.Wireshark",
-        "dbeaver.dbeaver"
-        "TimKosse.FileZillaClient"
-        "Arduino.Arduino",
-        "WhatsApp.WhatsApp",
-        "Adobe.AdobeAcrobatReaderDC"
-        "GitHub.cli"
-        "Xampp",
-        "Microsoft.VisualStudio.Community",
+        "SourceFoundry.HackFonts",
+        "TimKosse.FileZillaClient",
+        "Valve.Steam",
+        "VideloLan.VLC",
         "vim.vim",
-        "GnuPG.GnuPG"
+        "WhatsApp.WhatsApp",
+        "WiresharkFoundation.Wireshark",
+        "Xampp",
+        "File-New-Project.EarTrumpet",
+        "GitHub.GitHubDesktop",
+        "Insomnia.Insomnia",
+        "Insomnia.InsomniaDesigner",
+        "LINQPad.LINQPad6",
+        "WinDirStat.WinDirStat"
     )
     Write-Information "Install packages with winget"
     foreach ($item in $wingetPackages) {
