@@ -1,14 +1,9 @@
-[$Version]
-update_info=filepicker.upd:filepicker-remove-old-previews-entry,fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar,icons_remove_effects.upd:IconsRemoveEffects,kwin.upd:animation-speed,style_widgetstyle_default_breeze.upd:StyleWidgetStyleDefaultBreeze
-
 [ColorEffects:Disabled]
-ChangeSelectionColor=
 Color=112,111,110
 ColorAmount=0
 ColorEffect=0
 ContrastAmount=0.65
 ContrastEffect=1
-Enable=
 IntensityAmount=0.1
 IntensityEffect=0
 
@@ -38,46 +33,46 @@ ForegroundPositive=0,110,40
 ForegroundVisited=69,40,134
 
 [Colors:Complementary]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
+BackgroundAlternate=27,30,32
+BackgroundNormal=42,46,50
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=252,252,252
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:Header]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
+BackgroundAlternate=239,240,241
+BackgroundNormal=222,224,226
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=35,38,41
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:Header][Inactive]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
+BackgroundAlternate=227,229,231
+BackgroundNormal=239,240,241
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=35,38,41
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:Selection]
 BackgroundAlternate=45,130,173
@@ -136,47 +131,26 @@ ForegroundPositive=0,110,40
 ForegroundVisited=69,40,134
 
 [General]
-BrowserApplication=firefox.desktop
 ColorScheme=KvFlatLight
-Name=Arc Dark
-TerminalApplication=terminator
-TerminalService=terminator.desktop
-XftHintStyle=hintslight
-XftSubPixel=rgb
+Name=KvFlatLight
+font=Noto Sans,10,-1,5,50,0,0,0,0,0
+menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
+smallestReadableFont=Noto Sans,8,-1,5,50,0,0,0,0,0
+toolBarFont=Noto Sans,9,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
 Theme=Papirus-Dark
 
 [KDE]
-ColorScheme=BreezeLight
-LookAndFeelPackage=com.github.varlesh.arc-dark
+ShowIconsInMenuItems=true
+ShowIconsOnPushButtons=true
 contrast=4
-widgetStyle=Breeze
 
-[KFileDialog Settings]
-Allow Expansion=false
-Automatically select filename extension=true
-Breadcrumb Navigation=true
-Decoration position=2
-LocationCombo Completionmode=5
-PathCombo Completionmode=5
-Show Bookmarks=false
-Show Full Path=false
-Show Inline Previews=true
-Show Preview=false
-Show Speedbar=true
-Show hidden files=true
-Sort by=Name
-Sort directories first=true
-Sort reversed=false
-Speedbar Width=175
-View Style=DetailTree
-
-[KScreen]
-ScaleFactor=1
-ScreenScaleFactors=DP-0=1;DP-1=1;DP-2=1;DP-3=1;HDMI-0=1;DP-4=1;DP-5=1;
+[Toolbar style]
+ToolButtonStyle=TextBesideIcon
+ToolButtonStyleOtherToolbars=TextBesideIcon
 
 [WM]
 activeBackground=61,61,62

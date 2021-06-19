@@ -62,9 +62,9 @@ ln -s -f "$CWD/configs/npm/npmrc" "$USERHOME/.npmrc"
 touch "$USERHOME/.gitconfig-default"
 
 echo -e "Restore kde settings"
-ln -s -f "$CWD/configs/kde/kdeglobals" "$USERHOME/.config/kdeglobals"
+ln -s -f "$CWD/configs/kde/kdeglobals" "$USERHOME/.kde/share/config/kdeglobals"
 ln -s -f "$CWD/configs/kde/kwinrc" "$USERHOME/.config/kwinrc"
-ln -s -f "$CWD/configs/kde/plasma-org.kde.plasma.desktop-appletsrc" "$USERHOME/.config/kwiplasma-org.kde.plasma.desktop-appletsrcnrc"
+ln -s -f "$CWD/configs/kde/plasma-org.kde.plasma.desktop-appletsrc" "$USERHOME/.config/plasma-org.kde.plasma.desktop-appletsrcnrc"
 ln -s -f "$CWD/configs/kde/plasmarc" "$USERHOME/.config/plasmarc"
 ln -s -f "$CWD/configs/kde/plasmashellrc" "$USERHOME/.config/plasmashellrc"
 wget -O /home/rubemlrm/Pictures/wallhaven-8ogod1.jpg https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg
