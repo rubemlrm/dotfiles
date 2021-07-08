@@ -1,11 +1,9 @@
 syntax on
 filetype off
 filetype plugin indent on
-call plug#begin('~/.vim/plugged')
 
 set t_Co=256
 set term=screen-256color
-colorscheme space-vim-dark
 set autoindent
 "disable comp with vi
 set nocompatible
@@ -14,9 +12,9 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set t_Co=256
 
-"===============================
-"        Visual configs        "
-"===============================
+"=============================================
+" Visual configs        
+"=============================================
 
 highlight Search cterm=underline
 
@@ -65,33 +63,32 @@ set foldnestmax=10      " 10 nested fold max
 set foldmethod=indent   " fold based on indent level
 set guifont=Source\ Code\ Pro:h12
 
-"===============================
-"      search configs          "
-"===============================
+"=============================================
+" SEARCH CONFIGS          
+"=============================================
 "highlight search results
 set hlsearch
 
 "makes search with modern behavious
 set incsearch
 
-
-"============================="
-"    MISC                     "
-"============================="
+"=============================================
+" MISC                     
+"=============================================
 "disable backup temp files
 set nobackup
 set nowb
 set noswapfile
 
 "set max history
-set history=500
+set history=100
 
 "set backspace to work as it should
 set backspace=indent,eol,start
 set colorcolumn=120
 
 "text enconding
-"set encoding=utf-8
+set encoding=utf-8
 
 "text formating
 set formatoptions=qrn1
@@ -104,11 +101,7 @@ set scrolloff=3
 
 "site of tab in spaces
 set tabstop=4 shiftwidth=4 expandtab
-
-set ttyfast
-"ruler at 120 chars
-"set tw=120
-
+set ttyfast 
 set undolevels=250
 set visualbell
 
@@ -116,9 +109,9 @@ set visualbell
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
-"===================================
-"      wildmenu completion          "
-"==================================="
+"=============================================
+" WILDMENU COMPLETATION          
+"=============================================
 set wildmenu
 set wildmode=list:longest
 set wildignore+=.hg,.git,.svn " Version Controls"
@@ -133,9 +126,9 @@ set wildignore+=migrations "Django migrations"
 set wildignore+=*.orig "Merge resolution files"
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                    Auto Commands                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=============================================
+" AUTO COMMANDS                               
+"=============================================
 function! MakeSession()
   let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
   if (filewritable(b:sessiondir) != 2)
@@ -194,7 +187,7 @@ autocmd BufEnter * silent! lcd %:p:h "hanges the window-local current directory 
 au BufWritePost .vimrc so $MYVIMRC
 
 "============================================
-"               KeyBinding
+" KEYBINDING
 "============================================
 "Rebing <leader>key
 let mapleader = ","
@@ -248,9 +241,9 @@ imap <C-V> x<Esc>\\paste\\"_s
 vmap <C-V> "-cx<Esc>\\paste\\"_x"""""""""""
 
 
-"======================================="
-"          SPLITS                       "
-"======================================"
+"=============================================
+" SPLITS                       
+"=============================================
 
 "Resize vsplit
 nmap <C-y> :vertical resize +5<cr>
@@ -274,9 +267,9 @@ nmap sp :split<cr>
 " Create split below
 nmap :sp :rightbelow sp<cr>
 
-"====================================="
-"           BUFFER                    "
-"====================================="
+"=============================================
+" BUFFER                    
+"=============================================
 
 " Quickly go forward or backward to buffer
 nmap :bp :BufSurfBack<cr>
@@ -285,11 +278,9 @@ nmap :bn :BufSurfForward<cr>
 "switch to last file in buffer
 nmap <leader><leader> :b#<cr>
 
-
-"===================================="
-"            VISUAL                  "
-"===================================="
-
+"=============================================
+" VISUAL                  
+"=============================================
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 
 " space open/closes folds
@@ -298,48 +289,116 @@ nnoremap <leader> za
 " Create/edit file in the current directory
 nmap :ed :edit %:p:h/
 
-"=============================================="
+"==============================================
 " PLUGIN STUFF
-"=============================================="
-" Usual quickstart instructions
-"set rtp+=~/.vim/bundle/vundle/
+"==============================================
 
-"call vundle#begin()
+call plug#begin('~/.vim/plugged')
+
+Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
 Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-commentary'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-
-"libs
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'Shougo/vimproc.vim'
-
-Plug 'xolox/vim-misc'
-Plug 'tomtom/tlib_vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer'}
+Plug 'preservim/tagbar'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
 
 "Optional
 Plug 'rainglow/vim'
-Plug 'trusktr/seti.vim'
+Plug 'joshdick/onedark.vim'
+
 call plug#end()
-
-"===================================
+colorscheme onedark
+"=============================================
 " END PLUGIN
-"===================================
+"=============================================
 
-"==================================="
-"  PLUGIN SETTINGS		    "
-"==================================="
+"=============================================
+" PLUGIN SETTINGS		    
+"=============================================
 
+"=============================================
+" UNITE
+"=============================================
 
-"=========================================================
-"        NerdTree
-"=======
-"autocmd vimenter * NERDTree
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ 'vendor/',
+      \ '.sass-cache',
+      \ 'node_modules/',
+      \ 'bower_components/',
+      \ 'dist/',
+      \ '.git5_specs/',
+      \ '.pyc',
+      \ ], '\|'))
+
+"recent edited files
+nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
+"
+""recent buffers
+nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
+
+nnoremap <Leader>f :Unite grep:.<cr>
+
+" Start in insert mode
+let g:unite_enable_start_insert = 1
+"
+let g:unite_data_directory = "~/.unite"
+
+" " Open in bottom right
+let g:unite_split_rule = "botright"
+"
+" " Shorten the default update date of 500ms
+let g:unite_update_time = 200
+"
+let g:unite_source_file_mru_limit = 1000
+let g:unite_cursor_line_highlight = 'TabLineSel'
+"
+let g:unite_source_file_mru_filename_format = ':~:.'
+let g:unite_source_file_mru_time_format = ''
+
+"=============================================
+" ULLTISNIPS
+"=============================================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"=============================================
+" TAGBAR
+"=============================================
+nmap <F8> :TagbarToggle<CR>
+
+"=============================================
+" ALE
+"=============================================
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" Run both javascript and vue linters for vue files.
+let b:ale_linter_aliases = ['javascript', 'vue']
+" " Select the eslint and vls linters.
+let b:ale_linters = ['eslint', 'vls']
+let g:ale_list_window_size = 10
+
+"=============================================
+" NERDTREE
+"=============================================
+autocmd vimenter * NERDTree
 nmap <silent> <F9> :NERDTreeToggle<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -347,9 +406,9 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-"===========================================
-"          Fugitive
-"===========================================
+"=============================================
+" FUGITIVE
+"=============================================
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gr :Gremove<CR>
 nnoremap <Leader>gl :Glog<CR>
@@ -363,13 +422,26 @@ nnoremap <Leader>gv :Gpull origin
 nnoremap <Leader>gx :Gcommit -m ""
 nnoremap <Leader>gc :Gpush origin
 
-"================================================
-"              GIT GUTTER
-"================================================
+"=============================================
+" GIT GUTTER
+"=============================================
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-"==================================
+"=============================================
+" AIRLINE
+"=============================================
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline_theme='bubblegum'
+
+"=============================================
+" FZF
+"=============================================
+nmap <C-P> :FZF<CR>
+
+"=============================================
 " END SETTINGS PLUGIN
-"==================================
+"=============================================

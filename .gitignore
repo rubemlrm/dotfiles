@@ -9,6 +9,7 @@
 
 #vim folders
 vim/autoload
+vim/colors
 /configs/vim/vim/plugged/
 /configs/vim/vim/sessions/
 /configs/vim/vim/bundle/
