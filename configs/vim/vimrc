@@ -375,7 +375,7 @@ let g:unite_source_file_mru_time_format = ''
 "=============================================
 " ULLTISNIPS
 "=============================================
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab><tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -403,7 +403,6 @@ nmap <silent> <F9> :NERDTreeToggle<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 "=============================================
