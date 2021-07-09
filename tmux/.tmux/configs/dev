@@ -1,10 +1,10 @@
-new -s dev -n vim vim 
+new -s dev -n vim vim
 neww -n 'docker'
 selectw -t 2 #go to new window
 selectp -t 0 #select first pane
 
 #Grid layout for docker / database / gulp
-splitw -h -p 30 -t 1 
+splitw -h -p 30 -t 1
 splitw -v -p 50 -t 2
 splitw -v -p 50 -t 1
 

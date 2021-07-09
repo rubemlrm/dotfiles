@@ -16,6 +16,13 @@ vim/colors
 Session.vim
 Sessionx.vim
 
+#tmux
+tmux/.tmux/plugins
+
+#zsh
+zsh/.config/zsh/plugins
+zsh/.config/zsh/themes
+
 # Temporary
 .netrwhist
 *~

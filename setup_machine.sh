@@ -42,6 +42,7 @@ sudo apt-get install -y aspell \
     libssl-dev \
     libreadline-dev \
     zlib1g-dev \
+    stow \
     php \
     php-gd \
     php-fpm \

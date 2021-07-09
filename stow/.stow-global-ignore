@@ -1,0 +1,14 @@
+\.dockerignore
+Dockerfile.*
+docker-compose.*
+hooks
+.*\.zwc
+\.zcompdump
+steam\.pid
+
+\.editorconfig
+\.gitlab-ci\.yml
+\.travis
+
+LICENSE.*
+README.*

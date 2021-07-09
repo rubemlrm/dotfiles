@@ -14,7 +14,7 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
 #     ZSH CONFIGS      #
 ########################
 ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases ansible docker django tmux history python systemd zsh-autosuggestions zsh-syntax-highlighting dojo)
+plugins=(git common-aliases ansible docker django tmux history python systemd zsh-autosuggestions zsh-syntax-highlighting)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -51,3 +51,6 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 emulate sh -c "source /etc/profile"
+
+source $HOME/.config/zsh/alias.zsh
+source $HOME/.config/zsh/functions.zsh

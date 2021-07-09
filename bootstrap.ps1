@@ -31,23 +31,23 @@ New-Item $profileDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 Write-Information "Restore powershell scripts"
 #Copy base powershell
-Get-ChildItem -Path ./configs/powershell/* -Include "*.ps1" | ForEach-Object {
+Get-ChildItem -Path ./powershell/* -Include "*.ps1" | ForEach-Object {
     $fileName = $_.BaseName
     New-Item -Itemtype SymbolicLink -Path $profileDir -Name "$fileName.ps1" -Target $_.FullName -Force
 }
 #Copy powershell alias and functions
-New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/configs/powershell/autoload" -Force
+New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/powershell/autoload" -Force
 #Copy Git configs
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitconfig"  -Target "${pwd}/configs/git/gitconfig" -Force
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitattributes"  -Target "${pwd}/configs/git/gitattributes" -Force
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitignore"  -Target "${pwd}/configs/git/gitignore" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitconfig"  -Target "${pwd}/git/gitconfig" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitattributes"  -Target "${pwd}/git/gitattributes" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitignore"  -Target "${pwd}/git/gitignore" -Force
 
 #Copy npm configs
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.npmrc"  -Target "${pwd}/configs/npm/npmrc" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.npmrc"  -Target "${pwd}/npm/npmrc" -Force
 
 
 #copy window terminal settings
 Write-Information "Restore windows terminal settings"
-New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/configs/windowsTerminal/" -Force
+New-Item -Itemtype SymbolicLink -Path "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"  -Target "${pwd}/windowsTerminal/" -Force
 
 Remove-Variable profileDir

@@ -13,7 +13,7 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 set t_Co=256
 
 "=============================================
-" Visual configs        
+" Visual configs
 "=============================================
 
 highlight Search cterm=underline
@@ -64,7 +64,7 @@ set foldmethod=indent   " fold based on indent level
 set guifont=Source\ Code\ Pro:h12
 
 "=============================================
-" SEARCH CONFIGS          
+" SEARCH CONFIGS
 "=============================================
 "highlight search results
 set hlsearch
@@ -73,7 +73,7 @@ set hlsearch
 set incsearch
 
 "=============================================
-" MISC                     
+" MISC
 "=============================================
 "disable backup temp files
 set nobackup
@@ -101,7 +101,7 @@ set scrolloff=3
 
 "site of tab in spaces
 set tabstop=4 shiftwidth=4 expandtab
-set ttyfast 
+set ttyfast
 set undolevels=250
 set visualbell
 
@@ -110,7 +110,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 "=============================================
-" WILDMENU COMPLETATION          
+" WILDMENU COMPLETATION
 "=============================================
 set wildmenu
 set wildmode=list:longest
@@ -127,7 +127,7 @@ set wildignore+=*.orig "Merge resolution files"
 
 
 "=============================================
-" AUTO COMMANDS                               
+" AUTO COMMANDS
 "=============================================
 function! MakeSession()
   let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
@@ -196,7 +196,7 @@ let mapleader = ","
 noremap <F1> <Esc>
 
 "map esc to jk
-inoremap <S-CR> <Esc>
+imap <leader>e <Esc>
 
 "change saving shortcut
 nmap <c-s> :w<CR>
@@ -204,7 +204,7 @@ imap <c-s> <Esc>:w<CR>a
 
 "change quit shortcut::w
 noremap <Leader>q :quit<CR> "Quit current window
-noremap <leader><F4> :qa!<CR> "quit all windows
+noremap <leader>qa :qa!<CR> "quit all windows
 
 
 "past mode
@@ -221,7 +221,7 @@ noremap <Leader>s :sort<CR>
 
 " ,ev Shortcut to edit .vimrc file on the fly on a vertical window.
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-
+noremap <leader>rv :e $MYVIMRC<cr>
 
 "<Ctrl-X> -- cut (goto visual mode and cut)
 imap <C-X> <C-O>vgG
@@ -242,15 +242,12 @@ vmap <C-V> "-cx<Esc>\\paste\\"_x"""""""""""
 
 
 "=============================================
-" SPLITS                       
+" SPLITS
 "=============================================
 
 "Resize vsplit
-nmap <C-y> :vertical resize +5<cr>
-"nmap <C-h> :horizontal resize +5<cr>
-nmap 25 :vertical resize 40<cr>
-nmap 50 <c-w>=
-nmap 75 :vertical resize 120<cr>
+nmap <C-i> :vertical resize +5<cr>
+nmap <C-d> :vertical resize -5<cr>
 
 "fullscreen
 map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
@@ -261,14 +258,14 @@ au VimResized * :wincmd =
 au VimResized * exe "normal! \<c-w>="
 
 " Open splits
-nmap vs :vsplit<cr>
-nmap sp :split<cr>
+nmap <leader>vs :vsplit<cr>
+nmap <leader>sp :split<cr>
 
 " Create split below
 nmap :sp :rightbelow sp<cr>
 
 "=============================================
-" BUFFER                    
+" BUFFER
 "=============================================
 
 " Quickly go forward or backward to buffer
@@ -279,12 +276,12 @@ nmap :bn :BufSurfForward<cr>
 nmap <leader><leader> :b#<cr>
 
 "=============================================
-" VISUAL                  
+" VISUAL
 "=============================================
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 
 " space open/closes folds
-nnoremap <leader> za
+nmap <leader>za za
 
 " Create/edit file in the current directory
 nmap :ed :edit %:p:h/
@@ -314,7 +311,9 @@ Plug 'preservim/tagbar'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 
-"Optional
+" UI Plugins
+Plug 'ryanoasis/vim-devicons'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
 
@@ -325,7 +324,7 @@ colorscheme onedark
 "=============================================
 
 "=============================================
-" PLUGIN SETTINGS		    
+" PLUGIN SETTINGS
 "=============================================
 
 "=============================================
@@ -404,7 +403,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeDirArrows = 1
-
+map <leader>re :NERDTreeFind<cr>
 "=============================================
 " FUGITIVE
 "=============================================
