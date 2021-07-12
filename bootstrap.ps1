@@ -38,12 +38,12 @@ Get-ChildItem -Path ./powershell/* -Include "*.ps1" | ForEach-Object {
 #Copy powershell alias and functions
 New-Item -Itemtype SymbolicLink -Path "${profileDir}/autoload"  -Target "${pwd}/powershell/autoload" -Force
 #Copy Git configs
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitconfig"  -Target "${pwd}/git/gitconfig" -Force
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitattributes"  -Target "${pwd}/git/gitattributes" -Force
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitignore"  -Target "${pwd}/git/gitignore" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitconfig"  -Target "${pwd}/git/.gitconfig" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitattributes"  -Target "${pwd}/git/.gitattributes" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.gitignore"  -Target "${pwd}/git/.gitignore" -Force
 
 #Copy npm configs
-New-Item -Itemtype SymbolicLink -Path "${homeDir}/.npmrc"  -Target "${pwd}/npm/npmrc" -Force
+New-Item -Itemtype SymbolicLink -Path "${homeDir}/.npmrc"  -Target "${pwd}/npm/.npmrc" -Force
 
 
 #copy window terminal settings
