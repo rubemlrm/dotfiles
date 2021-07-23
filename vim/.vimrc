@@ -2,25 +2,11 @@ syntax on
 filetype off
 filetype plugin indent on
 
-set t_Co=256
-set term=screen-256color
-set autoindent
-"disable comp with vi
-set nocompatible
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set t_Co=256
-
 "=============================================
 " Visual configs
 "=============================================
 
 highlight Search cterm=underline
-
-"set status line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
 "buffer is hinden on iddle
 set hidden
 
@@ -62,6 +48,10 @@ set foldlevelstart=10
 set foldnestmax=10      " 10 nested fold max
 set foldmethod=indent   " fold based on indent level
 set guifont=Source\ Code\ Pro:h12
+set term=screen-256color
+set autoindent
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 "=============================================
 " SEARCH CONFIGS
@@ -393,6 +383,10 @@ let b:ale_linter_aliases = ['javascript', 'vue']
 " " Select the eslint and vls linters.
 let b:ale_linters = ['eslint', 'vls']
 let g:ale_list_window_size = 10
+nmap gd :ALEGoToDefinition<CR>
+nmap gr :ALEFindReferences<CR>
+nmap gR :ALERename<CR>
+nmap K :ALEHover<CR>
 
 "=============================================
 " NERDTREE
