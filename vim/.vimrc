@@ -52,7 +52,7 @@ set term=screen-256color
 set autoindent
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
+set undofile " set undotree to save to file
 "=============================================
 " SEARCH CONFIGS
 "=============================================
@@ -119,27 +119,6 @@ set wildignore+=*.orig "Merge resolution files"
 "=============================================
 " AUTO COMMANDS
 "=============================================
-function! MakeSession()
-  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-  if (filewritable(b:sessiondir) != 2)
-    exe 'silent !mkdir -p ' b:sessiondir
-    redraw!
-  endif
-  let b:filename = b:sessiondir . '/session.vim'
-  exe "mksession! " . b:filename
-endfunction
-
-function! LoadSession()
-  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-  let b:sessionfile = b:sessiondir . "/session.vim"
-  if (filereadable(b:sessionfile))
-    exe 'source ' b:sessionfile
-  else
-    echo "No session loaded."
-  endif
-endfunction
-au VimEnter * nested :call LoadSession()
-au VimLeave * :call MakeSession()
 
 "" The PC is fast enough, do syntax highlight syncing from start
 augroup vimrc-sync-fromstart
@@ -170,10 +149,6 @@ augroup END
 "auto +x in scripts
 au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 
-"source all vim files files
-autocmd BufEnter * silent! lcd %:p:h "hanges the window-local current directory to be the same as the directory of the current file
-"vim function
-
 au BufWritePost .vimrc so $MYVIMRC
 
 "============================================
@@ -187,6 +162,7 @@ noremap <F1> <Esc>
 
 "map esc to jk
 imap <leader>e <Esc>
+imap <C-e> <Esc>
 
 "change saving shortcut
 nmap <c-s> :w<CR>
@@ -238,7 +214,8 @@ vmap <C-V> "-cx<Esc>\\paste\\"_x"""""""""""
 "Resize vsplit
 nmap <C-i> :vertical resize +5<cr>
 nmap <C-d> :vertical resize -5<cr>
-
+nmap <C-r><C-d> :horizontal resize -5<cr>
+nmap <C-r><C-i> :horizontal resize +5<cr>
 "fullscreen
 map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
@@ -248,8 +225,8 @@ au VimResized * :wincmd =
 au VimResized * exe "normal! \<c-w>="
 
 " Open splits
-nmap <leader>vs :vsplit<cr>
-nmap <leader>sp :split<cr>
+nmap <C-v><C-s> :vsplit<cr>
+nmap <C-s><C-p> :split<cr>
 
 " Create split below
 nmap :sp :rightbelow sp<cr>
@@ -259,8 +236,8 @@ nmap :sp :rightbelow sp<cr>
 "=============================================
 
 " Quickly go forward or backward to buffer
-nmap :bp :BufSurfBack<cr>
-nmap :bn :BufSurfForward<cr>
+nmap <C-q> :bn<cr>
+nmap <C-w> :bp<cr>
 
 "switch to last file in buffer
 nmap <leader><leader> :b#<cr>
@@ -282,8 +259,8 @@ nmap :ed :edit %:p:h/
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -300,6 +277,9 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer'
 Plug 'preservim/tagbar'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
+Plug 'vim-test/vim-test'
+Plug 'mbbill/undotree'
+Plug 'ap/vim-css-color'
 
 " UI Plugins
 Plug 'ryanoasis/vim-devicons'
@@ -317,49 +297,11 @@ colorscheme onedark
 " PLUGIN SETTINGS
 "=============================================
 
+
 "=============================================
-" UNITE
+" UNDOTREE
 "=============================================
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'google/obj/',
-      \ 'tmp/',
-      \ 'vendor/',
-      \ '.sass-cache',
-      \ 'node_modules/',
-      \ 'bower_components/',
-      \ 'dist/',
-      \ '.git5_specs/',
-      \ '.pyc',
-      \ ], '\|'))
-
-"recent edited files
-nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
-"
-""recent buffers
-nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
-
-nnoremap <Leader>f :Unite grep:.<cr>
-
-" Start in insert mode
-let g:unite_enable_start_insert = 1
-"
-let g:unite_data_directory = "~/.unite"
-
-" " Open in bottom right
-let g:unite_split_rule = "botright"
-"
-" " Shorten the default update date of 500ms
-let g:unite_update_time = 200
-"
-let g:unite_source_file_mru_limit = 1000
-let g:unite_cursor_line_highlight = 'TabLineSel'
-"
-let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_file_mru_time_format = ''
+nnoremap <C-u> :UndotreeShow<CR>
 
 "=============================================
 " ULLTISNIPS
@@ -371,7 +313,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "=============================================
 " TAGBAR
 "=============================================
-nmap <F8> :TagbarToggle<CR>
+nmap <C-t><C-b> :TagbarToggle<CR>
 
 "=============================================
 " ALE
@@ -383,16 +325,17 @@ let b:ale_linter_aliases = ['javascript', 'vue']
 " " Select the eslint and vls linters.
 let b:ale_linters = ['eslint', 'vls']
 let g:ale_list_window_size = 10
-nmap gd :ALEGoToDefinition<CR>
-nmap gr :ALEFindReferences<CR>
-nmap gR :ALERename<CR>
-nmap K :ALEHover<CR>
+nmap <silent> <C-g><C-e> :ALEDetail<CR>
+nmap <silent> <C-g><C-d> :ALEGoToDefinition<CR>
+nmap <silent> <C-f><C-r> :ALEFindReferences<CR>
+nmap <silent> <C-g><C-r> :ALERename<CR>
+nmap <silent> <C-k> :ALEHover<CR>
 
 "=============================================
 " NERDTREE
 "=============================================
 autocmd vimenter * NERDTree
-nmap <silent> <F9> :NERDTreeToggle<CR>
+nmap <silent> <C-e> :NERDTreeToggle<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -432,7 +375,17 @@ let g:airline_theme='bubblegum'
 "=============================================
 " FZF
 "=============================================
-nmap <C-P> :FZF<CR>
+nmap <C-p> :FZF<CR>
+nnoremap <silent> <C-f> :Rg<CR>
+
+"=============================================
+" VIM-TEST
+"=============================================
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
 "=============================================
 " END SETTINGS PLUGIN

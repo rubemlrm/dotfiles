@@ -45,6 +45,7 @@ cd  "$CWD" || exit
 
 echo -e "\033[1;33m creating vim symlinks \033[0m"
 stow -vSt ~ vim
+stow -vSt ~ nvim
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >> bootstrap_install.logs 2>>bootstrap_error_install.logs
 vim +'PlugInstall' +qa
 

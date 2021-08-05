@@ -10,11 +10,14 @@ fi
 export ZSH=~/.oh-my-zsh
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:~/.rbenv/bin:~/bin:~/bin/node_modules"
 
+export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden'
+
+
 ########################
 #     ZSH CONFIGS      #
 ########################
 ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases ansible docker django tmux history python systemd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git common-aliases tmux history systemd zsh-autosuggestions zsh-syntax-highlighting)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
