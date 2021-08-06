@@ -256,7 +256,7 @@ nmap :ed :edit %:p:h/
 "==============================================
 " PLUGIN STUFF
 "==============================================
-
+let g:ale_disable_lsp = 1
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -280,13 +280,14 @@ Plug 'dense-analysis/ale'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ap/vim-css-color'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " UI Plugins
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
-
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 colorscheme onedark
 "=============================================
@@ -377,7 +378,8 @@ let g:airline_theme='bubblegum'
 "=============================================
 nmap <C-p> :FZF<CR>
 nnoremap <silent> <C-f> :Rg<CR>
-
+let g:rg_derive_root='true' " maintain root base dir
+let g:fzf_command = 'rg'
 "=============================================
 " VIM-TEST
 "=============================================

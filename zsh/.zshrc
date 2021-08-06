@@ -10,7 +10,7 @@ fi
 export ZSH=~/.oh-my-zsh
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:~/.rbenv/bin:~/bin:~/bin/node_modules"
 
-export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 
 
 ########################

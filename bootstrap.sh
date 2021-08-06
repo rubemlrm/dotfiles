@@ -48,6 +48,7 @@ stow -vSt ~ vim
 stow -vSt ~ nvim
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >> bootstrap_install.logs 2>>bootstrap_error_install.logs
 vim +'PlugInstall' +qa
+vim +'CocInstall coc-json coc-powershell coc-toml coc-vetur coc-python' +qa
 
 echo -e "\033[1;33m creating tmux symlinks \033[0m"
 stow -vSt ~ tmux
