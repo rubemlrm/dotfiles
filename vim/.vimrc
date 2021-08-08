@@ -151,6 +151,9 @@ au bufwritepost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 
 au BufWritePost .vimrc so $MYVIMRC
 
+" Delete trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 "============================================
 " KEYBINDING
 "============================================
@@ -236,8 +239,8 @@ nmap :sp :rightbelow sp<cr>
 "=============================================
 
 " Quickly go forward or backward to buffer
-nmap <C-q> :bn<cr>
-nmap <C-w> :bp<cr>
+nmap <C->> :bn<cr>
+nmap <C-<> :bp<cr>
 
 "switch to last file in buffer
 nmap <leader><leader> :b#<cr>
@@ -257,34 +260,47 @@ nmap :ed :edit %:p:h/
 " PLUGIN STUFF
 "==============================================
 let g:ale_disable_lsp = 1
+
+" check if plugged is installed
+if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
+ silent !curl -fLo $HOME/.config/vim/autoload/plug.vim --create-dirs
+                      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
+" File Explorer
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Code completion and linting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+
+" Language Specific
+Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+" Extra Utils
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-commentary'
-Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer'}
 Plug 'preservim/tagbar'
 Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ap/vim-css-color'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " UI Plugins
-Plug 'ryanoasis/vim-devicons'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
@@ -298,18 +314,53 @@ colorscheme onedark
 " PLUGIN SETTINGS
 "=============================================
 
+"=============================================
+" VIM PLUG
+"=============================================
+map <leader>pu :PlugUpdate<CR>
+map <leader>pc :PlugClean<CR>
+map <leader>pi :PlugInstall<CR>
+
+
+"============================================
+" NERDTREE
+"===========================================
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+"heck if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufRead * call SyncTree()
 
 "=============================================
 " UNDOTREE
 "=============================================
 nnoremap <C-u> :UndotreeShow<CR>
+if has("persistent_undo")
+  let target_path = expand('~/.undodir')
+  " create the directory and any parent directories
+  "     " if the location does not exist.
+  if !isdirectory(target_path)
+      call mkdir(target_path, "p", 0700)
+  endif
+  let &undodir=target_path
+  set undofile
+endif
 
-"=============================================
-" ULLTISNIPS
-"=============================================
-let g:UltiSnipsExpandTrigger="<tab><tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "=============================================
 " TAGBAR
