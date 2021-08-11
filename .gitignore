@@ -17,7 +17,7 @@ Session.vim
 Sessionx.vim
 
 #tmux
-tmux/.tmux/plugins
+plugins
 
 #zsh
 zsh/.config/zsh/plugins

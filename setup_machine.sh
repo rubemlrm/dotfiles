@@ -20,6 +20,7 @@ sudo apt-get update >> bootstrap_install.logs 2>>bootstrap_error_install.logs
 # shellcheck disable=SC2024
 sudo apt-get install -y aspell \
     aspell-pt \
+    neovim \
     automake \
     cmake \
     ctags \

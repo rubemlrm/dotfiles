@@ -21,7 +21,7 @@ alias ve='vim ~/.vimrc'
 # zsh profile editing
 alias ze='vim ~/.zshrc'
 alias syncDotFiles=""
-
+alias vim='nvim'
 #apps
 alias irssi='TERM=screen-256color irssi'
 alias checkBranchesToRemove='git branch -r | awk "{print $1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print $1}"'
