@@ -158,7 +158,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 "============================================
 "Rebing <leader>key
 let mapleader = ","
-
 "I can type :help on my own, thanks.
 noremap <F1> <Esc>
 
@@ -324,8 +323,7 @@ if (empty($TMUX))
   endif
 endif
 
-set background=dark
-colorscheme one
+colorscheme nord
 " END PLUGIN
 "=============================================
 
@@ -444,6 +442,11 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 "=============================================
 " FZF

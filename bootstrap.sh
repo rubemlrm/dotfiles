@@ -52,6 +52,7 @@ vim +'CocInstall coc-json coc-powershell coc-toml coc-vetur coc-python' +qa
 echo -e "\033[1;33m creating tmux symlinks \033[0m"
 stow -vSt ~ tmux
 git clone https://github.com/tmux-plugins/tpm "$USERHOME/.tmux/plugins/tpm"
+stow -vSt ~ terminator
 
 echo -e "\033[1;33m creating Git and symlinks \033[0m"
 stow -vSt ~ git npm
