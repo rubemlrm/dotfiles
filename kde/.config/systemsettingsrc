@@ -1,0 +1,16 @@
+[MainWindow]
+DP-2 HDMI-0 Window-Maximized 1920x1080=true
+DP-2 HDMI-A-1 Window-Maximized 1920x1080=true
+DP-2 HDMI-A-1 Window-Maximized 2137x1202=true
+DP-2 Height 2560x1440=1353
+DP-2 Width 2560x1440=1280
+DP-2 XPosition 2560x1440=0
+DP-2 YPosition 2560x1440=37
+HDMI-0 DP-2 Window-Maximized 1920x1080=true
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABQAAAAVRAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+default Height 1024x768=652
+default Width 1024x768=922
+default XPosition 1024x768=0
+default YPosition 1024x768=29

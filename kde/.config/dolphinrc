@@ -1,0 +1,36 @@
+[CompactMode]
+FontWeight=50
+
+[DetailsMode]
+FontWeight=50
+
+[General]
+ShowFullPath=true
+ShowFullPathInTitlebar=true
+ShowZoomSlider=false
+Version=200
+ViewPropsTimestamp=2021,8,5,21,10,54.341
+
+[IconsMode]
+FontWeight=50
+
+[MainWindow]
+DP-2 Height 2560x1440=890
+DP-2 Width 2560x1440=1698
+DP-2 XPosition 2560x1440=-99
+DP-2 YPosition 2560x1440=304
+MenuBar=Disabled
+RestorePositionForNextInstance=false
+State=AAAA/wAAAAD9AAAAAwAAAAAAAACoAAADRvwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAoBAAAD+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAA0AAADRgAAAF0BAAADAAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAACgEAAAMAAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAoBAAADAAAF+QAAA0YAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+default Height 1024x768=500
+default Width 1024x768=750
+default XPosition 1024x768=0
+default YPosition 1024x768=29
+
+[PreviewSettings]
+Plugins=audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail
+
+[SettingsDialog]
+DP-2 Height 2560x1440=516
+DP-2 Width 2560x1440=726
