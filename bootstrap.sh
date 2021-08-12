@@ -23,6 +23,7 @@ rm -rf "$USERHOME/.vim"
 rm -rf "$USERHOME/.nvm"
 rm -rf "$USERHOME/.tmux.conf"
 rm -rf "$USERHOME/.tmux/"
+rm -rf "$USERHOME/.tmux.conf"
 rm -rf "$USERHOME/.gitconfig"
 rm -rf "$USERHOME/.gitignore"
 rm -rf "$USERHOME/.gitattributes"
@@ -46,12 +47,12 @@ cd  "$CWD" || exit
 echo -e "\033[1;33m creating vim symlinks \033[0m"
 stow -vSt ~ vim
 stow -vSt ~ nvim
+pip3 install --user --upgrade pynvim
 vim +'PlugInstall' +qa
 vim +'CocInstall coc-json coc-powershell coc-toml coc-vetur coc-python' +qa
 
 echo -e "\033[1;33m creating tmux symlinks \033[0m"
 stow -vSt ~ tmux
-git clone https://github.com/tmux-plugins/tpm "$USERHOME/.tmux/plugins/tpm"
 stow -vSt ~ terminator
 
 echo -e "\033[1;33m creating Git and symlinks \033[0m"
