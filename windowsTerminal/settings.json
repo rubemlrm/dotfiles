@@ -26,7 +26,7 @@
   "profiles": {
     "defaults": {
       "fontFace": "Cascadia Code PL",
-      "colorScheme": "Dracula",
+      "colorScheme": "Nord",
       "fontSize": 11
     },
     "list": [
@@ -108,6 +108,12 @@
         "hidden": false,
         "name": "PowerShell",
         "source": "Windows.Terminal.PowershellCore"
+      },
+      {
+          "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+          "hidden": false,
+          "name": "Git Bash",
+          "source": "Git"
       }
     ]
   },
@@ -115,6 +121,29 @@
   // Add custom color schemes to this array.
   // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
   "schemes": [
+    {
+      "name" : "Nord",
+      "background" : "#2E3440",
+      "foreground" : "#E5E9F0",
+      "cursorColor" : "#EBCB8B",
+      "selectionBackground" : "#434C5E",
+      "black" : "#3B4252",
+      "blue" : "#81A1C1",
+      "cyan" : "#88C0D0",
+      "green" : "#8FBCBB",
+      "purple" : "#B48EAD",
+      "red" : "#BF616A",
+      "white" : "#4C566A",
+      "yellow" : "#EBCB8B",
+      "brightBlack" : "#3B4252",
+      "brightBlue" : "#5E81AC",
+      "brightCyan" : "#88C0D0",
+      "brightGreen" : "#A3BE8C",
+      "brightPurple" : "#B48EAD",
+      "brightRed" : "#BF616A",
+      "brightWhite" : "#E5E9F0",
+      "brightYellow" : "#EBCB8B"
+    },
     {
       "name": "Dracula",
       "cursorColor": "#F8F8F2",
