@@ -36,3 +36,4 @@ vscode
 work.ps1
 composer*
 scoop*
+settings.json.*
