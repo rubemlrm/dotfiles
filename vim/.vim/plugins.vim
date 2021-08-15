@@ -130,11 +130,11 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gm :Gmove
 nnoremap <Leader>gp :Ggrep
 nnoremap <Leader>gR :Gread<CR>
-nnoremap <Leader>gg :Git
+nnoremap <Leader>gg :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gv :Gpull origin
-nnoremap <Leader>gx :Gcommit -m ""
-nnoremap <Leader>gc :Gpush origin
+nnoremap <Leader>gv :Git pull origin<CR>
+nnoremap <Leader>gx :Git commit -m ""
+nnoremap <Leader>gc :Git push<CR>
 
 "=============================================
 " GIT GUTTER
