@@ -1,8 +1,13 @@
 #directories
 alias works="cd ~/Works"
+alias code="cd ~/Works/Code"
+alias dotfiles="cd ~/Works/Code/Personal/dotfiles"
+alias buildfiles="cd ~/Works/Code/Personal/buildfiles"
+alias personalSite="cd ~/Works/Code/Personal/rubemlrm.github.io"
+
 #networking
 alias ports='netstat -tulanp'
-alias eh="sudo   /etc/hosts"
+alias eh="sudo nano /etc/hosts"
 alias ch="cat /etc/hosts"
 alias sysinfo="sudo rpm -qi basesystem"
 alias speedtest="wget -O /dev/null https://speed.hetzner.de/100MB.bin"
@@ -20,7 +25,7 @@ alias distro='cat /etc/*-release'
 alias ve='vim ~/.vimrc'
 # zsh profile editing
 alias ze='vim ~/.zshrc'
-alias syncDotFiles=""
+alias syncDotFiles="dotfiles && git pull && bash bootstrap.sh"
 alias vim='nvim'
 alias vi='nvim'
 #apps
