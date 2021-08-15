@@ -1,5 +1,5 @@
 "=============================================
- AUTO COMMANDS
+" AUTO COMMANDS
 "=============================================
 
 "" The PC is fast enough, do syntax highlight syncing from start
