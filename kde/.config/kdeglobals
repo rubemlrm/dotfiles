@@ -93,6 +93,10 @@ ForegroundNormal=211,218,227
 ForegroundPositive=39,174,96
 ForegroundVisited=82,148,226
 
+[DirSelect Dialog]
+DirSelectDialog Size=885,612
+History Items[$e]=smb://raspberrypi.local/media
+
 [General]
 Name=Arc Dark
 XftHintStyle=hintslight

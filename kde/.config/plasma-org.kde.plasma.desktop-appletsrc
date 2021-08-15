@@ -29,7 +29,7 @@ ToolBoxButtonX=788
 ToolBoxButtonY=42
 
 [Containments][19][Wallpaper][org.kde.image][General]
-Image=/home/rubemlrm/Pictures/wallhaven-42eywy.png
+Image=file:///home/rubemlrm/Pictures/wallhaven-42eywy.png
 SlidePaths=/usr/share/wallpapers
 
 [Containments][2]
@@ -47,6 +47,13 @@ plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][17][Configuration]
 PreloadWeight=70
+
+[Containments][2][Applets][17][Configuration][Appearance]
+use24hFormat=2
+
+[Containments][2][Applets][17][Configuration][ConfigDialog]
+DialogHeight=744
+DialogWidth=960
 
 [Containments][2][Applets][28]
 immutability=1
@@ -216,4 +223,4 @@ showAllItems=true
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/chrome-nflapkcgnlgoambcceflnknkhkpkmbll-Default.desktop,0,desktop:/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,0
+screenMapping=desktop:/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,0,desktop:/chrome-nflapkcgnlgoambcceflnknkhkpkmbll-Default.desktop,0

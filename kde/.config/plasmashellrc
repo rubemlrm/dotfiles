@@ -13,6 +13,10 @@ Recent Files[$e]=wallhaven-4ovzj5.jpg,file:$HOME/Pictures/wallhaven-42eywy.png
 Recent URLs[$e]=file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/
 detailViewIconSize=128
 
+[KPropertiesDialog]
+DP-2 Height 2560x1440=535
+DP-2 Width 2560x1440=480
+
 [PlasmaViews][Panel 2][Defaults]
 thickness=42
 

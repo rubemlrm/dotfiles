@@ -124,7 +124,6 @@ map <leader>re :NERDTreeFind<cr>
 "=============================================
 " FUGITIVE
 "=============================================
-nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gr :Gremove<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gb :Gblame<CR>

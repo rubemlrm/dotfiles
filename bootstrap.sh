@@ -29,6 +29,8 @@ rm -rf "$USERHOME/.gitignore"
 rm -rf "$USERHOME/.gitattributes"
 rm -rf "$USERHOME/.npmrc"
 rm -rf "$USERHOME/.gitconfig-default"
+rm -rf "$USERHOME/.config/latte"
+
 stow -vSt ~ stow
 echo -e "\033[1;33m cloning oh-my-zsh \033[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended >> bootstrap_install.logs 2>>bootstrap_error_install.logs
@@ -60,6 +62,7 @@ stow -vSt ~ git npm
 
 echo -e "Restore kde settings"
 stow -vSt ~ kde
+stow -vSt ~ latte
 wget -O /home/rubemlrm/Pictures/wallhaven-8ogod1.jpg https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg
 
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o "$USERHOME/bin/youtube-dl"
