@@ -1,11 +1,11 @@
 [ColorEffects:Disabled]
-Color=112,111,110
+Color=56,56,56
 ColorAmount=0
 ColorEffect=0
 ContrastAmount=0.65
 ContrastEffect=1
 IntensityAmount=0.1
-IntensityEffect=0
+IntensityEffect=2
 
 [ColorEffects:Inactive]
 ChangeSelectionColor=true
@@ -14,23 +14,23 @@ ColorAmount=0.025
 ColorEffect=2
 ContrastAmount=0.1
 ContrastEffect=2
-Enable=true
+Enable=false
 IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=210,210,210
-BackgroundNormal=220,220,220
+BackgroundAlternate=163,212,250
+BackgroundNormal=247,247,247
 DecorationFocus=61,174,233
-DecorationHover=142,203,233
-ForegroundActive=255,128,224
-ForegroundInactive=136,135,134
-ForegroundLink=0,87,174
-ForegroundNegative=191,3,3
-ForegroundNeutral=176,128,0
-ForegroundNormal=49,54,59
-ForegroundPositive=0,110,40
-ForegroundVisited=69,40,134
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=35,38,41
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:Complementary]
 BackgroundAlternate=27,30,32
@@ -75,73 +75,73 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:Selection]
-BackgroundAlternate=45,130,173
-BackgroundNormal=45,130,173
+BackgroundAlternate=163,212,250
+BackgroundNormal=61,174,233
 DecorationFocus=61,174,233
-DecorationHover=142,203,233
-ForegroundActive=255,128,224
-ForegroundInactive=142,203,233
-ForegroundLink=0,87,174
-ForegroundNegative=156,14,14
-ForegroundNeutral=255,221,0
-ForegroundNormal=252,252,252
-ForegroundPositive=128,255,128
-ForegroundVisited=69,40,134
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=255,255,255
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:Tooltip]
-BackgroundAlternate=0,0,0
-BackgroundNormal=0,0,0
+BackgroundAlternate=239,240,241
+BackgroundNormal=247,247,247
 DecorationFocus=61,174,233
-DecorationHover=142,203,233
-ForegroundActive=255,128,224
-ForegroundInactive=96,112,128
-ForegroundLink=0,87,174
-ForegroundNegative=191,3,3
-ForegroundNeutral=176,128,0
-ForegroundNormal=255,255,255
-ForegroundPositive=0,110,40
-ForegroundVisited=69,40,134
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=35,38,41
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:View]
-BackgroundAlternate=240,240,240
-BackgroundNormal=252,252,252
+BackgroundAlternate=247,247,247
+BackgroundNormal=255,255,255
 DecorationFocus=61,174,233
-DecorationHover=142,203,233
-ForegroundActive=255,128,224
-ForegroundInactive=136,135,134
-ForegroundLink=0,87,174
-ForegroundNegative=191,3,3
-ForegroundNeutral=176,128,0
-ForegroundNormal=0,0,0
-ForegroundPositive=0,110,40
-ForegroundVisited=69,40,134
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=35,38,41
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [Colors:Window]
-BackgroundAlternate=224,224,225
-BackgroundNormal=234,234,235
+BackgroundAlternate=227,229,231
+BackgroundNormal=239,240,241
 DecorationFocus=61,174,233
-DecorationHover=142,203,233
-ForegroundActive=255,128,224
-ForegroundInactive=136,135,134
-ForegroundLink=0,87,174
-ForegroundNegative=191,3,3
-ForegroundNeutral=176,128,0
-ForegroundNormal=0,0,0
-ForegroundPositive=0,110,40
-ForegroundVisited=69,40,134
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=35,38,41
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
 
 [General]
-ColorScheme=KvFlatLight
-Name=KvFlatLight
+ColorScheme=BreezeLight
+Name=Breeze Light
 font=Noto Sans,10,-1,5,50,0,0,0,0,0
 menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
 smallestReadableFont=Noto Sans,8,-1,5,50,0,0,0,0,0
-toolBarFont=Noto Sans,9,-1,5,50,0,0,0,0,0
-widgetStyle=Breeze
+toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
+widgetStyle=Adwaita-Dark
 
 [Icons]
-Theme=Papirus-Dark
+Theme=candy-icons
 
 [KDE]
 ShowIconsInMenuItems=true
@@ -153,9 +153,9 @@ ToolButtonStyle=TextBesideIcon
 ToolButtonStyleOtherToolbars=TextBesideIcon
 
 [WM]
-activeBackground=61,61,62
-activeBlend=61,61,62
-activeForeground=255,255,255
-inactiveBackground=61,61,62
-inactiveBlend=61,61,62
-inactiveForeground=200,200,200
+activeBackground=227,229,231
+activeBlend=227,229,231
+activeForeground=35,38,41
+inactiveBackground=239,240,241
+inactiveBlend=239,240,241
+inactiveForeground=112,125,138

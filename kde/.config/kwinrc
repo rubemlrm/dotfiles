@@ -16,7 +16,3 @@ LongitudeAuto=-8.8234
 
 [TabBox]
 LayoutName=thumbnail_grid
-
-[org.kde.kdecoration2]
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Arc-Dark

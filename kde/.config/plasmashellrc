@@ -9,12 +9,12 @@ default Width 1024x768=595
 Number of Actions=0
 
 [KFileDialog Settings]
-Recent Files[$e]=wallhaven-4ovzj5.jpg,file:$HOME/Pictures/wallhaven-73mw83.jpg,file:$HOME/Pictures/wallhaven-4ovzj5.jpg
-Recent URLs[$e]=file:$HOME/Pictures/,file:$HOME/
+Recent Files[$e]=wallhaven-4ovzj5.jpg,file:$HOME/Pictures/wallhaven-42eywy.png
+Recent URLs[$e]=file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/
 detailViewIconSize=128
 
 [PlasmaViews][Panel 2][Defaults]
-thickness=50
+thickness=42
 
 [PlasmaViews][Panel 2][Horizontal1024]
 thickness=44
@@ -23,7 +23,7 @@ thickness=44
 thickness=44
 
 [PlasmaViews][Panel 2][Horizontal2560]
-thickness=50
+thickness=42
 
 [ScreenConnectors]
 0=DP-2

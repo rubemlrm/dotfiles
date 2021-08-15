@@ -101,9 +101,10 @@ shadeSortColumn=true
 toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 
 [KDE]
-LookAndFeelPackage=com.github.varlesh.arc-dark
+LookAndFeelPackage=Nordic
 ShowDeleteCommand=false
 contrast=4
+widgetStyle=Adwaita-Dark
 
 [KFileDialog Settings]
 Allow Expansion=false
