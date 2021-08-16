@@ -104,6 +104,9 @@ XftSubPixel=rgb
 shadeSortColumn=true
 toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 
+[Icons]
+Theme=ePapirus
+
 [KDE]
 LookAndFeelPackage=Nordic
 ShowDeleteCommand=false

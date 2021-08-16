@@ -141,7 +141,7 @@ toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 widgetStyle=Adwaita-Dark
 
 [Icons]
-Theme=candy-icons
+Theme=ePapirus
 
 [KDE]
 ShowIconsInMenuItems=true

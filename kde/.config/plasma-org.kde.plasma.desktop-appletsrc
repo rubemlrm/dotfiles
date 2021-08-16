@@ -20,13 +20,16 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][19][ConfigDialog]
-DialogHeight=620
-DialogWidth=800
+DialogHeight=1296
+DialogWidth=2560
 
 [Containments][19][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=788
 ToolBoxButtonY=42
+iconSize=1
+previews=false
+sortDirsFirst=false
 
 [Containments][19][Wallpaper][org.kde.image][General]
 Image=file:///home/rubemlrm/Pictures/wallhaven-42eywy.png
@@ -223,4 +226,4 @@ showAllItems=true
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/chrome-nflapkcgnlgoambcceflnknkhkpkmbll-Default.desktop,0,desktop:/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,0
+screenMapping=desktop:/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,0,desktop:/chrome-ecibjlncbingkehjfdfmnaghbcjkaiop-Default.desktop,0,desktop:/chrome-nflapkcgnlgoambcceflnknkhkpkmbll-Default.desktop,0
