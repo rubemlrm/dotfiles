@@ -92,4 +92,3 @@ nmap <leader>za za
 
 " Create/edit file in the current directory
 nmap :ed :edit %:p:h/
-

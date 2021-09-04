@@ -38,4 +38,3 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Resize Split When the window is resized"
 autocmd VimResized * :wincmd =
 autocmd VimResized * exe "normal! \<c-w>="
-
