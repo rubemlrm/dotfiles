@@ -46,7 +46,7 @@ endfunction
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
 function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+  if &modifiable && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
     wincmd p
   endif
@@ -86,8 +86,8 @@ let b:ale_linter_aliases = ['javascript', 'vue']
 " " Select the eslint and vls linters.
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'yaml': ['yamllint'],
-\   'yml': ['yamllint']
+\   'yaml': ['yamllint','ansible-lint'],
+\   'yml': ['yamllint','ansible-lint'],
 \}
 
 let g:ale_fixers = {
@@ -114,7 +114,6 @@ nmap <silent> <C-k> :ALEHover<CR>
 "=============================================
 " NERDTREE
 "=============================================
-autocmd vimenter * NERDTree
 nmap <silent> <C-e> :NERDTreeToggle<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -172,6 +171,21 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
+
+"=============================================
+" DASHBOARD
+"=============================================
+let g:dashboard_default_executive ='fzf'
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+
 
 "=============================================
 " END SETTINGS PLUGIN

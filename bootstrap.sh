@@ -63,7 +63,6 @@ stow -vSt ~ git npm
 echo -e "Restore kde settings"
 stow -vSt ~ kde
 stow -vSt ~ latte
-wget -O /home/rubemlrm/Pictures/wallhaven-8ogod1.jpg https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg
 
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o "$USERHOME/bin/youtube-dl"
 chmod a+rx "$USERHOME/bin/youtube-dl"
