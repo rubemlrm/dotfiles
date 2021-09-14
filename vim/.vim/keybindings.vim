@@ -32,8 +32,7 @@ noremap <Leader>s :sort<CR>
 
 " ,ev Shortcut to edit .vimrc file on the fly on a vertical window.
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-noremap <leader>rv :e $MYVIMRC<cr>
-
+nnoremap <leader>rv :source $MYVIMRC<cr>
 "<Ctrl-X> -- cut (goto visual mode and cut)
 imap <C-X> <C-O>vgG
 vmap <C-X> "*x<Esc>im
@@ -66,7 +65,7 @@ map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 " Open splits
 nmap <C-v><C-s> :vsplit<cr>
-nmap <C-s><C-p> :split<cr>
+nmap <C-h><C-s> :split<cr>
 
 " Create split below
 nmap :sp :rightbelow sp<cr>

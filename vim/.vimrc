@@ -12,6 +12,7 @@ if empty(glob('$HOME/.vim/autoload/plug.vim'))
  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
+let g:ale_disable_lsp = 1
 call plug#begin('~/.vim/plugged')
 
 " File Explorer
@@ -23,16 +24,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Code completion and linting
 Plug 'dense-analysis/ale'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Language Specific
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'mattn/emmet-vim'
@@ -41,7 +36,6 @@ Plug 'mattn/emmet-vim'
 "Extra Utils
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
-Plug 'ervandew/supertab'
 Plug 'glepnir/dashboard-nvim'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/tagbar'
@@ -58,6 +52,7 @@ Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 filetype plugin indent on
@@ -81,8 +76,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme nord
-
+colorscheme dracula
 " Source auxiliar configs
 source $HOME/.vim/general.vim
 source $HOME/.vim/plugins.vim

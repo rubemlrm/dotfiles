@@ -3,27 +3,6 @@
 "=============================================
 
 "=============================================
-" Deoplete
-"=============================================
-
-let g:deoplete#enable_at_startup = 1
-" Use ALE and also some plugin 'foobar' as completion sources for all code.
-call deoplete#custom#option('sources', {
-\ '_': ['ale','ultisnips'],
-\})
-
-"=============================================
-" ULTISNIPS
-"=============================================
-
-let g:UltinipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-"=============================================
 " VIM PLUG
 "=============================================
 map <leader>pu :PlugUpdate<CR>
@@ -166,6 +145,12 @@ let g:fzf_command = 'rg'
 "=============================================
 " VIM-TEST
 "=============================================
+if has('nvim')
+  let test#strategy='neovim'
+else
+  let test#strategy='vimterminal'
+endif
+let test#python#runner = 'pytest'
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
@@ -185,6 +170,12 @@ nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
 nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+
+
+"============================================
+"  COC
+"============================================
+
 
 
 "=============================================

@@ -17,7 +17,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 #     ZSH CONFIGS      #
 ########################
 ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases tmux history systemd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git common-aliases tmux history systemd zsh-autosuggestions zsh-syntax-highlighting virtualenv virtualenvwrapper)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

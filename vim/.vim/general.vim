@@ -1,4 +1,4 @@
-filetype off
+filetype on
 
 "=============================================
 " Visual configs
@@ -43,7 +43,7 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10      " 10 nested fold max
 set foldmethod=indent   " fold based on indent level
-set guifont=Source\ Code\ Pro:h12
+set guifont=Fira\ Code:h12
 set autoindent
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
