@@ -36,15 +36,15 @@ Plug 'mattn/emmet-vim'
 "Extra Utils
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
-Plug 'glepnir/dashboard-nvim'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/tagbar'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ap/vim-css-color'
-
 " UI Plugins
+Plug 'mhinz/vim-startify'
+Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
