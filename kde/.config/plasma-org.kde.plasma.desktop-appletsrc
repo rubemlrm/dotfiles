@@ -25,14 +25,14 @@ DialogWidth=2560
 
 [Containments][19][General]
 ToolBoxButtonState=topcenter
-ToolBoxButtonX=788
+ToolBoxButtonX=798
 ToolBoxButtonY=42
 iconSize=1
 previews=false
 sortDirsFirst=false
 
 [Containments][19][Wallpaper][org.kde.image][General]
-Image=file:///home/rubemlrm/Pictures/wallhaven-42eywy.png
+Image=file:///home/rubemlrm/Pictures/wallhaven-rddgwm.jpg
 SlidePaths=/usr/share/wallpapers
 
 [Containments][2]
@@ -49,7 +49,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][2][Applets][17][Configuration]
-PreloadWeight=70
+PreloadWeight=80
 
 [Containments][2][Applets][17][Configuration][Appearance]
 use24hFormat=2
@@ -69,11 +69,11 @@ plugin=org.kde.plasma.panelspacer
 [Containments][2][Applets][29][Configuration][General]
 length=1956
 
-[Containments][2][Applets][30]
+[Containments][2][Applets][31]
 immutability=1
 plugin=org.kde.plasma.compact-shutdown
 
-[Containments][2][Applets][30][Configuration]
+[Containments][2][Applets][31][Configuration]
 PreloadWeight=60
 
 [Containments][2][Applets][6]
@@ -89,11 +89,11 @@ PreloadWeight=100
 SystrayContainmentId=8
 
 [Containments][2][ConfigDialog]
-DialogHeight=83
+DialogHeight=93
 DialogWidth=2560
 
 [Containments][2][General]
-AppletOrder=28;29;6;7;17;30
+AppletOrder=28;29;6;7;17;31
 
 [Containments][24]
 ItemGeometries-1920x1080=
@@ -198,7 +198,7 @@ immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][8][Applets][22][Configuration]
-PreloadWeight=15
+PreloadWeight=7
 
 [Containments][8][Applets][23]
 immutability=1
@@ -209,7 +209,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][8][Applets][25][Configuration]
-PreloadWeight=55
+PreloadWeight=75
 
 [Containments][8][Applets][9]
 immutability=1
@@ -226,4 +226,4 @@ showAllItems=true
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,0,desktop:/chrome-ecibjlncbingkehjfdfmnaghbcjkaiop-Default.desktop,0,desktop:/chrome-nflapkcgnlgoambcceflnknkhkpkmbll-Default.desktop,0
+screenMapping=desktop:/chrome-ecibjlncbingkehjfdfmnaghbcjkaiop-Default.desktop,0,desktop:/chrome-nflapkcgnlgoambcceflnknkhkpkmbll-Default.desktop,0,desktop:/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,0

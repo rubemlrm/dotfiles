@@ -7,6 +7,18 @@ Switch keyboard layout to Portuguese=none,none,Switch keyboard layout to Portugu
 Switch to Next Keyboard Layout=Ctrl+Alt+K,Ctrl+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
+[code-insiders.desktop]
+_k_friendly_name=Visual Studio Code - Insiders
+_launch=Ctrl+Alt+C,,Visual Studio Code - Insiders
+new-empty-window=,,New Empty Window
+
+[firefox.desktop]
+_k_friendly_name=Firefox
+_launch=Ctrl+Alt+B,,Firefox
+new-private-window=,,New Private Window
+new-window=,,New Window
+profile-manager-window=,,Open the Profile Manager
+
 [kcm_touchpad]
 Disable Touchpad=Touchpad Off,Touchpad Off,Disable Touchpad
 Enable Touchpad=Touchpad On,Touchpad On,Enable Touchpad
@@ -20,7 +32,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
-{2a085903-6f48-4776-9168-dc0746db46fa}=Ctrl+Alt+T,none,Launch Konsole
+{96598425-733c-4573-8453-1f6b609cb5d7}=,none,Launch Konsole
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
 
 [kmix]
@@ -31,11 +43,6 @@ increase_microphone_volume=Microphone Volume Up,Microphone Volume Up,Increase Mi
 increase_volume=Volume Up,Volume Up,Increase Volume
 mic_mute=Microphone Mute,Microphone Mute\tMeta+Volume Mute,Mute Microphone
 mute=Volume Mute,Volume Mute,Mute
-
-[krunner.desktop]
-RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
-_k_friendly_name=KRunner
-_launch=Alt+Space\tAlt+F2\tSearch,Alt+Space\tAlt+F2\tSearch,KRunner
 
 [ksmserver]
 Halt Without Confirmation=Ctrl+Alt+Shift+PgDown,none,Halt Without Confirmation
@@ -253,7 +260,7 @@ _launch=Meta+E,Meta+E,Dolphin
 [org.kde.krunner.desktop]
 RunClipboard=,Alt+Shift+F2,Run command on clipboard contents
 _k_friendly_name=KRunner
-_launch=\t\t,Alt+Space\tAlt+F2\tSearch,KRunner
+_launch=Alt+F2,Alt+Space\tAlt+F2\tSearch,KRunner
 
 [org.kde.plasma.emojier.desktop]
 _k_friendly_name=Emoji Selector
@@ -311,9 +318,13 @@ toggle do not disturb=none,none,Toggle do not disturb
 
 [systemsettings.desktop]
 _k_friendly_name=System Settings
-_launch=Tools,Tools,System Settings
+_launch=Tools\tCtrl+Alt+S,Tools,System Settings
 kcm-kscreen=,,Display Configuration
 kcm-lookandfeel=,,Global Theme
 kcm-users=,,Users
 powerdevilprofilesconfig=,,Energy Saving
 screenlocker=,,Screen Locking
+
+[terminator.desktop]
+_k_friendly_name=Terminator
+_launch=Ctrl+Alt+T,,Terminator

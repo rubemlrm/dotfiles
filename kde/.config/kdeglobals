@@ -98,7 +98,10 @@ DirSelectDialog Size=885,612
 History Items[$e]=smb://raspberrypi.local/media
 
 [General]
+BrowserApplication=firefox.desktop
 Name=Arc Dark
+TerminalApplication=terminator
+TerminalService=terminator.desktop
 XftHintStyle=hintslight
 XftSubPixel=rgb
 shadeSortColumn=true
@@ -133,8 +136,8 @@ Speedbar Width=150
 View Style=DetailTree
 
 [KScreen]
-ScaleFactor=1
-ScreenScaleFactors=DP-0=1;DP-1=1;DP-2=1;DP-3=1;HDMI-0=1;DP-4=1;DP-5=1;
+ScaleFactor=1.25
+ScreenScaleFactors=DP-0=1.25;DP-1=1.25;DP-2=1.25;DP-3=1.25;HDMI-0=1.25;DP-4=1.25;DP-5=1.25;
 
 [KShortcutsDialog Settings]
 Dialog Size=600,480

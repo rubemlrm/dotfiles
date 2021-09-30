@@ -55,7 +55,7 @@ vim +'CocInstall coc-json coc-powershell coc-toml coc-vetur coc-python coc-jedi'
 stow -vSt ~ tmux
 stow -vSt ~ terminator
 stow -vSt ~ git npm
-stow -vSt ~ kde
+stow -vSt ~ kde gtk-3.0 gtk-4.0
 stow -vSt ~ latte
 
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o "$USERHOME/bin/youtube-dl"
