@@ -8,7 +8,7 @@ fi
 # Export Variables     #
 ########################
 export ZSH=~/.oh-my-zsh
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:~/bin:~/bin/node_modules"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:~/bin:~/bin/node_modules:$HOME/.symfony/bin"
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 
@@ -17,7 +17,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 #     ZSH CONFIGS      #
 ########################
 ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases tmux history systemd zsh-autosuggestions zsh-syntax-highlighting virtualenv virtualenvwrapper)
+plugins=(git common-aliases tmux history ansible fzf zsh-autosuggestions virtualenv virtualenvwrapper)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

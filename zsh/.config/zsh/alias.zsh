@@ -43,3 +43,16 @@ alias updateDockerImages='docker images --format "{{.Repository}}:{{.Tag}}" | gr
 alias activateVenv='source ./venv/bin/activate'
 alias pr='poetry run'
 alias prn='poetry shell'
+
+#encodes
+alias t64='toBase64 $1'
+alias f64='fromBase64 $1'
+
+#tmux
+alias tdev='tmux new-session "tmux source-file ~/.tmux/development"'
+
+#kubernetes
+alias k='kubectl'
+alias kp='kubectl get pods'
+alias kn='kubectl get nodes'
+alias knc='kubernetes-scaffold'

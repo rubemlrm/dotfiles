@@ -1,3 +1,25 @@
+function kubernetes-scaffold()
+{
+    echo "
+    apiVersion: v1
+    kind:
+    metadata:
+
+    spec:
+
+    EOT" > $1
+}
+
+function toBase64()
+{
+    echo -n $1 | base64
+}
+
+function fromBase64()
+{
+    echo -n $1 | base64 --decode
+}
+
 function tSession()
 {
     tmux has-session -t dev 2 >/dev/null
