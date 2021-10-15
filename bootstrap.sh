@@ -50,7 +50,7 @@ stow -vSt ~ vim
 stow -vSt ~ nvim
 pip3 install --user --upgrade pynvim
 vim +'PlugInstall' +qa
-vim +'CocInstall coc-json coc-powershell coc-toml coc-vetur coc-python coc-jedi' +qa
+vim +'CocInstall coc-snippets coc-json coc-powershell coc-toml coc-vetur coc-python coc-jedi' +qa
 
 stow -vSt ~ tmux
 stow -vSt ~ terminator
