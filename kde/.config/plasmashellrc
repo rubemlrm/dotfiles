@@ -9,13 +9,16 @@ default Width 1024x768=595
 Number of Actions=0
 
 [KFileDialog Settings]
-Recent Files[$e]=wallhaven-4ovzj5.jpg,file:$HOME/Pictures/wallhaven-rddgwm.jpg
+Recent Files[$e]=wallhaven-4ovzj5.jpg,file:$HOME/Pictures/wallhaven-z8dg9y.png
 Recent URLs[$e]=file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/
 detailViewIconSize=128
 
 [KPropertiesDialog]
 DP-2 Height 2560x1440=535
 DP-2 Width 2560x1440=480
+
+[PlasmaTransientsConfig]
+PreloadWeight=92
 
 [PlasmaViews][Panel 2][Defaults]
 thickness=42
@@ -29,9 +32,28 @@ thickness=44
 [PlasmaViews][Panel 2][Horizontal2560]
 thickness=42
 
+[PlasmaViews][Panel 32][Defaults]
+thickness=50
+
+[PlasmaViews][Panel 32][Horizontal2560]
+thickness=50
+
+[PlasmaViews][Panel 56][Defaults]
+thickness=36
+
+[PlasmaViews][Panel 56][Horizontal1920]
+thickness=36
+
+[PlasmaViews][Panel 77][Defaults]
+thickness=36
+
+[PlasmaViews][Panel 77][Horizontal1920]
+thickness=36
+
 [ScreenConnectors]
 0=DP-2
-1=HDMI-A-1
+1=DP-0
+2=DP-4
 3=Screen47
 
 [Updates]
