@@ -9,6 +9,11 @@ Id_1=beca38e0-7327-4789-bab6-3c7fb36b5814
 Number=1
 Rows=1
 
+[DrmOutputs][f5c896be-24f5-5665-a29f-bb15b9ae8386][f5c896be-24f5-5665-a29f-bb15b9ae8386]
+Mode=2560x1440_59951
+Scale=1
+Transform=normal
+
 [NightColor]
 Active=true
 LatitudeAuto=39.6649

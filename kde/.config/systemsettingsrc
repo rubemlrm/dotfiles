@@ -1,4 +1,13 @@
+[KFileDialog Settings]
+Recent Files[$e]=1584474908131.jpg,file:$HOME/Pictures/1584474908131.jpg
+Recent URLs[$e]=file:$HOME/Pictures/
+detailViewIconSize=16
+
 [MainWindow]
+DP-2 DP-0 DP-4 XPosition 1536x864=343
+DP-2 DP-0 DP-4 XPosition 2048x1152=0
+DP-2 DP-0 DP-4 YPosition 1536x864=390
+DP-2 DP-0 DP-4 YPosition 2048x1152=0
 DP-2 HDMI-0 Window-Maximized 1920x1080=true
 DP-2 HDMI-A-1 Window-Maximized 1920x1080=true
 DP-2 HDMI-A-1 Window-Maximized 2137x1202=true
@@ -10,6 +19,8 @@ DP-2 XPosition 2560x1440=4
 DP-2 YPosition 2048x1152=63
 DP-2 YPosition 2560x1440=80
 HDMI-0 DP-2 Window-Maximized 1920x1080=true
+HDMI-0 XPosition 2048x1152=334
+HDMI-0 YPosition 2048x1152=106
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAA/wAAAK8AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
