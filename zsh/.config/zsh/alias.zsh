@@ -4,7 +4,8 @@ alias code="cd ~/Works/Code"
 alias dotfiles="cd ~/Works/Code/Personal/dotfiles"
 alias buildfiles="cd ~/Works/Code/Personal/buildfiles"
 alias personalSite="cd ~/Works/Code/Personal/rubemlrm.github.io"
-
+alias professionalCode="cd ~/Works/Code/Professional"
+alias sandbox="cd ~/Works/Code/Sandbox"
 #networking
 alias ports='netstat -tulanp'
 alias eh="sudo nano /etc/hosts"

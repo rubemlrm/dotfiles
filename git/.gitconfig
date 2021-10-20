@@ -1,5 +1,7 @@
-[include]
-	path = ~/.gitconfig-default
+[includeIf "gitdir:~/Works/Code/Personal/"]
+    path = ~/.gitconfig-default
+[includeIf "gitdir:~/Works/Code/Professional/"]
+    path = ~/.gitconfig-professional
 [core]
     # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.gitignore
@@ -24,9 +26,5 @@
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
-[user]
-	email = rubemmota89@gmail.com
-	name = Rubem Mota
-	signingkey = 1ED3FD2833406104
 [credential]
 	helper = manager-core
