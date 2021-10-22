@@ -6,9 +6,8 @@ let mapleader = ","
 noremap <F1> <Esc>
 
 "map esc to jk
-imap <leader>e <Esc>
-imap <C-e> <Esc>
-
+:imap jk <Esc>
+:imap kj <Esc>
 "change saving shortcut
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a

@@ -76,7 +76,9 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme dracula
+set background=dark
+colorscheme onedark
+
 " Source auxiliar configs
 source $HOME/.vim/general.vim
 source $HOME/.vim/plugins.vim
