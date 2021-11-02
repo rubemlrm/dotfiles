@@ -4,11 +4,12 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
 ########################
 # Export Variables     #
 ########################
 export ZSH=~/.oh-my-zsh
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:~/bin:~/bin/node_modules:$HOME/.symfony/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/go/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.config/composer/vendor/bin:$HOME/.local/bin:~/bin:$HOME/bin/node_modules:$HOME/.symfony/bin:$HOME/go/bin:$HOME/.config/rofi/scripts/"
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 
@@ -17,7 +18,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 #     ZSH CONFIGS      #
 ########################
 ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases tmux history ansible fzf zsh-autosuggestions virtualenv virtualenvwrapper)
+plugins=(git common-aliases tmux history ansible fzf zsh-autosuggestions debian dnf)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -50,10 +51,13 @@ setopt HIST_REDUCE_BLANKS
 ########################
 source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 emulate sh -c "source /etc/profile"
-
+source <(kubectl completion zsh)
 source $HOME/.config/zsh/alias.zsh
 source $HOME/.config/zsh/functions.zsh
+# reload kubernetes context files
+reload-kubectl-contexts
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

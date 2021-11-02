@@ -5,9 +5,9 @@
 "=============================================
 " VIM PLUG
 "=============================================
-map <leader>pu :PlugUpdate<CR>
-map <leader>pc :PlugClean<CR>
-map <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pc :PlugClean<CR>
+nnoremap <leader>pi :PlugInstall<CR>
 
 
 "============================================
@@ -198,6 +198,32 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+
+"=============================================
+" GUNDO
+"=============================================
+let undotree_WindowLayout = 3
+let undotree_SetFocusWhenToggle = 1
+nnoremap <c-u> :UndotreeToggle<CR>
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
+
+"==============================================
+" FLUXOTERM
+"==============================================
+nnoremap <c-g> :FloatermNew lazygit<cr>
+
 
 
 "=============================================

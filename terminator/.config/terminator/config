@@ -5,7 +5,9 @@
   title_receive_bg_color = "#8FBCBB"
   title_inactive_fg_color = "#D8DEE9"
   title_inactive_bg_color = "#4C566A"
-  enabled_plugins = ActivityWatch, InactivityWatch, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
+  enabled_plugins = ActivityWatch, InactivityWatch, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminalShot, CommandNotify
+  title_use_system_font = False
+  title_font = JetBrains Mono 9
   line_height = 1.2
 [keybindings]
 [profiles]

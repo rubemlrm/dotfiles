@@ -42,6 +42,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ap/vim-css-color'
+Plug 'voldikss/vim-floaterm'
 " UI Plugins
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/vim-gitbranch'
@@ -77,8 +78,7 @@ if (empty($TMUX))
 endif
 
 set background=dark
-colorscheme onedark
-
+colorscheme nord
 " Source auxiliar configs
 source $HOME/.vim/general.vim
 source $HOME/.vim/plugins.vim

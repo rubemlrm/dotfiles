@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2021 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Environtment
+export PATH="${PATH}:$HOME/.config/bspwm/bin"
+
+
+
+## Configurations --------------------------------------------#
+if [[ "$HOSTNAME" == "RMotaLaptop" ]]; then
+	source "$HOME/.config/bspwm/rmotalaptop-config"
+elif [[ "$HOSTNAME" == "DojoDesktop" ]]; then
+	source "$HOME/.config/bspwm/dojodesktop-config"
+else
+	bspc monitor 1 -n "1" -d 1 2 3 4 5 6
+fi
+
+workspaces
+
+bspc config border_width 1
+bspc config window_gap 3
+bspc config split_ratio 0.50
+
+bspc config focused_border_color "#8fbcbb"
+bspc config normal_border_color "#88c0d0"
+bspc config active_border_color "#81a1c1"
+bspc config presel_feedback_color "#5e81ac"
+
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config single_monocle false
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true
+
+## Window rules ----------------------------------------------#
+bspc rule -r *:*
+setAppsAndRules
+
+## Autostart -------------------------------------------------#
+
+# Kill if already running
+killall -9 xsettingsd sxhkd dunst xfce4-power-manager xfce4-screensaver blueman-applet
+
+# Lauch xsettingsd daemon
+xsettingsd &
+/usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11 &
+
+# polkit agent
+if [[ ! `pidof /usr/libexec/xfce-polkit` ]]; then
+	/usr/libexec/xfce-polkit &
+fi
+if [[ `pidof picom` ]]; then
+	killall picom
+fi
+picom --config "$HOME/.config/picom.conf" &
+feh --bg-scale ~/.config/wallpapers/wall1.jpg &
+# Lauch keybindings daemon
+sxhkd &
+xfce4-screensaver &
+xfce4-power-manager &
+thunar --daemon &
+#system-config-printer-applet &
+# Enable power management
+nm-applet &
+#blueman-applet &
+megasync &
+# Fix cursor
+xsetroot -cursor_name left_ptr
+# enable redshitf
+redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"') &
+
+if [[ `pidof polybar` ]]; then
+ 	killall polybar
+	setPolybar
+else
+	setPolybar
+fi

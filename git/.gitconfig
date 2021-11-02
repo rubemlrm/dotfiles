@@ -1,3 +1,5 @@
+[include]
+    path = ~/.gitconfig-default
 [includeIf "gitdir:~/Works/Code/Personal/"]
     path = ~/.gitconfig-default
 [includeIf "gitdir:~/Works/Code/Professional/"]
@@ -8,6 +10,7 @@
     attributesfile = ~/.gitattributes
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4
     untrackedCache = true
+    editor = "code-insiders --wait"
 [commit]
   	gpgsign = true
 [color]
@@ -28,3 +31,6 @@
 	untracked = red bold
 [credential]
 	helper = manager-core
+[alias]
+	c = commit -s
+    commit = commit -S

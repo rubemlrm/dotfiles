@@ -3,4 +3,3 @@ send-keys 'dotfiles && vim .' C-m
 neww -n 'buildfiles'
 send-keys 'buildfiles && vim .' C-m
 neww -n 'shell'
-send-keys 'code' C-m

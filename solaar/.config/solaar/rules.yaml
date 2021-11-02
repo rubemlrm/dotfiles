@@ -1,0 +1,10 @@
+%YAML 1.3
+---
+- MouseGesture: Mouse Up
+- KeyPress: [Meta_L, Up]
+- Key: [Mouse Gesture Button, released]
+...
+---
+- Key: [Mouse Gesture Button, released]
+...
+- KeyPress: [Alt_L, space]

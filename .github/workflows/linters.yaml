@@ -6,31 +6,20 @@ name: LINTERS
 # events but only for the master branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  lint_powershell:
-    runs-on: ubuntu-latest
-    name: Lint Powershell Code Base
-    steps:
-      - uses: actions/checkout@v2.3.1
-      - name: Super-Linter
-        uses: docker://github/super-linter:v3
-        env:
-           VALIDATE_ALL_CODEBASE: true
-           VALIDATE_POWERSHELL: true
-           GITHUB_TOKEN: ${{ secrets.ACTIONS_SECRET }}
   lint_bash:
     runs-on: ubuntu-latest
     name: Lint Bash Base
     steps:
       - uses: actions/checkout@v2.3.1
       - name: Super-Linter
-        uses: docker://github/super-linter:v3
+        uses: github/super-linter@v4
         env:
-           VALIDATE_ALL_CODEBASE: true
-           VALIDATE_BASH: true
-           GITHUB_TOKEN: ${{ secrets.ACTIONS_SECRET }}
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_BASH: true
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_SECRET }}

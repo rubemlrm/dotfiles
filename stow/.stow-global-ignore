@@ -14,3 +14,5 @@ LICENSE.*
 README.*
 plugins
 themes
+.gitconfig-professional
+k9s/.config/k9s/config.yml
