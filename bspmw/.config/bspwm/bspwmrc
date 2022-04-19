@@ -41,7 +41,7 @@ setAppsAndRules
 ## Autostart -------------------------------------------------#
 
 # Kill if already running
-killall -9 xsettingsd sxhkd dunst xfce4-power-manager xfce4-screensaver blueman-applet
+killall -9 xsettingsd sxhkd dunst xfce4-power-manager xfce4-screensaver blueman-applet redshift
 
 # Lauch xsettingsd daemon
 xsettingsd &
@@ -55,20 +55,19 @@ if [[ `pidof picom` ]]; then
 	killall picom
 fi
 picom --config "$HOME/.config/picom.conf" &
-feh --bg-scale ~/.config/wallpapers/wall1.jpg &
+feh --bg-scale ~/.config/wallpapers/wall2.jpg &
 # Lauch keybindings daemon
 sxhkd &
 xfce4-screensaver &
 xfce4-power-manager &
 thunar --daemon &
 blueman-applet &
-evolution &
 nm-applet &
 megasync &
 # Fix cursor
 xsetroot -cursor_name left_ptr
 # enable redshitf
-redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"') &
+#redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"') &
 
 if [[ `pidof polybar` ]]; then
  	killall polybar
