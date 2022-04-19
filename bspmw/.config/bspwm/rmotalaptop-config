@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export NETWORK_CARD="enp4s0"
+export NETWORK_CARD="wlp0s20f3"
 export SPECIFIC_TRAYBAR_POLYBAR_MODULES="battery sep"
 
 workspaces() {
@@ -26,6 +26,7 @@ setAppsRules() {
     bspc rule -a "mattermost" desktop='^5' follow=on focus=on
 	bspc rule -a "teams-for-linux" desktop='^6' follow=on focus=on
 	bspc rule -a "slack" desktop='^5' follow=on focus=on
+    bspc rule -a "evolution" desktop='^5' follow=on focus=on
 }
 
 setAppsAutoStart() {

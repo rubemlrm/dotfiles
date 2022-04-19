@@ -61,10 +61,9 @@ sxhkd &
 xfce4-screensaver &
 xfce4-power-manager &
 thunar --daemon &
-#system-config-printer-applet &
-# Enable power management
+blueman-applet &
+evolution &
 nm-applet &
-#blueman-applet &
 megasync &
 # Fix cursor
 xsetroot -cursor_name left_ptr
