@@ -29,12 +29,12 @@ while true; do
     # when there are updates available
     # every 10 seconds another check for updates is done
     while (( UPDATES > 0 )); do
-        if (( UPDATES == 1 )); then
-            echo "$UPDATES"
-        elif (( UPDATES > 1 )); then
-            echo "$UPDATES"
+        if (( UPDATES > 50 )); then
+            echo "$%{F#ffff00}%{F-}"
+        elif (( UPDATES > 25 )); then
+            echo "$%{F#f00}%{F-}"
         else
-            echo "None"
+            echo ""
         fi
         sleep 10
         get_total_updates
@@ -43,7 +43,7 @@ while true; do
     # when no updates are available, use a longer loop, this saves on CPU
     # and network uptime, only checking once every 30 min for new updates
     while (( UPDATES == 0 )); do
-        echo "None"
+        echo ""
         sleep 1800
         get_total_updates
     done

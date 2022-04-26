@@ -20,10 +20,26 @@
       "multiplatform",
       "gesture2-gestures",
       "gesture2-divert",
-      "gesture2-params"
+      "gesture2-params",
+      "dpi-sliding",
+      "mouse-gestures",
+      "reprogrammable-keys",
+      "divert-keys",
+      "change-host"
     ],
+    "_dpi-sliding": 9,
     "_modelId": "B02340820000",
     "_name": "MX Master 3 Wireless Mouse",
+    "_sensitive": {
+      "dpi": true,
+      "dpi-sliding": true,
+      "hires-smooth-invert": false,
+      "mouse-gestures": true,
+      "reprogrammable-keys": false,
+      "smart-shift": false,
+      "thumb-scroll-invert": false,
+      "thumb-scroll-mode": false
+    },
     "_serial": "A42537E1",
     "_unitId": "A42537E1",
     "divert-keys": {
@@ -81,9 +97,13 @@
     ],
     "_modelId": "B35B408A0000",
     "_name": "MX Keys Keyboard",
+    "_sensitive": {
+      "backlight": false,
+      "multiplatform": false
+    },
     "_serial": "D6596073",
     "_unitId": "D6596073",
-    "backlight": true,
+    "backlight": false,
     "disable-keyboard-keys": {
       "1": false,
       "16": false,
