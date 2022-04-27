@@ -32,6 +32,7 @@ setAppsRules() {
 setAppsAutoStart() {
     flatpak run com.mattermost.Desktop &
     flatpak run com.slack.Slack &
+    flatpak run com.discordapp.Discord &
 }
 
 setPolybar() {

@@ -18,7 +18,7 @@ control + alt + l
 
 ##---------- Applications ----------##
 
-# Terminal (alacritty)
+# Terminal
 alt + shift + t
 	terminator
 
@@ -34,10 +34,6 @@ alt + shift + s
 # Launch Apps
 super + shift + f
     thunar
-
-# Terminal Apps
-ctrl + alt + {v,n,h}
-	alacritty --config-file ~/.config/alacritty/alacritty.yml -e {vim,nvim,htop}
 
 ##---------- System Keys ----------##
 
