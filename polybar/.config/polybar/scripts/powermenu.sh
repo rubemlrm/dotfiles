@@ -8,7 +8,7 @@
 dir="~/.config/rofi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $dir/powermenu.rasi"
+rofi_command="rofi -theme $dir/themes/powermenu.rasi"
 
 # Options
 shutdown=" Shutdown"
@@ -23,7 +23,7 @@ confirm_exit() {
 		-i\
 		-no-fixed-num-lines\
 		-p "Are You Sure? : "\
-		-theme $dir/confirm.rasi
+		-theme $dir/themes/confirm.rasi
 }
 
 # Message

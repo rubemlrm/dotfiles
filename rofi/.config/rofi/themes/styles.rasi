@@ -11,7 +11,7 @@ configuration {
 	font:							"Noto Sans 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"";
+    display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -28,7 +28,7 @@ window {
 	border:							0px 0px 0px 0px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							400px;
+	width:							300px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -46,7 +46,7 @@ textbox-prompt-colon {
 	background-color: 				@ac;
 	text-color: 					@fg;
 	expand: false;
-	str: "";
+	str: "";
 	font:							"feather 12";
 }
 
@@ -62,7 +62,7 @@ entry {
 }
 
 inputbar {
-	children: 						[ textbox-prompt-colon, prompt ];
+	children: 						[ textbox-prompt-colon, entry ];
     background-color:               @bga;
     text-color:                     @fg;
     expand:                         false;
@@ -77,7 +77,7 @@ listview {
     background-color:               @al;
     padding:                        0px;
     columns:                        1;
-    lines:                          8;
+    lines:                          5;
     spacing:                        6px;
     cycle:                          true;
     dynamic:                        true;
@@ -99,12 +99,12 @@ element {
     text-color:                     @fga;
     orientation:                    horizontal;
     border-radius:                  0px;
-	padding: 						3px 3px 3px -12px;
+	padding: 						3px 3px 3px -23px;
 }
 
 element-icon {
-    display:                        none;
-    background-color: @bga;
+    size:                           24px;
+    border:                         0px;
 }
 
 element-text {
@@ -113,7 +113,7 @@ element-text {
     expand:                         true;
     horizontal-align:               0;
     vertical-align:                 0.5;
-    margin:                         0px 1.5px 0px 1.5px;
+    margin:                         0px 2.5px 0px 2.5px;
 }
 
 element selected {
