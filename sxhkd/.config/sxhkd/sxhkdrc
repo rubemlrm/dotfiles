@@ -3,8 +3,11 @@
 # Rofi App Launcher
 alt + space
 	sh ~/.config/rofi/launcher.sh
+
+alt + Tab
+    rofi -show window -window-thumbnail -theme ~/.config/rofi/themes/switcher.rasi
 # Rofi Network Menu
-super + n
+super + b
 	networkmanager_dmenu
 
 super + m
@@ -15,6 +18,10 @@ super + p
 
 control + alt + l
 	xflock4
+
+super + z
+    bspc node focused -t floating; bspc node -d '^12'
+
 
 ##---------- Applications ----------##
 
@@ -42,16 +49,15 @@ Print
 	xfce4-screenshooter
 
 # Brighness control
-XF86MonBrightness{Up,Down}
-	brightnessctl{ --inc, --dec}
+XF86MonBrightnessUp
+	brightnessctl set +5% -q; dunstify --replace 1 -t 3000 --icon=daytime-sunrise-symbolic.symbolic "Brightness Up" "$(brightnessctl -m | cut -d',' -f4)"
 
+# Brightness down
+XF86MonBrightnessDown
+	brightnessctl set 5%- -q; dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic "Brightness Down" "$(brightnessctl -m | cut -d',' -f4)"
 # Volume control
-XF86Audio{RaiseVolume,LowerVolume}
-	volume{ --inc, --dec}
-
-XF86AudioMute
-	volume --toggle
-
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%,toggle}
 
 ##---------- Bspwm ----------##
 
@@ -126,9 +132,5 @@ super + alt + {Left,Right,Up,Down}
 ## Move floating windows
 alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# Hide/Unhide Window
-super + shift + i
-	winmask
 
 ##---------- EOF ----------##
