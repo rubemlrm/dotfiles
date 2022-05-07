@@ -16,7 +16,7 @@ workspaces() {
 		bspc monitor  eDP-1 -n "eDP-1" -d 6 7 8
 		bspc monitor  DP-3 -n "DP-3" -d 1 2 3 4 5
 	else
-		bspc monitor 1 -n "1" -d 1 2 3 4 5 6
+		bspc monitor eDP-1 -n "eDP-1" -d 1 2 3 4 5 6
 	fi
 }
 
@@ -30,6 +30,7 @@ setAppsRules() {
 }
 
 setAppsAutoStart() {
+    brightnessctl set 45% -q;
     flatpak run com.mattermost.Desktop &
     flatpak run com.slack.Slack &
     flatpak run com.discordapp.Discord &

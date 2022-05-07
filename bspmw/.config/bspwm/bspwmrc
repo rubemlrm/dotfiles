@@ -62,6 +62,7 @@ blueman-applet &
 nm-applet &
 megasync &
 solaar --window=hide &
+flameshot &
 
 # Fix cursor
 xsetroot -cursor_name left_ptr

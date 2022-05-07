@@ -29,24 +29,24 @@ super + z
 alt + shift + t
 	terminator
 
-alt + shift + b
+alt + b
     firefox
 
-alt + shift + c
+alt + c
     code-insiders
 
 alt + shift + s
     flatpak run com.spotify.Client
 
 # Launch Apps
-super + shift + f
+super + e
     thunar
 
 ##---------- System Keys ----------##
 
 # Take a screenshot
 Print
-	xfce4-screenshooter
+	flameshot gui -p ~/Screenshots
 
 # Brighness control
 XF86MonBrightnessUp
@@ -55,9 +55,10 @@ XF86MonBrightnessUp
 # Brightness down
 XF86MonBrightnessDown
 	brightnessctl set 5%- -q; dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic "Brightness Down" "$(brightnessctl -m | cut -d',' -f4)"
+
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%,toggle}
+	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%,toggle}; dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic "Current Volume" "$(pactl get-sink-volume @DEFAULT_SINK@ | cut -d' ' -f6)"
 
 ##---------- Bspwm ----------##
 
