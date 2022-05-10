@@ -58,6 +58,15 @@ source $HOME/.config/zsh/alias.zsh
 source $HOME/.config/zsh/functions.zsh
 # reload kubernetes context files
 reload-kubectl-contexts
-
+#if [ "$TMUX" = "" ]; then tmux; fi
+#if [ -z "$TMUX" ]; then
+#    tmux attach -t default || tmux new -s default
+#fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

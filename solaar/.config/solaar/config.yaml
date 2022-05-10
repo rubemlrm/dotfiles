@@ -1,0 +1,38 @@
+- 1.1.3
+- _NAME: MX Master 3 Wireless Mouse
+  _absent: [hi-res-scroll, lowres-smooth-scroll, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
+    disable-keyboard-keys, divert-crown, crown-smooth, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
+    dpi-sliding, mouse-gestures, reprogrammable-keys, divert-keys, change-host, lowres-scroll-mode]
+  _dpi-sliding: 9
+  _modelId: B02340820000
+  _sensitive: {dpi: true, dpi-sliding: true, hires-smooth-invert: false, mouse-gestures: true, reprogrammable-keys: false, smart-shift: false, thumb-scroll-invert: false,
+    thumb-scroll-mode: false}
+  _serial: A42537E1
+  _unitId: A42537E1
+  _wpid: '4082'
+  divert-keys: {82: 0, 83: 0, 86: 0, 195: 0, 196: 0}
+  dpi: 1000
+  dpi-sliding: 0
+  hires-scroll-mode: false
+  hires-smooth-invert: false
+  hires-smooth-resolution: true
+  mouse-gestures: 0
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
+  smart-shift: 10
+  thumb-scroll-invert: false
+  thumb-scroll-mode: false
+- _NAME: MX Keys Keyboard
+  _absent: [hi-res-scroll, lowres-smooth-scroll, hires-smooth-invert, hires-smooth-resolution, smart-shift, thumb-scroll-mode, thumb-scroll-invert, onboard_profiles,
+    report_rate, pointer_speed, dpi, dpi-sliding, speed-change, mouse-gestures, backlight-timed, reprogrammable-keys, persistent-remappable-keys, divert-crown,
+    crown-smooth, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, lowres-scroll-mode, hires-scroll-mode]
+  _modelId: B35B408A0000
+  _sensitive: {backlight: true, multiplatform: false}
+  _serial: D6596073
+  _unitId: D6596073
+  _wpid: 408A
+  backlight: true
+  disable-keyboard-keys: {1: false, 2: false, 4: false, 8: false, 16: false}
+  divert-keys: {10: 0, 110: 0, 111: 0, 191: 0, 199: 0, 200: 0, 209: 0, 210: 0, 211: 0, 224: 0, 225: 0, 226: 0, 227: 0, 228: 0, 229: 0, 230: 0, 231: 0, 232: 0,
+    233: 0, 234: 0, 235: 0, 236: 0}
+  fn-swap: true
+  multiplatform: 0

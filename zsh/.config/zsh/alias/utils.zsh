@@ -40,4 +40,4 @@ alias f64='fromBase64 $1'
 
 #tmux
 alias tdev='tmux new-session "tmux source-file ~/.tmux/development"'
-alias update="sudo dnf update -y && flatpak update -y"
+alias update="sudo dnf update -y && flatpak update -y && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U && npm upgrade && composer global update"
