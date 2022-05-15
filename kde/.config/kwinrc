@@ -11,9 +11,15 @@ Rows=1
 
 [NightColor]
 Active=true
+LatitudeAuto=39.6456
+LongitudeAuto=-8.5928
 
 [TabBox]
 LayoutName=thumbnail_grid
 
 [TabBoxAlternative]
 LayoutName=thumbnails
+
+[org.kde.kdecoration2]
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__Arc-Dark

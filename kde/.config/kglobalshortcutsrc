@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-2def486f-a9ea-4918-b4d8-6cb403d8155d=none,none,Switch to activity "Default"
 switch-to-activity-ea3569fc-02f9-4b6c-9d3e-8c9af4a8a54f=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
@@ -196,11 +197,11 @@ view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
-mediavolumedown=none,none,Media volume down
-mediavolumeup=none,none,Media volume up
+mediavolumedown=none,,Media volume down
+mediavolumeup=none,,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 pausemedia=Media Pause,Media Pause,Pause media playback
-playmedia=none,none,Play media playback
+playmedia=none,,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
@@ -253,6 +254,8 @@ activate task manager entry 6=Meta+6,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=Meta+7,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
+activate widget 106=none,none,Activate Application Menu Widget
+activate widget 108=none,none,Activate Application Launcher Widget
 activate widget 25=Alt+F1,none,Activate Application Menu Widget
 activate widget 49=none,none,Activate Application Menu Widget
 activate widget 78=none,none,Activate Application Menu Widget

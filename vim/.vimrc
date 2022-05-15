@@ -53,6 +53,7 @@ Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
@@ -78,7 +79,7 @@ if (empty($TMUX))
 endif
 
 set background=dark
-colorscheme nord
+colorscheme gruvbox
 " Source auxiliar configs
 source $HOME/.vim/general.vim
 source $HOME/.vim/plugins.vim

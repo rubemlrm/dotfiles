@@ -1236,6 +1236,7 @@ Type=SHORTCUT
 Uuid={96c0b3ae-9d0d-45dd-b275-c11c01424ff7}
 
 [General]
+AccentColor[$d]
 BrowserApplication[$d]
 ColorScheme[$d]
 ColorSchemeHash[$d]
