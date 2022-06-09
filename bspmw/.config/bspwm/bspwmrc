@@ -38,7 +38,7 @@ setAppsRules
 ## Autostart -------------------------------------------------#
 
 # Kill if already running
-killall -9 xsettingsd sxhkd dunst xfce4-power-manager xfce4-screensaver blueman-applet redshift
+killall -9 xsettingsd sxhkd dunst xfce4-power-manager xfce4-screensaver blueman-applet redshift flameshot solaar redshift
 
 # Lauch xsettingsd daemon
 xsettingsd &
@@ -69,10 +69,11 @@ xsetroot -cursor_name left_ptr
 
 # enable redshitf
 redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"') &
-setAppsAutoStart
 if [[ `pidof polybar` ]]; then
  	killall polybar
 	setPolybar
 else
 	setPolybar
 fi
+
+setAppsAutoStart

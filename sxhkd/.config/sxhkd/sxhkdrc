@@ -75,7 +75,7 @@ ctrl + alt + Escape
     xkill
 
 # Quit/Restart bspwm
-ctrl + shift + {q,r}
+super + {q,r}
 	bspc {quit,wm -r}
 
 # Split horizontal, vertical or cancel

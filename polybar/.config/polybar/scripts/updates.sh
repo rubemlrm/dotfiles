@@ -30,9 +30,9 @@ while true; do
     # every 10 seconds another check for updates is done
     while (( UPDATES > 0 )); do
         if (( UPDATES > 50 )); then
-            echo "$%{F#ffff00}%{F-}"
+            echo "%{F#ffff00}%{F-}"
         elif (( UPDATES > 25 )); then
-            echo "$%{F#f00}%{F-}"
+            echo "%{F#f00}%{F-}"
         else
             echo ""
         fi
