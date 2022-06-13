@@ -10,7 +10,7 @@
 configuration {
 	font:							"Noto Sans 10";
     show-icons:                     true;
-	icon-theme: 					"Papirus";
+	icon-theme: 					"Nordic-Darker";
     display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
@@ -19,7 +19,6 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
 
 window {
     transparency:                   "real";

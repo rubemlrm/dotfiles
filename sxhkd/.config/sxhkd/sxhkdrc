@@ -17,7 +17,7 @@ super + p
 	sh ~/.config/polybar/scripts/powermenu.sh
 
 control + alt + l
-	xflock4
+	xsecurelock
 
 super + z
     bspc node focused -t floating; bspc node -d '^12'
