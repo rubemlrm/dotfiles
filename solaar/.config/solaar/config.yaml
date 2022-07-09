@@ -24,7 +24,8 @@
 - _NAME: MX Keys Keyboard
   _absent: [hi-res-scroll, lowres-smooth-scroll, hires-smooth-invert, hires-smooth-resolution, smart-shift, thumb-scroll-mode, thumb-scroll-invert, onboard_profiles,
     report_rate, pointer_speed, dpi, dpi-sliding, speed-change, mouse-gestures, backlight-timed, reprogrammable-keys, persistent-remappable-keys, divert-crown,
-    crown-smooth, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, lowres-scroll-mode, hires-scroll-mode]
+    crown-smooth, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, lowres-scroll-mode, hires-scroll-mode, multiplatform,
+    change-host, divert-keys, disable-keyboard-keys]
   _modelId: B35B408A0000
   _sensitive: {backlight: true, multiplatform: false}
   _serial: D6596073

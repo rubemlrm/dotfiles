@@ -44,3 +44,5 @@ kde/.config/plasma-org.kde.plasma.desktop-appletsrc.lock
 !rofi/.config/rofi/bin
 !bspmw/.config/bspmw/bin
 QtProject.conf
+
+node_modules

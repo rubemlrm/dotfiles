@@ -31,6 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Language Specific
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'mattn/emmet-vim'
+Plug 'fatih/vim-go'
 
 
 "Extra Utils
@@ -38,7 +39,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/tagbar'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ap/vim-css-color'
@@ -49,8 +49,6 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 call plug#end()
 

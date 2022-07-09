@@ -1,7 +1,9 @@
 " KEYBINDING
 "============================================
 "Rebing <leader>key
-let mapleader = ","
+nnoremap <SPACE> <Nop>
+t current window
+let mapleader = " "
 "I can type :help on my own, thanks.
 noremap <F1> <Esc>
 
@@ -49,6 +51,12 @@ nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
 imap <C-V> x<Esc>\\paste\\"_s
 vmap <C-V> "-cx<Esc>\\paste\\"_x"""""""""""
 
+
+" Copy to system clipboard
+noremap <leader>c "*yy<cr>
+
+" Paste without indent
+noremap<leader>v "+p<cr>
 
 "=============================================
 " SPLITS
