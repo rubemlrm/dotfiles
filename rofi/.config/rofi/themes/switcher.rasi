@@ -2,41 +2,7 @@
 @import "styles.rasi"
 
 textbox-colon-prompt {
- str: "";
+str: "";
 }
 
 
-window {
-	width:							550px;
-}
-
-prompt {
-    enabled: 						true;
-	padding: 						6px 7px 4px 7px;
-	background-color: 				@ac;
-	text-color: 					@fg;
-}
-
-
-inputbar {
-	children: 						[ prompt, entry ];
-}
-
-listview {
-    columns:                        2;
-    lines:                          8;
-}
-
-
-element {
-	padding: 						3px;
-}
-
-element-icon {
-    background-color:              @bga;
-}
-
-element-text {
-    background-color: @bga;
-    text-color: @fga;
-}

@@ -2,7 +2,6 @@
 "============================================
 "Rebing <leader>key
 nnoremap <SPACE> <Nop>
-t current window
 let mapleader = " "
 "I can type :help on my own, thanks.
 noremap <F1> <Esc>

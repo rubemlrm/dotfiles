@@ -22,16 +22,16 @@ workspaces() {
 }
 
 setAppsRules() {
-    bspc rule -a "evolution" desktop='^1' follow=on focus=on
-    bspc rule -a "Code - Insiders" desktop="^2" follow=on focus=on
-    bspc rule -a "firefox" desktop="^4" follow=on focus=on
-    bspc rule -a "chrome" desktop="^4" follow=on focus=on
-    bspc rule -a "Terminator" desktop="^3" follow=on focus=on
-    bspc rule -a "whatsapp-desktop-linux" desktop='^5' follow=on focus=on
-    bspc rule -a "mattermost" desktop='^5' follow=on focus=on
-	bspc rule -a "slack" desktop='^5' follow=on focus=on
-    bspc rule -a "teams-for-linux" desktop='^6' follow=on focus=on
-    bspc rule -a "discord" desktop='^6' follow=on focus=on
+    bspc rule -a "evolution" desktop='^1'
+    bspc rule -a "Code - Insiders" desktop="^2"
+    bspc rule -a "firefox" desktop="^7"
+    bspc rule -a "chrome" desktop="^4"
+    bspc rule -a "Terminator" desktop="^3"
+    bspc rule -a "whatsapp-desktop-linux" desktop='^5'
+    bspc rule -a "mattermost" desktop="^5"
+	bspc rule -a "slack" desktop='^5'
+    bspc rule -a "teams-for-linux" desktop='^6'
+    bspc rule -a "discord" desktop='^6'
 }
 
 setAppsAutoStart() {

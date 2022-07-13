@@ -7,17 +7,14 @@ alt + space
 alt + Tab
     rofi -show window -window-thumbnail -theme ~/.config/rofi/themes/switcher.rasi
 # Rofi Network Menu
-super + b
+super + n
 	networkmanager_dmenu
-
+# Rofi Bluetooth Menu
 super + m
 	sh ~/.config/rofi/scripts/rofi-bluetooth
 # Rofi power menub
 super + p
 	sh ~/.config/polybar/scripts/powermenu.sh
-
-control + alt + l
-	xsecurelock
 
 super + z
     bspc node focused -t floating; bspc node -d '^12'
@@ -26,7 +23,7 @@ super + z
 ##---------- Applications ----------##
 
 # Terminal
-alt + shift + t
+super + t
 	terminator
 
 alt + b
@@ -41,6 +38,10 @@ alt + shift + s
 # Launch Apps
 super + e
     thunar
+
+
+super + l
+	sh ~/.config/bspwm/scripts/i3lock-fancy.sh --desktop
 
 ##---------- System Keys ----------##
 
