@@ -198,7 +198,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_1_2Triggers0]
-Key=Ctrl+Alt+T
+Key=
 Type=SHORTCUT
 Uuid={ec24e86c-9593-4bc6-baa8-3fdfe951001b}
 
@@ -1057,7 +1057,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_1Triggers0]
-Key=Alt+S
+Key=
 Type=SHORTCUT
 Uuid={3c04e4ea-1f6e-430e-82bb-0e4adb79a6a3}
 
@@ -1086,7 +1086,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_2Triggers0]
-Key=Alt+C
+Key=
 Type=SHORTCUT
 Uuid={aaed7bc1-a7bc-4abc-b319-9b95abb5216b}
 
@@ -1115,7 +1115,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_3Triggers0]
-Key=Ctrl+Alt+1
+Key=
 Type=SHORTCUT
 Uuid={5d4c37a6-d8b3-40b0-aa6a-92f325302538}
 
@@ -1144,7 +1144,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_4Triggers0]
-Key=Alt+1
+Key=
 Type=SHORTCUT
 Uuid={81787487-f07d-4111-b1cf-9da1406075ca}
 
@@ -1173,7 +1173,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_5Triggers0]
-Key=Ctrl+Alt+2
+Key=
 Type=SHORTCUT
 Uuid={e74b442f-47db-4314-a0e0-a56e1b753804}
 
@@ -1202,7 +1202,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_6Triggers0]
-Key=Alt+2
+Key=
 Type=SHORTCUT
 Uuid={9f894206-fbcf-48f1-9fb3-df9cec37bacb}
 
@@ -1231,7 +1231,7 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_7Triggers0]
-Key=Alt+P
+Key=
 Type=SHORTCUT
 Uuid={96c0b3ae-9d0d-45dd-b275-c11c01424ff7}
 
@@ -1288,6 +1288,7 @@ Show Speedbar[$d]
 Show hidden files[$d]
 Sort by[$d]
 Sort directories first[$d]
+Sort hidden files last[$d]
 Sort reversed[$d]
 Speedbar Width[$d]
 View Style[$d]

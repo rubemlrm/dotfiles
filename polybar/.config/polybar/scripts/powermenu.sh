@@ -29,9 +29,7 @@ case $chosen in
 		systemctl reboot
         ;;
     $lock)
-		if [[ -f /usr/bin/xsecurelock ]]; then
-			xsecurelock
-		fi
+        sh ~/.config/bspwm/scripts/i3lock-fancy.sh --desktop
         ;;
     $suspend)
 		mpc -q pause

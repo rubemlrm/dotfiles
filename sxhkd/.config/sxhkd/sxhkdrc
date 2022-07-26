@@ -3,7 +3,7 @@
 # Rofi App Launcher
 alt + space
 	sh ~/.config/rofi/launcher.sh
-
+# Alt Tab
 alt + Tab
     rofi -show window -window-thumbnail -theme ~/.config/rofi/themes/switcher.rasi
 # Rofi Network Menu
@@ -25,21 +25,23 @@ super + z
 # Terminal
 super + t
 	terminator
-
+# Firefox
 alt + b
     firefox
-
+# Code
 alt + c
     code-insiders
-
+# Spotify
 alt + shift + s
     flatpak run com.spotify.Client
 
 # Launch Apps
 super + e
     thunar
-
-
+# List Shortcuts
+super + s
+  sh ~/.config/rofi/scripts/list-shortcuts.sh
+# Lock Screen
 super + l
 	sh ~/.config/bspwm/scripts/i3lock-fancy.sh --desktop
 
