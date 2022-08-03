@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
- 
+
 ## Environtment
 export PATH="${PATH}:$HOME/.config/bspwm/bin"
 ## Java hack
@@ -18,7 +18,7 @@ fi
 workspaces
 
 bspc config border_width 1
-bspc config window_gap 3
+bspc config window_gap 1
 bspc config split_ratio 0.50
 
 bspc config normal_border_color "#44475a"
@@ -56,7 +56,6 @@ picom --config "$HOME/.config/picom.conf" &
 feh --bg-scale ~/.config/wallpapers/wall3.jpg &
 # Lauch keybindings daemon
 sxhkd &
-xfce4-screensaver &
 xfce4-power-manager &
 thunar --daemon &
 blueman-applet &
