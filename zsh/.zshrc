@@ -10,9 +10,9 @@ fi
 ########################
 export ZSH=~/.oh-my-zsh
 export PATH="$PATH:/usr/local/sbin:/usr/local/go/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.config/composer/vendor/bin:$HOME/.local/bin:~/bin:$HOME/bin/node_modules:$HOME/.symfony/bin:$HOME/go/bin:$HOME/.config/rofi/scripts/"
-
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-
+export EDITOR=/usr/bin/vim
+export K9S_EDITOR=/usr/bin/vim
 
 ########################
 #     ZSH CONFIGS      #
