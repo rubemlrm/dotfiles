@@ -22,6 +22,7 @@ plugins
 #zsh
 zsh/.config/zsh/plugins
 zsh/.config/zsh/themes
+work.zsh
 
 # Temporary
 .netrwhist

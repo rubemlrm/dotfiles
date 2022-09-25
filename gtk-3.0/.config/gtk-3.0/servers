@@ -13,4 +13,14 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="smb://192.168.2.1/media/" added="2022-09-05T16:45:00.751536Z" modified="2022-09-05T16:45:00.751546Z" visited="2022-09-05T16:45:00.751539Z">
+    <title>media on 192.168.2.1</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-09-05T16:45:00.751541Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
