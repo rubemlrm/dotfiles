@@ -1,8 +1,9 @@
-- 1.1.4
+- 1.1.5
 - _NAME: MX Master 3 Wireless Mouse
   _absent: [hi-res-scroll, lowres-smooth-scroll, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
     disable-keyboard-keys, divert-crown, crown-smooth, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
     dpi-sliding, mouse-gestures, reprogrammable-keys, divert-keys, change-host, lowres-scroll-mode, sidetone, equalizer]
+  _battery: 4096
   _dpi-sliding: 9
   _modelId: B02340820000
   _sensitive: {dpi: true, dpi-sliding: true, hires-smooth-invert: false, mouse-gestures: true, reprogrammable-keys: false, smart-shift: false, thumb-scroll-invert: false,
@@ -26,6 +27,7 @@
     report_rate, pointer_speed, dpi, dpi-sliding, speed-change, mouse-gestures, backlight-timed, reprogrammable-keys, persistent-remappable-keys, divert-crown,
     crown-smooth, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, lowres-scroll-mode, hires-scroll-mode, multiplatform,
     change-host, divert-keys, disable-keyboard-keys, sidetone, equalizer]
+  _battery: 4096
   _modelId: B35B408A0000
   _sensitive: {backlight: true, multiplatform: false}
   _serial: D6596073
