@@ -22,19 +22,9 @@ rm -rf "$USERHOME/.gitignore"
 rm -rf "$USERHOME/.gitattributes"
 rm -rf "$USERHOME/.npmrc"
 rm -rf "$USERHOME/.gitconfig-default"
-rm -rf "$USERHOME/.config/latte"
 rm -rf "$USERHOME/.config/solaar"
 
-gtk3FilesToRemove=$(ls ./gtk-3.0/.config/gtk-3.0)
-for item in $gtk3FilesToRemove; do
-    rm -rf "$USERHOME/.config/gtk-3.0/$item"
-done
-gtk4FilesToRemove=$(ls ./gtk-4.0/.config/gtk-4.0)
-for item in $gtk4FilesToRemove; do
-    rm -rf "$USERHOME/.config/gtk-4.0/$item"
-done
-
-stow -vSt "$HOME" stow zsh vim nvim tmux terminator git npm neofetch gtk-3.0 gtk-4.0 solaar wallpapers alacritty
+stow -vSt "$HOME" stow zsh vim nvim tmux terminator git npm neofetch solaar wallpapers alacritty
 echo -e "\033[1;33m creating vim symlinks \033[0m"
 pip3 install --user --upgrade pynvim
 vim +'PlugInstall' +qa
