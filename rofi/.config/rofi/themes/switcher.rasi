@@ -1,0 +1,8 @@
+@import "colors.rasi"
+@import "styles.rasi"
+
+textbox-colon-prompt {
+str: "";
+}
+
+

@@ -34,7 +34,7 @@ for item in $gtk4FilesToRemove; do
     rm -rf "$USERHOME/.config/gtk-4.0/$item"
 done
 
-stow -vSt "$HOME" stow zsh vim nvim tmux terminator git npm neofetch gtk-3.0 gtk-4.0 solaar wallpapers alacritty
+stow -vSt "$HOME" stow zsh vim nvim tmux terminator git npm neofetch gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi networkmanager-dmenu
 echo -e "\033[1;33m creating vim symlinks \033[0m"
 pip3 install --user --upgrade pynvim
 vim +'PlugInstall' +qa

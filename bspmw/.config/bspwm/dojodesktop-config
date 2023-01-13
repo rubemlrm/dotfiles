@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+export NETWORK_CARD="enp4s0"
+export SPECIFIC_TRAYBAR_POLYBAR_MODULES="sep"
+
+workspaces() {
+    xrandr --output DP-0 --mode 1920x1080 --pos 4480x0 --rotate normal --output DP-1 --off --output DP-2 --primary --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-3 --off --output HDMI-0 --off --output DP-4 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-5 --off
+    bspc monitor  DP-4 -n "DP-4" -d 1
+    bspc monitor  DP-2 -n "DP-2" -d 2 3
+    bspc monitor  DP-0 -n "DP-0" -d 4 5 6
+}
+
+setAppsRules() {
+    bspc rule -a "bitwarden" desktop="^1" follow=on focus=on
+    bspc rule -a "logseq" desktop="^1" follow=on focus=on
+    bspc rule -a "spotify" desktop="^1" follow=on focus=on
+    bspc rule -a "firefox" desktop="^4" follow=on focus=on
+    bspc rule -a "whatsapp-desktop-linux" desktop='^5' follow=on focus=on
+    bspc rule -a "discord" desktop='^5' follow=on focus=on
+
+}
+
+setAppsAutoStart() {
+    flatpak run com.discordapp.Discord &
+    flatpak run io.github.mimbrero.WhatsAppDesktop &
+    steam &
+}
+
+setPolybar() {
+    MONITOR="DP-4" polybar -q main -c "$HOME/.config/polybar/config.ini" &
+	MONITOR="DP-2" polybar -q main -c "$HOME/.config/polybar/config.ini" &
+	MONITOR="DP-0" polybar -q main -c "$HOME/.config/polybar/config.ini" &
+}
