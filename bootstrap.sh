@@ -22,7 +22,6 @@ rm -rf "$USERHOME/.gitignore"
 rm -rf "$USERHOME/.gitattributes"
 rm -rf "$USERHOME/.npmrc"
 rm -rf "$USERHOME/.gitconfig-default"
-rm -rf "$USERHOME/.config/latte"
 rm -rf "$USERHOME/.config/solaar"
 
 gtk3FilesToRemove=$(ls ./gtk-3.0/.config/gtk-3.0)
