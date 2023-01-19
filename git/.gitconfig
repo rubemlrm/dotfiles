@@ -1,7 +1,7 @@
 [include]
     path = ~/.gitconfig-default
 [includeIf "gitdir:~/Works/Code/Personal/"]
-    path = ~/.gitconfig-default
+    path = ~/.gitconfig-personal
 [includeIf "gitdir:~/Works/Code/Professional/"]
     path = ~/.gitconfig-professional
 [core]

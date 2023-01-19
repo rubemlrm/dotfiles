@@ -6,14 +6,32 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ########################
-# Export Variables     #
+# Export PATH Variables#
+########################
+
+export PATH="$PATH:/usr/local/sbin:/usr/local/go/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin:$HOME/go/bin"
+
+# Add php packages
+export PATH="$HOME/.config/composer/vendor/bin:$HOME/.symfony/bin:$PATH"
+
+# Add node modules
+export PATH="$HOME/bin/node_modules:$PATH"
+
+# Add rofi scripts to path
+export PATH="$HOME/.config/rofi/scripts/:$PATH"
+# Setup kubernetes krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+########################
+# Export Variables#
 ########################
 export ZSH=~/.oh-my-zsh
-export PATH="$PATH:/usr/local/sbin:/usr/local/go/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.config/composer/vendor/bin:$HOME/.local/bin:~/bin:$HOME/bin/node_modules:$HOME/.symfony/bin:$HOME/go/bin:$HOME/.config/rofi/scripts/"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export EDITOR=/usr/bin/vim
 export K9S_EDITOR=/usr/bin/vim
-
+# java hack
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
 ########################
 #     ZSH CONFIGS      #
 ########################
@@ -60,9 +78,3 @@ source $HOME/.config/zsh/functions.zsh
 reload-kubectl-contexts
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# java hack
-export _JAVA_AWT_WM_NONREPARENTING=1
-export AWT_TOOLKIT=MToolkit
