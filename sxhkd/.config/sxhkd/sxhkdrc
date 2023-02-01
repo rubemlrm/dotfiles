@@ -24,7 +24,7 @@ super + z
 
 # Terminal
 super + t
-	terminator
+	alacritty
 # Firefox
 alt + b
     firefox

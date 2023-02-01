@@ -18,7 +18,7 @@ Sessionx.vim
 
 #tmux
 plugins
-
+tmux/.tmux/work
 #zsh
 zsh/.config/zsh/plugins
 zsh/.config/zsh/themes

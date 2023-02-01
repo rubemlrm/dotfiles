@@ -3,7 +3,6 @@
 ## Environtment
 export PATH="${PATH}:$HOME/.config/bspwm/bin"
 ## Java hack
-#wmname LD3D
 wmname LG3D
 
 ## Configurations --------------------------------------------#
@@ -53,7 +52,7 @@ if [[ `pidof picom` ]]; then
 	killall picom
 fi
 picom --config "$HOME/.config/picom.conf" &
-feh --bg-scale ~/.config/wallpapers/wall3.jpg &
+feh --bg-scale ~/.config/wallpapers/wall1.jpg &
 # Lauch keybindings daemon
 sxhkd &
 xfce4-power-manager &
