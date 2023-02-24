@@ -29,14 +29,13 @@ case $chosen in
 		systemctl reboot
         ;;
     $lock)
-        sh ~/.config/bspwm/scripts/i3lock-fancy.sh --desktop
+        i3lock -i ~/.config/wallpapers/wall4.png
         ;;
     $suspend)
-		mpc -q pause
-		amixer set Master mute
+		pactl set-sink-mute @DEFAULT_SINK@ toggle
 		systemctl suspend
         ;;
     $logout)
-		bspc quit
+		i3-msg exit
         ;;
 esac

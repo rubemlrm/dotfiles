@@ -20,9 +20,6 @@ rm -rf "$USERHOME/.vim"
 rm -rf "$USERHOME/.nvm"
 rm -rf "$USERHOME/.tmux.conf"
 rm -rf "$USERHOME/.tmux/plugins"
-rm -rf "$USERHOME/.gitconfig"
-rm -rf "$USERHOME/.gitignore"
-rm -rf "$USERHOME/.gitattributes"
 rm -rf "$USERHOME/.npmrc"
 rm -rf "$USERHOME/.gitconfig-default"
 rm -rf "$USERHOME/.config/solaar"
@@ -54,7 +51,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
-stow -vSt "$HOME" stow zsh vim nvim tmux terminator git npm neofetch gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi networkmanager-dmenu
+stow -vSt "$HOME" stow zsh vim nvim tmux i3 terminator npm neofetch gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi networkmanager-dmenu
 echo -e "\033[1;33m creating vim symlinks \033[0m"
 pip3 install --user --upgrade pynvim
 vim +'PlugInstall' +qa
