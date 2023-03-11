@@ -11,8 +11,6 @@
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4
     untrackedCache = true
     editor = "code-insiders --wait"
-[commit]
-  	gpgsign = true
 [color]
 	ui = true
 [color "branch"]

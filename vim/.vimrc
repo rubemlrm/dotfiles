@@ -74,7 +74,7 @@ if (empty($TMUX))
 endif
 
 set background=dark
-colorscheme gruvbox
+silent! colorscheme gruvbox
 " Source auxiliar configs
 source $HOME/.vim/general.vim
 source $HOME/.vim/plugins.vim

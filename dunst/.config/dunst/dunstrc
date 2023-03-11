@@ -1,5 +1,3 @@
-[global]
-font = Monospace 9
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
