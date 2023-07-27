@@ -2,7 +2,13 @@
 # Export PATH Variables#
 ########################
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/go/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin:$HOME/go/bin"
+# GOLANG
+export GO_PATH="$HOME/go"
+export PATH="$PATH:/$GO_PATH/bin"
+export GOROOT=/usr/local/go
+export PATH="$PATH:$GOROOT/bin"
+
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin"
 
 # Add php packages
 export PATH="$HOME/.config/composer/vendor/bin:$HOME/.symfony/bin:$PATH"
@@ -22,14 +28,18 @@ export ZSH=~/.oh-my-zsh
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export EDITOR=/usr/bin/vim
 export K9S_EDITOR=/usr/bin/vim
-# java hack
-export _JAVA_AWT_WM_NONREPARENTING=1
-export AWT_TOOLKIT=MToolkit
+
+if [[ $OSTYPE == 'linux-gnu'* ]]; then
+    # java hack
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export AWT_TOOLKIT=MToolkit
+fi
+
 ########################
 #     ZSH CONFIGS      #
 ########################
 ZSH_CUSTOM=~/.config/zsh
-plugins=(git common-aliases tmux history ansible fzf zsh-autosuggestions dnf)
+plugins=(git common-aliases tmux history ansible fzf zsh-autosuggestions brew kubectl)
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -64,9 +74,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 emulate sh -c "source /etc/profile"
-source <(kubectl completion zsh)
 source $HOME/.config/zsh/alias.zsh
 source $HOME/.config/zsh/functions.zsh
 # reload kubernetes context files
 reload-kubectl-contexts
-

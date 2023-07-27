@@ -10,10 +10,6 @@ function kubernetes-scaffold()
     EOT" > $1
 }
 
-function forcePVCDelete() {
-    kubectl patch "$1" cmy-sentry-data -p '{"metadata":{"finalizers":null}}'
-}
-
 
 function reload-kubectl-contexts() {
     #clean previous contexts
@@ -28,7 +24,7 @@ function reload-kubectl-contexts() {
         export KUBECONFIG=$MINIKUBE_KUBECONFIG
     fi
 
-    # Additional contexts should be in ~/.kube/custom-contexts/
+    # Additional contexts should be in ~/.kube/contexts/
     CUSTOM_KUBE_CONTEXTS="$HOME/.kube/contexts"
     mkdir -p "${CUSTOM_KUBE_CONTEXTS}"
     OIFS="$IFS"
