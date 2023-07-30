@@ -3,6 +3,7 @@ local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
 
+vim.g.mapleader = " "
 -- I can type :help on my own, thanks.
 map("", "<F1>","<Esc>",opts)
 map("i", "jj", "<Esc>", opts) -- map esc to jj

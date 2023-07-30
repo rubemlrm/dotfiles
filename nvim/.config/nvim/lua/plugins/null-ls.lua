@@ -7,6 +7,7 @@ return {
 
       null_ls.setup({
         debug = true,
+        temp_dir =  "/tmp/",
         sources = {
           null_ls.builtins.code_actions.shellcheck,             -- https://www.shellcheck.net/
           null_ls.builtins.diagnostics.checkmake,               -- https://github.com/mrtazz/checkmake

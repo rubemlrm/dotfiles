@@ -6,8 +6,8 @@ export PATH="${PATH}:$HOME/.config/bspwm/bin"
 wmname LG3D
 
 ## Configurations --------------------------------------------#
-if [[ "$HOSTNAME" == "rmotalaptop" ]]; then
-	source "$HOME/.config/bspwm/rmotalaptop-config"
+if [[ "$HOSTNAME" == "DojoLaptop" ]]; then
+	source "$HOME/.config/bspwm/dojolaptop-config"
 elif [[ "$HOSTNAME" == "DojoDesktop" ]]; then
 	source "$HOME/.config/bspwm/dojodesktop-config"
 else

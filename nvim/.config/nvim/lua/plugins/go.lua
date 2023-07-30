@@ -14,7 +14,9 @@ return {
         end,
         group = format_sync_grp,
     })
-    require("go").setup()
+    require("go").setup({
+            icons = false
+    })
   end,
   event = {"CmdlineEnter"},
   ft = {"go", 'gomod'},

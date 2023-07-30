@@ -9,6 +9,26 @@
     },
     config = function()
         require("mason").setup()
+        
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                  gopls = {},
+                  golangci_lint_ls = {},
+                  ansiblels = {},
+                  arduino_language_server = {},
+                  bashls = {},
+                  dockerls = {},
+                  docker_compose_language_service = {},
+                  eslint = {},
+                  tsserver = {},
+                  lua_ls = {},
+                  marksman = {},
+                  intelephense = {}, 
+                  sqlls = {}, 
+                  yamlls = {}
+              },
+            automatic_installation = false
+          })
 
         local lspconfig = require("lspconfig")
 

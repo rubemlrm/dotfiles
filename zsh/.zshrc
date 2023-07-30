@@ -2,11 +2,7 @@
 # Export PATH Variables#
 ########################
 
-# GOLANG
-export GO_PATH="$HOME/go"
-export PATH="$PATH:/$GO_PATH/bin"
-export GOROOT=/usr/local/go
-export PATH="$PATH:$GOROOT/bin"
+
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin"
 
@@ -35,6 +31,15 @@ if [[ $OSTYPE == 'linux-gnu'* ]]; then
     export AWT_TOOLKIT=MToolkit
 fi
 
+if [[ $OSTYPE == "darwin"* ]]; then
+    # GOLANG
+    export GO_PATH="$HOME/go"
+    export PATH="$PATH:/$GO_PATH/bin"
+    export GOROOT=/usr/local/go
+    export PATH="$PATH:$GOROOT/bin"
+else
+    export GOPATH=$HOME/go
+fi
 ########################
 #     ZSH CONFIGS      #
 ########################
