@@ -47,4 +47,13 @@ return {
         require('nvim-autopairs').setup{}
       end
     },
+    {
+      "kdheepak/lazygit.nvim",
+      dependencies = {
+         "nvim-lua/plenary.nvim",
+      },
+      config = function()
+        require("lazy").setup()
+      end
+    }
 }

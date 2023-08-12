@@ -1,26 +1,15 @@
 [global_config]
   hide_from_taskbar = True
-  title_transmit_fg_color = "#2E3440"
-  title_transmit_bg_color = "#88C0D0"
-  title_receive_fg_color = "#2E3440"
-  title_receive_bg_color = "#8FBCBB"
-  title_inactive_fg_color = "#D8DEE9"
-  title_inactive_bg_color = "#4C566A"
   enabled_plugins = ActivityWatch, InactivityWatch, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminalShot, CommandNotify
-  title_use_system_font = False
-  title_font = JetBrains Mono 9
-  line_height = 1.2
 [keybindings]
 [profiles]
   [[default]]
-    cursor_color = "#aaaaaa"
     font = Source Code Pro 10
     use_custom_command = True
     custom_command = tmux
     use_system_font = False
   [[nord]]
     background_color = "#2E3440"
-    cursor_color = "#D8DEE9"
     font = Source Code Pro 10
     foreground_color = "#D8DEE9"
     palette = "#3B4252:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#88C0D0:#E5E9F0:#4C566A:#BF616A:#A3BE8C:#EBCB8B:#81A1C1:#B48EAD:#8F  BCBB:#ECEFF4"
@@ -29,7 +18,6 @@
     use_system_font = False
   [[gruvbox]]
     background_color = "#282828"
-    cursor_color = "#7c6f64"
     foreground_color = "#ebdbb2"
     palette = "#181818:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     use_custom_command = True

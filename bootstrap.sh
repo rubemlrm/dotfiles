@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eo pipefail
+#set -eox pipefail
 
 CWD=$(pwd)
 ZSH_CUSTOM="$HOME/.config/zsh"
@@ -7,6 +7,7 @@ ZSH_CUSTOM="$HOME/.config/zsh"
 export CWD
 export HOME
 
+echo $HOME
 echo -e "\033[1;33m Cleaning old files \033[0m"
 rm -rf "$HOME/.zshrc"
 rm -rf "$HOME/.p10k.zsh"
@@ -25,7 +26,7 @@ rm -rf "$HOME/.gitattributes"
 rm -rf "$HOME/.npmrc"
 rm -rf "$HOME/.gitconfig-default"
 rm -rf "$HOME/.oh-my-zsh-custom"
-
+rm -rf "$HOME/.oh-my-zsh"
 
 if [[ $OSTYPE == 'linux-gnu'* ]]; then
     rm -rf "$HOME/.config/solaar"
@@ -59,14 +60,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+rm -rf "$HOME/.zshrc"
 
+echo "Setup Dotfiles symlinks"
 
-if [[ $OSTYPE == 'linux-gnu'* ]]; then
-    stow -vSt "$HOME" terminator gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi networkmanager-dmenu
-fi
+#if [[ $OSTYPE == 'linux-gnu'* ]]; then
+    stow -vSt "$HOME" terminator gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi networkmanager-dmenu i3
+#fi
 
-stow -vSt "$HOME" stow zsh vim nvim tmux git npm
-echo -e "\033[1;33m creating vim symlinks \033[0m"
-pip3 install --user --upgrade pynvim
-vim +'PlugInstall' +qa
-vim +'CocInstall coc-snippets coc-json coc-powershell coc-toml coc-vetur coc-python coc-jedi' +qa
+stow -vSt "$HOME" stow zsh vim nvim tmux npm
