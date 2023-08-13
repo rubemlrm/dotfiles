@@ -1,8 +1,10 @@
-@import "colors.rasi"
 @import "styles.rasi"
 
-textbox-colon-prompt {
-str: "";
+configuration{
+    show-icons: true;
+    display-window: " 﩯  Window";
+    sidebar-mode: true;
 }
+
 
 

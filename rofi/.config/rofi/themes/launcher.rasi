@@ -1,8 +1,18 @@
-@import "colors.rasi"
 @import "styles.rasi"
 
 configuration {
-    display-drun: 					"🔎";
+    modi: "run,drun,window";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  Window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: true;
 }
 
 
