@@ -1,3 +1,4 @@
+local map = vim.keymap.set
 return {
     -- Icons
     { 'nvim-tree/nvim-web-devicons', lazy = false },
@@ -52,9 +53,18 @@ return {
       dependencies = {
          "nvim-lua/plenary.nvim",
       },
-      config = function()
-        require("lazy").setup()
-      end
+      init = function() 
+        map('n', '<leader>0', ':LazyGit<CR>', {})
+       end,
     },
-    {'akinsho/toggleterm.nvim', version = "*", config = true}
+    {'akinsho/toggleterm.nvim', version = "*", config = true},
+    -- lazy.nvim
+    {
+      "folke/noice.nvim",
+      event = "VeryLazy",
+      dependencies = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+      }
+    }
 }
