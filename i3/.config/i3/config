@@ -26,7 +26,7 @@ exec_always --no-startup-id ~/.config/i3/scripts/set-monitors.sh
 exec_always --no-startup-id ~/.config/polybar/scripts/set-monitors.sh
 
 
-include ~/.config/i3/configs/`hostname`-`xrandr -q | grep ' connected' | wc -l`-screens.conf
+include ~/.config/i3/configs/`hostname`.conf
 
 exec --no-startup-id dex-autostart --autostart --environment i3
 
@@ -41,7 +41,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 exec --no-startup-id blueman-applet
 exec --no-startup-id flameshot
-exec --no-startup-id feh --bg-scale ~/.config/wallpapers/wall6.png
+exec --no-startup-id feh --bg-scale ~/.config/wallpapers/wall7.png
 exec --no-startup-id redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"')
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id "killall picom; picom -b"
@@ -67,7 +67,7 @@ bindsym XF86Display exec --no-startup-id arandr
 # Apps // Alacritty // <Super><Return>
 bindsym $mod+Return exec alacritty
 # Lock screen
-bindsym $mod+Control+l exec i3lock --image ~/.config/wallpapers/wall6.png --show-failed-attempts --tiling 
+bindsym $mod+Control+l exec i3lock --image ~/.config/wallpapers/wall7.png --show-failed-attempts --tiling 
 bindsym $mod+Control+x exec thunar
 bindsym $mod+Control+b exec firefox
 bindsym $mod+Control+c exec code-insiders
@@ -78,10 +78,6 @@ bindsym $mod+Control+p exec --no-startup-id ~/.config/polybar/scripts/set-monito
 
 # start dmenu (a program launcher)
 bindsym $alt+space exec "sh ~/.config/rofi/launcher.sh"
-# Rofi Network Menu
-bindsym $mod+Control+n exec networkmanager_dmenu
-# Rofi Bluetooth Menu
-bindsym $mod+Control+m exec "sh ~/.config/rofi/scripts/rofi-bluetooth"
 # Rofi power menub
 bindsym $mod+Control+q exec "sh ~/.config/rofi/scripts/powermenu.sh"
 # Rofi alt tab
@@ -240,9 +236,9 @@ bindsym $mod+r mode "resize"
 #================================================
 for_window [class="^.*"] border pixel 1
 gaps inner 2
-gaps outer 1
-smart_gaps on
-smart_borders on
+gaps outer 2
+#smart_gaps on
+#smart_borders on
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
