@@ -41,7 +41,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 exec --no-startup-id blueman-applet
 exec --no-startup-id flameshot
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/wall6.png
+exec --no-startup-id feh --bg-scale ~/.config/wallpapers/wall6.png
 exec --no-startup-id redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"')
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id "killall picom; picom -b"
@@ -67,7 +67,7 @@ bindsym XF86Display exec --no-startup-id arandr
 # Apps // Alacritty // <Super><Return>
 bindsym $mod+Return exec alacritty
 # Lock screen
-bindsym $mod+Control+l exec betterlockscreen -l blur
+bindsym $mod+Control+l exec i3lock --image ~/.config/wallpapers/wall6.png --show-failed-attempts --tiling 
 bindsym $mod+Control+x exec thunar
 bindsym $mod+Control+b exec firefox
 bindsym $mod+Control+c exec code-insiders
