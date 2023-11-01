@@ -9,7 +9,7 @@
     },
     config = function()
         require("mason").setup()
-        
+
         require("mason-lspconfig").setup({
             ensure_installed = {
                   gopls = {},
@@ -23,11 +23,18 @@
                   tsserver = {},
                   lua_ls = {},
                   marksman = {},
-                  intelephense = {}, 
-                  sqlls = {}, 
-                  yamlls = {}
+                  intelephense = {},
+                  sqlls = {},
+                  yamlls = {},
+                  ansiblels = {},
+                  bashls = {},
+                  html = {},
+                  tsserver = {},
+                  lua_ls = {},
+                  tailwindcss = {},
+                  volar = {}
               },
-            automatic_installation = false
+            automatic_installation = true
           })
 
         local lspconfig = require("lspconfig")
@@ -78,7 +85,6 @@
         lspconfig["lua_ls"].setup({})
         lspconfig["marksman"].setup({})
         lspconfig["pyright"].setup({})
-        lspconfig["solargraph"].setup({})
         lspconfig["sqlls"].setup({})
         lspconfig["tailwindcss"].setup({})
         lspconfig["tsserver"].setup({})

@@ -66,5 +66,15 @@ return {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
       }
-    }
+    },
+    {
+      "ThePrimeagen/refactoring.nvim",
+      dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-treesitter/nvim-treesitter",
+      },
+      config = function()
+        require("refactoring").setup()
+      end,
+  },
 }

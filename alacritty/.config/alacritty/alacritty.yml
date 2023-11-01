@@ -85,7 +85,7 @@ font:
     family: "Hack Nerd Font"
 
   # Point size of the font
-  size: 6.0
+  size: 10.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -168,7 +168,7 @@ colors:
     blue: '#d6acff'
     magenta: '#ff92df'
     cyan: '#a4ffff'
-    white: '#ffffff' 
+    white: '#ffffff'
 #Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once

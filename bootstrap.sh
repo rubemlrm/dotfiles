@@ -56,7 +56,7 @@ echo "setup krew"
 gem install --user-install tmuxinator
 
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
@@ -64,8 +64,8 @@ rm -rf "$HOME/.zshrc"
 
 echo "Setup Dotfiles symlinks"
 
-#if [[ $OSTYPE == 'linux-gnu'* ]]; then
-    stow -vSt "$HOME" terminator gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi networkmanager-dmenu i3
-#fi
+if [[ $OSTYPE == 'linux-gnu'* ]]; then
+    stow -vSt "$HOME" terminator gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi i3
+fi
 
 stow -vSt "$HOME" stow zsh vim nvim tmux npm
