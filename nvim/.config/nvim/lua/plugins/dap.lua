@@ -14,14 +14,10 @@
             ensure_installed = {
                   gopls = {},
                   golangci_lint_ls = {},
-                  ansiblels = {},
                   arduino_language_server = {},
-                  bashls = {},
                   dockerls = {},
                   docker_compose_language_service = {},
                   eslint = {},
-                  tsserver = {},
-                  lua_ls = {},
                   marksman = {},
                   intelephense = {},
                   sqlls = {},
@@ -112,7 +108,12 @@
             virtual_text = false,
             virtual_lines = false
         }
-
+        vim.api.nvim_set_keymap("n", "<leader>dt", ":DapUiToggle<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>m", ":lua require('harpoon.mark').add_file()<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>ht", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap=true})
         -- Key bindings to be set after LSP attaches to buffer
         vim.api.nvim_create_autocmd("LspAttach", {
           group = vim.api.nvim_create_augroup("UserLspConfig", {}),

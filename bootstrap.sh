@@ -65,7 +65,7 @@ rm -rf "$HOME/.zshrc"
 echo "Setup Dotfiles symlinks"
 
 if [[ $OSTYPE == 'linux-gnu'* ]]; then
-    stow -vSt "$HOME" terminator gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi i3
+    stow -vSt "$HOME" terminator gtk-3.0 gtk-4.0 solaar wallpapers alacritty picom polybar sxhkd dunst bspmw rofi i3 lazygit
 fi
 
 stow -vSt "$HOME" stow zsh vim nvim tmux npm
