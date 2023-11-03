@@ -9,25 +9,28 @@
     },
     config = function()
         require("mason").setup()
-        
+
         require("mason-lspconfig").setup({
             ensure_installed = {
                   gopls = {},
                   golangci_lint_ls = {},
-                  ansiblels = {},
                   arduino_language_server = {},
-                  bashls = {},
                   dockerls = {},
                   docker_compose_language_service = {},
                   eslint = {},
+                  marksman = {},
+                  intelephense = {},
+                  sqlls = {},
+                  yamlls = {},
+                  ansiblels = {},
+                  bashls = {},
+                  html = {},
                   tsserver = {},
                   lua_ls = {},
-                  marksman = {},
-                  intelephense = {}, 
-                  sqlls = {}, 
-                  yamlls = {}
+                  tailwindcss = {},
+                  volar = {}
               },
-            automatic_installation = false
+            automatic_installation = true
           })
 
         local lspconfig = require("lspconfig")
@@ -78,7 +81,6 @@
         lspconfig["lua_ls"].setup({})
         lspconfig["marksman"].setup({})
         lspconfig["pyright"].setup({})
-        lspconfig["solargraph"].setup({})
         lspconfig["sqlls"].setup({})
         lspconfig["tailwindcss"].setup({})
         lspconfig["tsserver"].setup({})
@@ -106,7 +108,12 @@
             virtual_text = false,
             virtual_lines = false
         }
-
+        vim.api.nvim_set_keymap("n", "<leader>dt", ":DapUiToggle<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>m", ":lua require('harpoon.mark').add_file()<CR>", {noremap=true})
+        vim.api.nvim_set_keymap("n", "<leader>ht", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap=true})
         -- Key bindings to be set after LSP attaches to buffer
         vim.api.nvim_create_autocmd("LspAttach", {
           group = vim.api.nvim_create_augroup("UserLspConfig", {}),

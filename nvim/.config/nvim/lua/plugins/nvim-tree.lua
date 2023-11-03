@@ -35,8 +35,5 @@ return {
       },
       hijack_directories = { enable = true, auto_open = true }
     })
-    vim.cmd [[
-        autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-    ]]
   end
 }
