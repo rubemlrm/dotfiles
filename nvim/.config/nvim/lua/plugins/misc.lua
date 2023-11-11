@@ -9,50 +9,6 @@ return {
       dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
 
-    -- Git labels
-    {
-      'lewis6991/gitsigns.nvim',
-      lazy = true,
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-tree/nvim-web-devicons',
-      },
-      config = function()
-        require('gitsigns').setup{}
-      end
-    },
-    -- Statusline
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons',
-        'lewis6991/gitsigns.nvim',
-      },
-      config = function()
-        require('lualine').setup({
-           options = {
-            icons_enabled = true,
-            component_separators = '|',
-            section_separators = '',
-          },
-          sections = {
-            lualine_x = {
-              {
-                require("noice").api.statusline.mode.get,
-                cond = require("noice").api.statusline.mode.has,
-                color = { fg = "#ff9e64" },
-              }
-            },
-            lualine_a = {
-              {
-                'buffers',
-              }
-            }
-          }}
-        )
-      end
-    },
-
     -- Tag viewer
     { 'preservim/tagbar' },
 
@@ -63,15 +19,6 @@ return {
       config = function()
         require('nvim-autopairs').setup{}
       end
-    },
-    {
-      "kdheepak/lazygit.nvim",
-      dependencies = {
-         "nvim-lua/plenary.nvim",
-      },
-      init = function() 
-        map('n', '<leader>gg', ':LazyGit<CR>', {})
-       end,
     },
     {'akinsho/toggleterm.nvim', version = "*", config = true},
     -- lazy.nvim
