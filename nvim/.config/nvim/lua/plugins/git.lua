@@ -1,6 +1,12 @@
 local map = vim.keymap.set
 return {
-    {"tpope/vim-fugitive", lazy = false },
+    {
+        "tpope/vim-fugitive",
+        lazy = false,
+        init = function()
+            map('n', '<leader>gs', vim.cmd.Git,{})
+        end,
+    },
     {
       'lewis6991/gitsigns.nvim',
       lazy = true,
@@ -17,7 +23,7 @@ return {
       dependencies = {
          "nvim-lua/plenary.nvim",
       },
-      init = function() 
+      init = function()
         map('n', '<leader>,', ':LazyGit<CR>', {})
        end,
     },

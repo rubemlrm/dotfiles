@@ -20,6 +20,7 @@ return {
       map('n', '<leader>fx', builtin.treesitter, {})
       map('n', '<leader>fd', builtin.diagnostics, {})
       map('n', '<leader>fr', builtin.git_status, {})
+      map('n', '<leader>fe', ':Telescope file_browser<CR>', {})
       map('n', '<leader>fm', ':Telescope harpoon marks<CR>', {})
   end,
   dependencies = {
@@ -54,6 +55,9 @@ return {
 		-- `hidden = true` is not supported in text grep commands.
 		vimgrep_arguments = vimgrep_arguments,
         },
+        file_broweser = {
+            hijack_netrw = true,
+        },
         pickers = {
             find_files = {
                 -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
@@ -84,5 +88,6 @@ return {
   require('telescope').load_extension('repo')
   require('telescope').load_extension('harpoon')
   require('telescope').load_extension('project')
+  require('telescope').load_extension('file_broweser')
   end
 }

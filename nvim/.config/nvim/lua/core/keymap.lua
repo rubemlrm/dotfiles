@@ -59,3 +59,4 @@ map("n", "<leader>za", "za", opts)
 
 -- Create/edit file in the current directory
 map("n",":ed" ,":edit %:p:h/", opts)
+map("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })

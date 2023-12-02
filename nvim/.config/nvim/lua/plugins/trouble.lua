@@ -3,7 +3,7 @@ return {
  "folke/trouble.nvim",
  dependencies = { "nvim-tree/nvim-web-devicons" },
  init = function()
-    map("n", "<leader>xx", function() require("trouble").open() end)
+    map("n", "<leader>xx", function() require("trouble").toggle() end)
     map("n", "<leader>xw", function() require("trouble").open("workspace_diagnostics") end)
     map("n", "<leader>xd", function() require("trouble").open("document_diagnostics") end)
     map("n", "<leader>xl", function() require("trouble").open("quickfix") end)
