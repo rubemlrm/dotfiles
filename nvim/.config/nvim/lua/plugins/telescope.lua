@@ -55,9 +55,6 @@ return {
 		-- `hidden = true` is not supported in text grep commands.
 		vimgrep_arguments = vimgrep_arguments,
         },
-        file_broweser = {
-            hijack_netrw = true,
-        },
         pickers = {
             find_files = {
                 -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
@@ -65,6 +62,10 @@ return {
             },
         },
         extensions = {
+                file_browser = {
+                    hijack_netrw = true,
+                    hidden = true
+                },
                 fzf = {
                     fuzzy = true,
                     override_generic_sorter = true,  -- override the generic sorter
@@ -86,8 +87,7 @@ return {
     }
   pcall(require('telescope').load_extension, 'fzf')
   require('telescope').load_extension('repo')
-  require('telescope').load_extension('harpoon')
   require('telescope').load_extension('project')
-  require('telescope').load_extension('file_broweser')
+  require('telescope').load_extension('file_browser')
   end
 }
