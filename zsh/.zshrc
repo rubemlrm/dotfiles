@@ -12,6 +12,9 @@ export PATH="$HOME/.config/composer/vendor/bin:$HOME/.symfony/bin:$PATH"
 # Add node modules
 export PATH="$HOME/bin/node_modules:$PATH"
 
+# Add go bin
+export PATH="$HOME/go/bin:$PATH"
+
 # Add rofi scripts to path
 export PATH="$HOME/.config/rofi/scripts/:$PATH"
 # Setup kubernetes krew
