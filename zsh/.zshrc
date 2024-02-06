@@ -42,7 +42,7 @@ fi
 if [[ $OSTYPE == "darwin"* ]]; then
     # GOLANG
     export GO_PATH="$HOME/go"
-    export PATH="$PATH:/$GO_PATH/bin"
+    export PATH="$PATH:/$GO_PATH/bin:/Users/rubemmota/Library/Python/3.9/bin"
     export GOROOT=/usr/local/go
     export PATH="$PATH:$GOROOT/bin"
 else

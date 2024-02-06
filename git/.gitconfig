@@ -10,7 +10,7 @@
     attributesfile = ~/.gitattributes
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4
     untrackedCache = true
-    editor = "code-insiders --wait"
+    #editor = "code-insiders --wait"
 [color]
 	ui = true
 [color "branch"]
@@ -32,3 +32,5 @@
 [alias]
 	c = commit -s
     commit = commit -S
+[pull]
+	rebase = false
