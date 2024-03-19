@@ -2,11 +2,13 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
+local msg = ""
 
 vim.g.mapleader = " "
 -- I can type :help on my own, thanks.
 map("", "<F1>","<Esc>",opts)
-map("i", "jj", "<Esc>", opts) -- map esc to jj
+map("i", "cc", "<Esc>")
+
 
 -- change saving shortcut
 map("n", "<c-s>", ":w<CR>")
@@ -48,7 +50,6 @@ map("n", "<C-<>",":bp<cr>" , opts)
 
 -- switch to last file in buffer
 map("n", "<leader><leader>",":b#<cr>" , opts)
-
 --
 -- ev Shortcut to edit .vimrc file on the fly on a vertical window.
 map("n", "<leader>ev", "<C-w><C-v><C-l>:e $MYVIMRC<cr>", opts)
@@ -60,3 +61,6 @@ map("n", "<leader>za", "za", opts)
 -- Create/edit file in the current directory
 map("n",":ed" ,":edit %:p:h/", opts)
 map("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+map('n', '<BS>', msg, { noremap = true, silent = false })
+

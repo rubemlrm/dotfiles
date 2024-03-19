@@ -1,92 +1,81 @@
-vim.opt.filetype = on
+local ss = vim.opt
+
+ss.filetype = on
 
 --=============================================
 -- Visual configs
 --=============================================
 
 -- buffer is hinden on iddle
-vim.opt.hidden = true
+ss.hidden = true
 
 -- always show status line
-vim.opt.laststatus = 2
+ss.laststatus = 2
 
 -- highlight matching
-vim.opt.showmatch = true
-vim.opt.number = true
+ss.showmatch = true
+ss.number = true
 -- enable mouse
-vim.opt.mouse = a
 
 -- allways show current postion
-vim.opt.ruler = true
+ss.ruler = true
 
 -- text dont wrap
-vim.opt.wrap = true
+ss.wrap = true
 
 -- show cmd
-vim.opt.showcmd = true
+ss.showcmd = true
 
 -- highlight line with cursor
-vim.opt.cursorline = true
+ss.cursorline = true
 
-vim.opt.showmode = true
+ss.showmode = true
 
-vim.opt.softtabstop = 4
+ss.softtabstop = 4
 
 
 -- enable folding
-vim.opt.foldenable = true
+ss.foldenable = true
 
-vim.opt.foldlevelstart=10
-vim.opt.foldnestmax=10      --  10 nested fold max
-vim.opt.foldmethod="indent"   --  fold based on indent level
-vim.opt.guifont="Hack Nerd Font:h13"
-vim.opt.autoindent=true
-vim.opt.showtabline=2 --  Always display the tabline, even if there is only one tab
-vim.opt.undofile = true --  set undotree to save to file
+ss.foldlevelstart=10
+ss.foldnestmax=10      --  10 nested fold max
+ss.foldmethod="indent"   --  fold based on indent level
+ss.guifont="Hack Nerd Font:h13"
+ss.autoindent=true
+ss.showtabline=2 --  Always display the tabline, even if there is only one tab
+ss.undofile = true --  set undotree to save to file
+ss.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
 -- =============================================
 --  SEARCH CONFIGS
 -- =============================================
 -- highlight search results
-vim.opt.hlsearch = true
+ss.hlsearch = true
 
 -- makes search with modern behavious
-vim.opt.incsearch = true
+ss.incsearch = true
 
 -- =============================================
 --  MISC
 -- =============================================
 -- disable backup temp files
-vim.opt.backup = false
-vim.opt.swapfile = false
-
--- set max history
-vim.opt.history=100
-
--- set backspace to work as it should
-vim.opt.backspace={'indent','eol','start'}
-vim.opt.colorcolumn="120"
+ss.backup = false
+ss.swapfile = false
 
 -- text enconding
-vim.opt.encoding="utf-8"
-
--- text formating
-vim.opt.formatoptions=qrn1
-
-vim.opt.matchtime=3
-vim.opt.modelines=0
-
+ss.encoding="utf-8"
+-- text formattiny
+ss.matchtime=3
+ss.modelines=0
 -- set number of lines above and below the cursor
-vim.opt.scrolloff=3
-
+ss.scrolloff=3
 -- site of tab in spaces
-vim.opt.tabstop=4
-vim.opt.shiftwidth=4
-vim.opt.expandtab=true
-vim.opt.ttyfast=true
-vim.opt.undolevels=250
-vim.opt.visualbell=true
+ss.tabstop=4
+ss.shiftwidth=4
+ss.expandtab=true
+
 
 -- paste
 -- nnoremap <F2> :set invpaste paste?<CR>
-vim.opt.pastetoggle="<F2>"
-vim.opt.termguicolors = true
+ss.pastetoggle="<F2>"
+ss.termguicolors = true

@@ -6,6 +6,7 @@ return {
         init = function()
             map('n', '<leader>gs', vim.cmd.Git,{})
         end,
+
     },
     {
       'lewis6991/gitsigns.nvim',

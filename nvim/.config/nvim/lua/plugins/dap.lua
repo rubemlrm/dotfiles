@@ -7,6 +7,15 @@
       { "williamboman/mason-lspconfig.nvim" },
       { "ray-x/lsp_signature.nvim" },
     },
+    opts = {
+          capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
+          },
+        },
+    },
     config = function()
         require("mason").setup()
 
@@ -78,7 +87,20 @@
         })
         lspconfig["html"].setup({})
         lspconfig["lemminx"].setup({})
-        lspconfig["lua_ls"].setup({})
+        lspconfig["lua_ls"].setup({
+              settings = {
+                  Lua = {
+                      diagnostics = {
+                          globals = {'vim'}
+                      },
+                      workspace = {
+                          library = {
+                              vim.env.VIMRUNTIME, 
+                          }
+                      }
+                  }
+              }
+          })
         lspconfig["marksman"].setup({})
         lspconfig["pyright"].setup({})
         lspconfig["sqlls"].setup({})
@@ -87,19 +109,19 @@
         lspconfig["yamlls"].setup({})
 
         -- lsp_signature UI tweaks
-        require("lsp_signature").setup({
-          bind = true,
-          handler_opts = {
-            border = "rounded",
-          },
-        })
+        -- require("lsp_signature").setup({
+        --  bind = true,
+        --  handler_opts = {
+        --    border = "rounded",
+        --  },
+        -- })
 
         -- LSP hover window UI tweaks
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-          vim.lsp.handlers.hover, {
-            border = "single"
-          }
-        )
+        -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        -- vim.lsp.handlers.hover, {
+        --    border = "single"
+        -- }
+        -- )
 
         -- LSP diagnostics
         vim.diagnostic.config {
@@ -115,21 +137,24 @@
         vim.api.nvim_set_keymap("n", "<leader>m", ":lua require('harpoon.mark').add_file()<CR>", {noremap=true})
         vim.api.nvim_set_keymap("n", "<leader>ht", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap=true})
         -- Key bindings to be set after LSP attaches to buffer
+
         vim.api.nvim_create_autocmd("LspAttach", {
           group = vim.api.nvim_create_augroup("UserLspConfig", {}),
           callback = function(ev)
             vim.api.nvim_buf_set_option(ev.buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
             vim.api.nvim_buf_set_option(ev.buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-
             local opts = { buffer = ev.buf }
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-            --vim.keymap.set("n", "gr", vim.lsp.buf.references, opts) SEE telescope.lua
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+            vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+            vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+            vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+            vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+            vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+            vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+            vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+            vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+            vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
           end,
-        })
+          })
     end
   }

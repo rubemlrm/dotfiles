@@ -2,16 +2,12 @@ local map = vim.keymap.set
 return {
     -- Icons
     { 'nvim-tree/nvim-web-devicons', lazy = false },
-
+    { "nvim-neotest/nvim-nio" },
     -- Dashboard (start screen)
     {
       'goolord/alpha-nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
-
-    -- Tag viewer
-    { 'preservim/tagbar' },
-
     -- Autopair
     {
       'windwp/nvim-autopairs',
@@ -19,16 +15,6 @@ return {
       config = function()
         require('nvim-autopairs').setup{}
       end
-    },
-    {'akinsho/toggleterm.nvim', version = "*", config = true},
-    -- lazy.nvim
-    {
-      "folke/noice.nvim",
-      event = "VeryLazy",
-      dependencies = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-        "MunifTanjim/nui.nvim",
-      }
     },
     {
       "ThePrimeagen/refactoring.nvim",
@@ -45,6 +31,33 @@ return {
       config = function ()
         require('Comment').setup()
       end
+   },
+   {"github/copilot.vim"},
+   {"gpanders/editorconfig.nvim"},
+   {
+      "folke/noice.nvim",
+      event = "VeryLazy",
+      opts = {
+        presets = {
+            command_palette = true,
+            long_message_to_split = true,
+            lsp_doc_border = true,
+        },
+      },
+      dependencies = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        -- OPTIONAL:
+        --   `nvim-notify` is only needed, if you want to use the notification view.
+        --   If not available, we use `mini` as the fallback
+        "rcarriga/nvim-notify",
+        }
+   },
+   {
+    "mbbill/undotree",
+    config = function() 
+        vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+    end
    },
    {
     'rmagatti/goto-preview',
@@ -67,7 +80,7 @@ return {
         force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
         bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
         stack_floating_preview_windows = true, -- Whether to nest floating windows
-        preview_window_title = { enable = true, position = "left" }, -- Whether 
+        preview_window_title = { enable = true, position = "left" }, -- Whether
       }
     end
   },
