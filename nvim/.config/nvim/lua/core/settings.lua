@@ -1,4 +1,5 @@
 local ss = vim.opt
+local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
 
 ss.filetype = on
 
@@ -15,6 +16,7 @@ ss.laststatus = 2
 -- highlight matching
 ss.showmatch = true
 ss.number = true
+ss.relativenumber = true
 -- enable mouse
 
 -- allways show current postion
@@ -44,8 +46,7 @@ ss.guifont="Hack Nerd Font:h13"
 ss.autoindent=true
 ss.showtabline=2 --  Always display the tabline, even if there is only one tab
 ss.undofile = true --  set undotree to save to file
-ss.undodir = os.getenv("HOME") .. "/.vim/undodir"
-
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 -- =============================================
 --  SEARCH CONFIGS
 -- =============================================
