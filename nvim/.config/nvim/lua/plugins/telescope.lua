@@ -40,6 +40,7 @@ return {
   },
   config = function() 
     local telescopeConfig = require("telescope.config")
+    local fb_actions = require "telescope".extensions.file_browser.actions
 
     -- Clone the default Telescope configuration
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -64,7 +65,7 @@ return {
         extensions = {
                 file_browser = {
                     hijack_netrw = true,
-                    hidden = true
+                    hidden = true,
                 },
                 fzf = {
                     fuzzy = true,
