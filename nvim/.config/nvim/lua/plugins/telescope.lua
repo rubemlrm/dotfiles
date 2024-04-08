@@ -13,8 +13,10 @@ return {
           })
         end, 
       {})
+      map('n', '<leader>fc', builtin.git_files, {})
       map('n', '<leader>ff', builtin.find_files, {})
       map('n', '<leader>fg', builtin.live_grep, {})
+      map('n', '<leader>fs', builtin.grep_string, {})
       map('n', '<leader>fb', builtin.buffers, {})
       map('n', '<leader>fh', builtin.help_tags, {})
       map('n', '<leader>fx', builtin.treesitter, {})

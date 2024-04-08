@@ -25,7 +25,7 @@ return {
          "nvim-lua/plenary.nvim",
       },
       init = function()
-        map('n', '<leader>,', ':LazyGit<CR>', {})
+        map('n', '<leader>lg', ':LazyGit<CR>', {})
        end,
     },
 }

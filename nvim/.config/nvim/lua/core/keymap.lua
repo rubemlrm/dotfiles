@@ -8,7 +8,14 @@ vim.g.mapleader = " "
 -- I can type :help on my own, thanks.
 map("", "<F1>","<Esc>",opts)
 map("i", "cc", "<Esc>")
+map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
+map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+
+
+-- increment/decrement numbers
+map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
+map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- change saving shortcut
 map("n", "<c-s>", ":w<CR>")
@@ -36,8 +43,8 @@ map("n", "<C-r><C-d>", ":resize -5<cr>" , opts)
 map("n", "<C-r><C-i>", ":resize +5<cr>" , opts)
 
 -- Open splits
-map("n", "<C-v><C-s>", ":vsplit<cr>" , opts)
-map("n", "<C-h><C-s>", ":split<cr>" , opts)
+map("n", "<leader>sv", ":vsplit<cr>" , opts)
+map("n", "<leader>sh", ":split<cr>" , opts)
 
 -- Create split below
 map("n", ":sp",":rightbelow sp<cr>" , opts)
