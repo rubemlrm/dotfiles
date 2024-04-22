@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
+  version =  "v1.3",
   lazy = false,
   module = true,
   init = function()

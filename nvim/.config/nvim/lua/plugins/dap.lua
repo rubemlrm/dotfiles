@@ -37,7 +37,8 @@
                   tsserver = {},
                   lua_ls = {},
                   tailwindcss = {},
-                  volar = {}
+                  volar = {},
+                  terraformls = {}
               },
             automatic_installation = true
           })
@@ -85,6 +86,7 @@
             }
           }
         })
+        lspconfig["terraformls"].setup({})
         lspconfig["html"].setup({})
         lspconfig["lemminx"].setup({})
         lspconfig["lua_ls"].setup({

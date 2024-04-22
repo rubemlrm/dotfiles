@@ -2,8 +2,6 @@
 # Export PATH Variables#
 ########################
 
-
-
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin"
 
 # Add php packages
@@ -17,6 +15,7 @@ export PATH="$HOME/go/bin:$PATH"
 
 # Add rofi scripts to path
 export PATH="$HOME/.config/rofi/scripts/:$PATH"
+
 # Setup kubernetes krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -62,6 +61,8 @@ ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="spaceship"
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
+SPACESHIP_KUBECTL_SHOW="true"
+SPACESHIP_AWS_SHOW="true"
 # set options commands
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
@@ -79,6 +80,7 @@ setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
+
 
 ########################
 # source files         #
