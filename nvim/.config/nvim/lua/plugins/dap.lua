@@ -1,26 +1,30 @@
   -- Language server installations and LSP client configs and relevant keymaps
   return {
+      'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v1.x',
+	  dependencies = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
 
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      { "williamboman/mason.nvim", build = ":MasonUpdate" },
-      { "williamboman/mason-lspconfig.nvim" },
-      { "ray-x/lsp_signature.nvim" },
-    },
-    opts = {
-          capabilities = {
-          workspace = {
-            didChangeWatchedFiles = {
-              dynamicRegistration = true,
-            },
-          },
-        },
-    },
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  },
     config = function()
-        require("mason").setup()
+        local lspconfig = require('lsp-zero')
+        lspconfig.preset("recommended")
 
-        require("mason-lspconfig").setup({
-            ensure_installed = {
+        lspconfig.ensure_installed({
                   gopls = {},
                   golangci_lint_ls = {},
                   arduino_language_server = {},
@@ -39,19 +43,16 @@
                   tailwindcss = {},
                   volar = {},
                   terraformls = {}
-              },
-            automatic_installation = true
-          })
+        })
 
-        local lspconfig = require("lspconfig")
 
-        lspconfig["bashls"].setup({})
-        lspconfig["clangd"].setup({})
-        lspconfig["cssls"].setup({})
-        lspconfig["docker_compose_language_service"].setup({})
-        lspconfig["dockerls"].setup({})
-        lspconfig["eslint"].setup({})
-        lspconfig["gopls"].setup({
+        lspconfig.configure("bashls",{})
+        lspconfig.configure("clangd",{})
+        lspconfig.configure("cssls",{})
+        lspconfig.configure("docker_compose_language_service",{})
+        lspconfig.configure("dockerls",{})
+        lspconfig.configure("eslint",{})
+        lspconfig.configure("gopls", {
           settings = {
             -- https://go.googlesource.com/vscode-go/+/HEAD/docs/settings.md#settings-for
             gopls = {
@@ -63,16 +64,6 @@
               },
               experimentalPostfixCompletions = true,
               gofumpt = true,
-              -- staticcheck = true,
-              --
-              -- DISABLED because gopls doesn't invoke the staticcheck binary.
-              -- Instead it imports the analyzers directly and this means it can report on issues the binary doesn't.
-              -- But rather than that being a good thing, it can be annoying because you can't then use line directives to ignore the issue if it's not important.
-              -- So instead I use null-ls to invoke the staticcheck binary.
-              -- https://github.com/golang/go/issues/36373#issuecomment-570643870
-              --
-              -- See also my longer explanation of issues here:
-              -- https://github.com/golangci/golangci-lint/issues/741#issuecomment-1488116634
               usePlaceholders = true,
               hints = {
                 assignVariableTypes = true,
@@ -86,10 +77,12 @@
             }
           }
         })
-        lspconfig["terraformls"].setup({})
-        lspconfig["html"].setup({})
-        lspconfig["lemminx"].setup({})
-        lspconfig["lua_ls"].setup({
+        lspconfig.configure("terraformls",{
+
+          })
+        lspconfig.configure("html",{})
+        lspconfig.configure("lemminx",{})
+        lspconfig.configure("lua_ls",{
               settings = {
                   Lua = {
                       diagnostics = {
@@ -97,55 +90,52 @@
                       },
                       workspace = {
                           library = {
-                              vim.env.VIMRUNTIME, 
+                              vim.env.VIMRUNTIME,
                           }
                       }
                   }
               }
           })
-        lspconfig["marksman"].setup({})
-        lspconfig["pyright"].setup({})
-        lspconfig["sqlls"].setup({})
-        lspconfig["tailwindcss"].setup({})
-        lspconfig["tsserver"].setup({})
-        lspconfig["yamlls"].setup({})
+        lspconfig.configure("marksman",{})
+        lspconfig.configure("pyright",{})
+        lspconfig.configure("sqlls",{})
+        lspconfig.configure("tailwindcss",{})
+        lspconfig.configure("tsserver",{})
+        lspconfig.configure("yamlls",{})
 
-        -- lsp_signature UI tweaks
-        -- require("lsp_signature").setup({
-        --  bind = true,
-        --  handler_opts = {
-        --    border = "rounded",
-        --  },
-        -- })
+        local cmp = require('cmp')
+        local cmp_select = {behavior = cmp.SelectBehavior.Select}
+        local cmp_mappings = lspconfig.defaults.cmp_mappings({
+          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ["<C-Space>"] = cmp.mapping.complete(),
+        })
 
-        -- LSP hover window UI tweaks
-        -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-        -- vim.lsp.handlers.hover, {
-        --    border = "single"
-        -- }
-        -- )
+        cmp_mappings['<Tab>'] = nil
+        cmp_mappings['<S-Tab>'] = nil
 
-        -- LSP diagnostics
-        vim.diagnostic.config {
-            float = { border = "single" },
-            underline = true,
-            virtual_text = false,
-            virtual_lines = false
-        }
+        lspconfig.setup_nvim_cmp({
+          mapping = cmp_mappings
+        })
+        lspconfig.set_preferences({
+            suggest_lsp_servers = false,
+            sign_icons = {
+                error = 'E',
+                warn = 'W',
+                hint = 'H',
+                info = 'I'
+            }
+        })
+
         vim.api.nvim_set_keymap("n", "<leader>dt", ":DapUiToggle<CR>", {noremap=true})
         vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", {noremap=true})
         vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", {noremap=true})
         vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", {noremap=true})
-        vim.api.nvim_set_keymap("n", "<leader>m", ":lua require('harpoon.mark').add_file()<CR>", {noremap=true})
-        vim.api.nvim_set_keymap("n", "<leader>ht", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap=true})
         -- Key bindings to be set after LSP attaches to buffer
 
-        vim.api.nvim_create_autocmd("LspAttach", {
-          group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-          callback = function(ev)
-            vim.api.nvim_buf_set_option(ev.buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
-            vim.api.nvim_buf_set_option(ev.buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-            local opts = { buffer = ev.buf }
+        lspconfig.on_attach(function(client, bufnr)
+          local opts = {buffer = bufnr, remap = false}
             vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
             vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
             vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -156,7 +146,9 @@
             vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
             vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-          end,
-          })
-    end
+            vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+        end)
+
+        lspconfig.setup()
+      end
   }

@@ -71,3 +71,9 @@ map("n","<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 map('n', '<BS>', msg, { noremap = true, silent = false })
 
+
+-- copy selection to system clipboard : asbjornHaland 
+map({"n", "v"}, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
+map({"n", "v"}, "<leader>d", [["_d]])
+
