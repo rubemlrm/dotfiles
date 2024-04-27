@@ -26,6 +26,7 @@ return {
       map('n', '<leader>fe', ':Telescope file_browser<CR>', {})
       map('n', '<leader>fr', ':Telescope repo list<CR>', {})
       map('n', '<leader>fk', builtin.keymaps, {})
+      map('n', '<leader>fls', ':Telescope session-lens search_session<CR>', {})
   end,
   dependencies = {
     "nvim-lua/popup.nvim",
@@ -34,6 +35,7 @@ return {
     "nvim-telescope/telescope-project.nvim",
     "cljoly/telescope-repo.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
+    "rmagatti/session-lens"
   },
   config = function() 
 
@@ -121,5 +123,6 @@ return {
   pcall(require('telescope').load_extension, 'fzf')
   require('telescope').load_extension('repo')
   require('telescope').load_extension('file_browser')
+  require('telescope').load_extension('session-lens')
   end
 }

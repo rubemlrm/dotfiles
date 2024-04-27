@@ -1,5 +1,18 @@
 local map = vim.keymap.set
 return {
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
+            vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+        end,
+    },
     -- Icons
     { 'nvim-tree/nvim-web-devicons', lazy = false },
     { "nvim-neotest/nvim-nio" },
@@ -52,6 +65,24 @@ return {
         --   If not available, we use `mini` as the fallback
         "rcarriga/nvim-notify",
         }
+   },
+   {
+     'rmagatti/auto-session',
+     config = function()
+      require("auto-session").setup {
+      log_level = "error",
+      auto_save_enabled = true,
+      auto_restore_enabled = true,
+      auto_session_root_dir = os.getenv("HOME") .. "/.vim_temp/sessions",
+      pre_save_cmds = {},
+      save_extra_cmds = {},
+      post_restore_cmds = {},
+      cwd_change_handling = {
+        restore_upcoming_session = true, -- already the default, no need to specify like this, only here as an example
+        pre_cwd_changed_hook = nil, -- already the default, no need to specify like this, only here as an example
+      },
+    }
+     end
    },
    {
     "mbbill/undotree",
