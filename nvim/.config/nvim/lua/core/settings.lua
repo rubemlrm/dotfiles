@@ -46,7 +46,7 @@ ss.guifont="JetBrains Mono Nerd Font:h14"
 ss.autoindent=true
 ss.showtabline=2 --  Always display the tabline, even if there is only one tab
 ss.undofile = true --  set undotree to save to file
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.vim_temp/undodir"
 -- =============================================
 --  SEARCH CONFIGS
 -- =============================================

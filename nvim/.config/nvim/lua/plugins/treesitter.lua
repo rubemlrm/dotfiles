@@ -34,7 +34,9 @@ return {
         'markdown_inline',
         'css',
         'scss',
-        'php'
+        'php',
+        'hcl',
+        'terraform'
       },
 
       highlight = { enable = true },

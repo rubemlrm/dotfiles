@@ -77,3 +77,10 @@ map({"n", "v"}, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
 map({"n", "v"}, "<leader>d", [["_d]])
 
+-- delete to blackhole
+map("v", "<leader>d", '"_d', opts)
+map("v", "<leader>D", '"_D', opts)
+
+-- delete to blackhole
+map("n", "<leader>d", '"_d', opts)
+map("n", "<leader>D", '"_D', opts)
