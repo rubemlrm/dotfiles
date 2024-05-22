@@ -14,7 +14,6 @@ return {
             require("mason-nvim-dap").setup({
                 ensure_installed = { "python", "delve" }
             })
-           
             local dap, dapui = require("dap"), require("dapui")
             dapui.setup({
                 icons = { expanded = "▾", collapsed = "▸" },
@@ -55,8 +54,6 @@ return {
             -- enable out of the box config with dap go
             require('dap-go').setup()
             local map = vim.keymap.set
-            
-
 
             dap.adapters.ansible = {
               type = "executable",
@@ -75,10 +72,8 @@ return {
 
             dap.configurations["yaml.ansible"] = ansibug_configurations
 
-            
             -- autoload vscode debug configurations 
             require('dap.ext.vscode').load_launchjs(nil, {})
-            
 
             -- load UI on debug 
             dap.listeners.before.attach.dapui_config = function()
@@ -93,11 +88,8 @@ return {
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
-            
             vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
             vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
-            
-        
             map('n', '<leader>dh', dapui.eval)
             map('n', '<leader>du', ":DapUiToggle<CR>", { noremap = true })
             map('n', '<leader>dc', dap.continue)

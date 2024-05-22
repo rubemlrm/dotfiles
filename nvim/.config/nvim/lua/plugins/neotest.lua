@@ -2,6 +2,7 @@ return {
     {
         "nvim-neotest/neotest",
         dependencies = {
+            "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -28,6 +29,9 @@ return {
                     require("neotest-jest"),
                     require("neotest-go")({
                         {
+                            experimental = {
+                                test_table = true,
+                            },
                             recursive_run = true
                         }
                     })

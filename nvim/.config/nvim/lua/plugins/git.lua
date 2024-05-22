@@ -5,6 +5,8 @@ return {
         lazy = false,
         init = function()
             map('n', '<leader>gs', vim.cmd.Git,{})
+            map('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', {})
+            map('n', '<leader>gt', ':Gitsigns toggle_current_line_blame<CR>', {})
         end,
 
     },
