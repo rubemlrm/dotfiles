@@ -75,8 +75,3 @@ ss.tabstop=4
 ss.shiftwidth=4
 ss.expandtab=true
 
-
--- paste
--- nnoremap <F2> :set invpaste paste?<CR>
-ss.pastetoggle="<F2>"
-ss.termguicolors = true
