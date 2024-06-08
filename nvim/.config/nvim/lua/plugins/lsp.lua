@@ -23,7 +23,6 @@ return {
     config = function()
         local lspconfig = require('lsp-zero')
         lspconfig.preset("recommended")
-        
         require('mason').setup({})
 
         require("mason-tool-installer").setup({
@@ -57,10 +56,14 @@ return {
                 'tsserver',
                 'lua_ls',
                 'tailwindcss',
-                'volar', 
+                'volar',
                 'terraformls',
                 'ansible_language_server',
                 'lua-language-server',
+                'autopep8',
+                'fixjson',
+                'lua_format',
+                'markdown_toc'
           },
 
         })
