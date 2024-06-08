@@ -34,6 +34,3 @@
     commit = commit -S
 [pull]
 	rebase = false
-[user]
-	name = Rubem
-	email = rubemmota89@gmail.com
