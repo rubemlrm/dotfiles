@@ -139,15 +139,6 @@
         owner: "{{ username }}"
         mode: "0755"
 
-    - name: Import default wallpapers
-      ansible.builtin.copy:
-        src: "{{ dotfiles_location }}/files/wallpapers/"
-        dest: "{{ home_dir }}/Pictures/wallpapers"
-        owner: "{{ username }}"
-        group: "{{ user_group }}"
-        mode: "0755"
-
-
     - name: Restore Alacritty settings
       ansible.builtin.file:
         src: "{{ dotfiles_location }}/files/alacritty/"
