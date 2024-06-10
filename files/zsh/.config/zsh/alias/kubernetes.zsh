@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/zsh
 #kubernetes
 alias k='kubectl'
 alias kp='kubectl get pods'

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 readonly command="$1"
 readonly maxDisplayNumber="$2"
