@@ -1,0 +1,40 @@
+---
+- name: Setup Fonts
+  become: true
+  become_user: '{{ username }}'
+  block:
+    - name: Ensure fonts directory
+      ansible.builtin.file:
+        path: "{{ home_dir }}/.fonts"
+        state: directory
+        owner: "{{ username }}"
+        mode: "0755"
+
+    - name: Check to see if font already exists
+      become: true
+      become_user: '{{ username }}'
+      ansible.builtin.stat:
+        path: "{{ home_dir }}/.fonts/{{ item.file_name }}"
+      register: fonts_stat_results
+      with_items: "{{ dotfiles_repo_fonts }}"
+      ignore_errors: true
+
+
+    - name: Install font
+      become: true
+      become_user: '{{ username }}'
+      ansible.builtin.unarchive:
+        src: "{{ item.item.src }}"
+        dest: "{{ home_dir }}/.fonts/"
+        remote_src: yes
+      when: not item.stat.exists
+      with_items: "{{ fonts_stat_results.results }}"
+      register: fonts_changed
+
+      tags:
+        - skip_ansible_lint
+    - name: Update fc-cache
+      when: fonts_changed.changed
+      ansible.builtin.command: fc-cache {{ home_dir }}.fonts/
+      tags:
+        - skip_ansible_lint

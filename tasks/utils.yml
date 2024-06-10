@@ -1,0 +1,19 @@
+---
+- name: Install utils
+  when: ansible_facts['distribution'] == "Fedora"
+  ansible.builtin.package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ dotfiles_packages }}'
+  become: true
+
+- name: Install Macos base packages
+  when:  ansible_facts['os_family'] == "Darwin"
+  become: true
+  become_user: "{{ username }}"
+  block:
+    - name: "Install packages"
+      community.general.homebrew:
+        state: present
+        name: "{{ item }}"
+      with_items: "{{ dotfiles_macos_packages }}"

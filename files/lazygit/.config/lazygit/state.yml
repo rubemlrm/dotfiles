@@ -1,0 +1,14 @@
+lastupdatecheck: 0
+recentrepos:
+    - /home/rubemlrm/Works/Code/Personal/dotfiles
+startuppopupversion: 5
+lastversion: 0.42.0
+customcommandshistory:
+    - qa
+hidecommandlog: false
+ignorewhitespaceindiffview: false
+diffcontextsize: 3
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always
