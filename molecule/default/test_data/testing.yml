@@ -1,0 +1,4 @@
+username: "test"
+user_group: "test"
+home_dir: "/home/test"
+dotfiles_location: "/home/test/templates/files"

@@ -17,7 +17,6 @@ Session.vim
 Sessionx.vim
 
 #tmux
-plugins
 !nvim/.config/nvim/lua/plugins
 tmux/.tmux/work
 #zsh
@@ -48,3 +47,4 @@ kde/.config/plasma-org.kde.plasma.desktop-appletsrc.lock
 QtProject.conf
 
 node_modules
+files/tmux/.tmux/plugins

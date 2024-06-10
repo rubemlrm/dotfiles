@@ -1,0 +1,63 @@
+name: linting
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  pull_request:
+    branches: [main]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  lint:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - name: Install test dependencies.
+        run: pip3 install yamllint
+      - name: Lint code.
+        run: yamllint .
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -e SC1071
+
+  integration:
+    name: Molecule
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.continueOnError }}
+    strategy:
+      fail-fast: false
+      matrix:
+        distro:
+          [
+            "rubemlrm/fedora-ansible:40",
+          ]
+        continueOnError: [false]
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule-plugins[docker] yamllint ansible-lint
+      - name: Run Molecule tests.
+        run: molecule test
+        env:
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+          XDG_CONFIG_HOME: ""

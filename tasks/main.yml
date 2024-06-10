@@ -1,0 +1,8 @@
+- name: Import cli utils setup
+  ansible.builtin.import_tasks: utils.yml
+- name: Import fonts setup
+  ansible.builtin.import_tasks: fonts.yml
+- name: Import dotfiles setup
+  ansible.builtin.import_tasks: dotfiles.yml
+- name: Import git setup
+  ansible.builtin.import_tasks: git.yml

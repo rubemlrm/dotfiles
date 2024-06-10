@@ -1,0 +1,31 @@
+---
+- name: Converge
+  hosts: instance
+  become: true
+  vars_files:
+    - test_data/testing.yml
+  pre_tasks:
+    - name: Add system user
+      ansible.builtin.user:
+        name: "{{ username }}"
+        shell: "/usr/bin/zsh"
+        groups: "wheel"
+        append: yes
+
+    - name: Check if files configurations exists
+      ansible.builtin.stat:
+        path: "{{ dotfiles_location }}"
+      register: state_files
+      changed_when: false
+
+    - name: Copy files to simulate symlink creation
+      ansible.builtin.copy:
+        src: "{{ playbook_dir | dirname | dirname }}/files"
+        dest: "{{ dotfiles_location }}"
+        owner: "{{ username }}"
+        group: "{{ user_group }}"
+        mode: "0755"
+      when: not state_files.stat.exists
+
+  roles:
+    - rubemlrm.dotfiles
