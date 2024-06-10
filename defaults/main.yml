@@ -1,5 +1,6 @@
 ---
 use_desktop: true
+use_force: false
 username: "rubemlrm"
 user_group: "rubemlrm"
 home_dir: "/home/rubemlrm"

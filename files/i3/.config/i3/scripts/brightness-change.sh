@@ -5,7 +5,8 @@ function get_brightness {
 }
 
 function send_notification {
-    dunstify dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic -u normal "Current Volume: $volume%"
+	brightness=$(get_volume)
+    dunstify dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic -u normal "Current Brightness: $brightness%"
 }
 
 case $1 in

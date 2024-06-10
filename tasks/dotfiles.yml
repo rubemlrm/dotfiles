@@ -59,6 +59,7 @@
         owner: "{{ username }}"
         group: "{{ user_group }}"
         mode: "{{ item.mode }}"
+        force: "{{ use_force }}"
         state: link
       with_items:
         - name: ".config/zsh/alias"
@@ -78,6 +79,7 @@
         path: "{{ home_dir }}/.config/neofetch"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: link
     - name: Restore tmux settings
@@ -87,6 +89,7 @@
         owner: "{{ username }}"
         group: "{{ user_group }}"
         mode: "{{ item.mode }}"
+        force: "{{ use_force }}"
         state: link
       with_items:
         - name: ".tmux.conf"
@@ -108,6 +111,7 @@
         dest: "{{ home_dir }}/.config/nvim"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         state: "link"
         mode: "0755"
 
@@ -117,6 +121,7 @@
         dest: "{{ home_dir }}/.npmrc"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         state: "link"
         mode: "0755"
 
@@ -126,6 +131,7 @@
         dest: "{{ home_dir }}/.stow-global-ignore"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         state: "link"
         mode: "0755"
 
@@ -137,6 +143,7 @@
         path: "{{ home_dir }}/Pictures/wallpapers/"
         state: directory
         owner: "{{ username }}"
+        force: "{{ use_force }}"
         mode: "0755"
 
     - name: Restore Alacritty settings
@@ -145,6 +152,7 @@
         dest: "/home/{{ username }}/.config/alacritty"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
 
@@ -154,6 +162,7 @@
         dest: "{{ home_dir }}/.config/terminator"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
 
@@ -163,6 +172,7 @@
         dest: "{{ home_dir }}/.config/i3"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
 
@@ -172,6 +182,7 @@
         dest: "{{ home_dir }}/.config/polybar"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
 
@@ -181,6 +192,7 @@
         dest: "{{ home_dir }}/.config/rofi"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
 
@@ -190,6 +202,7 @@
         dest: "{{ home_dir }}/.config/picom.conf"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0644"
         state: "link"
 
@@ -199,6 +212,7 @@
         dest: "{{ home_dir }}/.config/dunst"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
 
@@ -208,6 +222,7 @@
         dest: "{{ home_dir }}/.config/{{ item }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"
       with_items:
@@ -220,5 +235,6 @@
         dest: "{{ home_dir }}/.config/solaar"
         owner: "{{ username }}"
         group: "{{ user_group }}"
+        force: "{{ use_force }}"
         mode: "0755"
         state: "link"

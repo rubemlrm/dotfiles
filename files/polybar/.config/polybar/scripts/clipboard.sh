@@ -17,6 +17,7 @@ case $1 in
 	"menu")
 		if [ "$service" = 'active' ]
 		then
+			# shellcheck disable=SC2034
 			CM_LAUNCHER="rofi -show p -modi p:$HOME/.config/rofi/modes/clipmenu.sh -theme $HOME/.config/rofi/themes/launcher.rasi"
 
 			printf '%s' '%{F#a3be8c}%{F-}'
