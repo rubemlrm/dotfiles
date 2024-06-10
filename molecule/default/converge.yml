@@ -25,7 +25,7 @@
         owner: "{{ username }}"
         group: "{{ user_group }}"
         mode: "0755"
-      when: not state_files.state.exists
+      when: not state_files.stat.exists
 
   roles:
     - rubemlrm.dotfiles

@@ -1,4 +1,4 @@
-
+#!/bin/env zsh
 function toBase64() {
     echo "$1" | base64
 }
@@ -63,4 +63,3 @@ function  extract() {
         echo "'$1' is not a valid file"
     fi
 }
-

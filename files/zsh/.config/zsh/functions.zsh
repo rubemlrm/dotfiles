@@ -1,3 +1,4 @@
+#!/bin/env zsh
 source "$ZSH_CUSTOM/functions/docker.zsh"
 source "$ZSH_CUSTOM/functions/generic.zsh"
 source "$ZSH_CUSTOM/functions/kubernetes.zsh"

@@ -1,3 +1,4 @@
+#!/bin/env zsh
 # Docker Functions
 function  clear_containers() {
 	docker stop $(docker ps -a -q)

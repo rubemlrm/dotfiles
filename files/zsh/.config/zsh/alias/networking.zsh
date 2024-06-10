@@ -1,3 +1,4 @@
+#!/bin/env zsh
 #networking
 alias ports='netstat -tulanp'
 alias eh="sudo nano /etc/hosts"

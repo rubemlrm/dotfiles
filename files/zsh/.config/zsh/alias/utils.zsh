@@ -1,3 +1,4 @@
+#!/bin/env zsh
 #directories
 alias works="cd ~/Works"
 alias codedir="cd ~/Works/Code"

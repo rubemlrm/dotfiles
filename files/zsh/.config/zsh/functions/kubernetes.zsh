@@ -1,3 +1,4 @@
+#!/bin/env zsh
 function kubernetes-scaffold()
 {
     echo "
