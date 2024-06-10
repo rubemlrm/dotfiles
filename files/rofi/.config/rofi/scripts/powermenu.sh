@@ -5,7 +5,7 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-dir="~/.config/rofi"
+dir="$HOME/.config/rofi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
 rofi_command="rofi -theme $dir/themes/powermenu.rasi"
@@ -20,22 +20,22 @@ logout=" Logout"
 # Variable passed to rofi
 options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | "$rofi_command" -p "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
-    $shutdown)
+    "$shutdown")
 		systemctl poweroff
         ;;
-    $reboot)
+    "$reboot")
 		systemctl reboot
         ;;
-    $lock)
+    "$lock")
         betterlockscreen -l dimblur --display 1 --span
         ;;
-    $suspend)
+    "$suspend")
 		pactl set-sink-mute @DEFAULT_SINK@ toggle
 		systemctl suspend
         ;;
-    $logout)
+    "$logout")
 		i3-msg exit
         ;;
 esac

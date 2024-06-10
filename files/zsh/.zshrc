@@ -22,7 +22,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 ########################
 # Export Variables#
 ########################
-export ZSH=~/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -85,11 +85,11 @@ setopt HIST_REDUCE_BLANKS
 ########################
 # source files         #
 ########################
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 emulate sh -c "source /etc/profile"
-source $HOME/.config/zsh/alias.zsh
-source $HOME/.config/zsh/functions.zsh
+source "$HOME/.config/zsh/alias.zsh"
+source "$HOME/.config/zsh/functions.zsh"
 # reload kubernetes context files
 reload-kubectl-contexts

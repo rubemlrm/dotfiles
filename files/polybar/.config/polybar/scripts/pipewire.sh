@@ -8,11 +8,11 @@ main() {
     IS_MUTED=$(pactl list sinks | sed -n "/${SINK}/,/Mute/ s/Mute: \(yes\)/\1/p")
 
     action=$1
-    if [ "${action}" == "up" ]; then
+    if [ "${action}" = "up" ]; then
         pactl set-sink-volume @DEFAULT_SINK@ +10%
-    elif [ "${action}" == "down" ]; then
+    elif [ "${action}" = "down" ]; then
         pactl set-sink-volume @DEFAULT_SINK@ -10%
-    elif [ "${action}" == "mute" ]; then
+    elif [ "${action}" = "mute" ]; then
         pactl set-sink-mute @DEFAULT_SINK@ toggle
     else
         if [ "${IS_MUTED}" != "" ]; then

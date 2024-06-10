@@ -9,13 +9,13 @@ function is_mute {
 }
 
 function send_notification {
-    volume=`get_volume`
+    volume=$(get_volume)
     dunstify dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic -u normal "Current Volume: $volume%"
 }
 
 case $1 in
     up)
-		CURRENT_VOLUME=`get_volume`
+		CURRENT_VOLUME=$(get_volume)
 		if [[ "$CURRENT_VOLUME" -lt 100 ]]; then
 			# Set the volume on (if it was muted)
 			pactl set-sink-volume @DEFAULT_SINK@ +5% > /dev/null
@@ -23,7 +23,7 @@ case $1 in
 		send_notification
 	;;
     down)
-		CURRENT_VOLUME=`get_volume`
+		CURRENT_VOLUME=$(get_volume)
 		if [[ "$CURRENT_VOLUME" -gt 0 ]]; then
 			pactl set-sink-volume @DEFAULT_SINK@ -5% > /dev/null
 		fi
@@ -39,6 +39,6 @@ case $1 in
 		fi
 	;;
 	*)
-		volume=`get_volume`
+		volume=$(get_volume)
 		echo "$volume%"
 esac
