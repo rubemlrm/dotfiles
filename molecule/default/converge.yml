@@ -11,6 +11,13 @@
         shell: "/usr/bin/zsh"
         groups: "wheel"
         append: yes
+
+    - name: Check if files configurations exists
+      ansible.builtin.stat:
+        path: "{{ dotfiles_location }}"
+      register: state_files
+      changed_when: false
+
     - name: Copy files to simulate symlink creation
       ansible.builtin.copy:
         src: "{{ playbook_dir | dirname | dirname }}/files"
@@ -18,6 +25,7 @@
         owner: "{{ username }}"
         group: "{{ user_group }}"
         mode: "0755"
+      when: not state_files.state.exists
 
   roles:
     - rubemlrm.dotfiles
