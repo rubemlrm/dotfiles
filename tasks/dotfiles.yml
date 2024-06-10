@@ -49,7 +49,7 @@
 
     - name: Remove oh my zshrc file
       ansible.builtin.file:
-        path: "{{ home_dir }}.zshrc"
+        path: "{{ home_dir }}/.zshrc"
         state: absent
       when: not oh_my_zsh_installed.stat.exists
     - name: Restore zsh settings

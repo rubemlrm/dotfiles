@@ -5,6 +5,12 @@
   vars_files:
     - test_data/testing.yml
   pre_tasks:
+    - name: Add system user
+      ansible.builtin.user:
+        name: "{{ username }}"
+        shell: "/usr/bin/zsh"
+        groups: "wheel"
+        append: yes
     - name: Copy files to simulate symlink creation
       ansible.builtin.copy:
         src: "{{ playbook_dir | dirname | dirname }}/files"

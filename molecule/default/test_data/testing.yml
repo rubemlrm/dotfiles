@@ -1,4 +1,4 @@
-username: "root"
-user_group: "root"
-home_dir: "/root"
-dotfiles_location: "/root/templates/files"
+username: "test"
+user_group: "test"
+home_dir: "/home/test"
+dotfiles_location: "/home/test/templates/files"
