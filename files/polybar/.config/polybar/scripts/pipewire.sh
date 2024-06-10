@@ -23,4 +23,4 @@ main() {
     fi
 }
 
-main $@
+main "$@"
