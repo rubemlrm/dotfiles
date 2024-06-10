@@ -54,7 +54,7 @@
       when: not oh_my_zsh_installed.stat.exists
     - name: Restore zsh settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/zsh/{{ item.name }}"
+        src: "zsh/{{ item.name }}"
         dest: "{{ home_dir }}/{{ item.name }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -81,7 +81,7 @@
 
     - name: Restore tmux settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/tmux/{{ item.name }}"
+        src: "tmux/{{ item.name }}"
         path: "{{ home_dir }}/{{ item.name }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -95,7 +95,7 @@
 
     - name: Restore nvim settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/nvim/"
+        src: "nvim/"
         dest: "{{ home_dir }}/.config/nvim"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -104,7 +104,7 @@
 
     - name: Restore npm settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/npm/.npmrc"
+        src: "npm/.npmrc"
         dest: "{{ home_dir }}/.npmrc"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -113,7 +113,7 @@
 
     - name: Restore stow settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/stow/.stow-global-ignore"
+        src: "stow/.stow-global-ignore"
         dest: "{{ home_dir }}/.stow-global-ignore"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -132,7 +132,7 @@
 
     - name: Import default wallpapers
       ansible.builtin.copy:
-        src: "{{ role_path }}/files/wallpapers/"
+        src: "wallpapers/"
         dest: "{{ home_dir }}/Pictures/wallpapers"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -141,7 +141,7 @@
 
     - name: Restore Alacritty settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/alacritty/"
+        src: "alacritty/"
         dest: "/home/{{ username }}/.config/alacritty"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -150,7 +150,7 @@
 
     - name: Restore Terminator settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/terminator/"
+        src: "terminator/"
         dest: "{{ home_dir }}/.config/terminator"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -159,7 +159,7 @@
 
     - name: Restore i3 settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/i3/"
+        src: "i3/"
         dest: "{{ home_dir }}/.config/i3"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -168,7 +168,7 @@
 
     - name: Restore polybar settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/polybar/"
+        src: "polybar/"
         dest: "{{ home_dir }}/.config/polybar"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -177,7 +177,7 @@
 
     - name: Restore rofi settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/rofi/"
+        src: "rofi/"
         dest: "{{ home_dir }}/.config/rofi"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -186,7 +186,7 @@
 
     - name: Restore picom settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/picom/picom.conf"
+        src: "picom/picom.conf"
         dest: "{{ home_dir }}/.config/picom.conf"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -195,7 +195,7 @@
 
     - name: Restore dunst settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/dunst/"
+        src: "dunst/"
         dest: "{{ home_dir }}/.config/dunst"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -204,7 +204,7 @@
 
     - name: Restore gtk settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/{{ item }}/"
+        src: "{{ item }}/"
         dest: "{{ home_dir }}/.config/{{ item }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -216,7 +216,7 @@
 
     - name: Restore solaar settings
       ansible.builtin.file:
-        src: "{{ role_path }}/files/solaar/"
+        src: "solaar/"
         dest: "{{ home_dir }}/.config/solaar"
         owner: "{{ username }}"
         group: "{{ user_group }}"

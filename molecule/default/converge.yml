@@ -5,18 +5,18 @@
   vars_files:
     - test_data/testing.yml
   pre_tasks:
-    - name: Update dnf cache
-      ansible.builtin.dnf:
-        name: "*"
-        state: latest # noqa package-latest
-      tags:
-        - skip_ansible_lint
     - name: Add system user
       ansible.builtin.user:
         name: "{{ username }}"
         shell: "/usr/bin/zsh"
         groups: "wheel"
         append: yes
-      no_log: false
+    - name: Created base folders for configs
+      ansible.builtin.file:
+        path: "{{ home_dir }}/.config"
+        state: directory
+        mode: 0755
+        owner: "{{ username }}"
+        group: "{{ user_group }}"
   roles:
     - rubemlrm.dotfiles
