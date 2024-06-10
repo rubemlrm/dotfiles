@@ -1,3 +1,4 @@
 username: "root"
 user_group: "root"
 home_dir: "/root"
+dotfiles_location: "/root/templates/files"

@@ -4,5 +4,14 @@
   become: true
   vars_files:
     - test_data/testing.yml
+  pre_tasks:
+    - name: Copy files to simulate symlink creation
+      ansible.builtin.copy:
+        src: "{{ playbook_dir | dirname | dirname }}/files"
+        dest: "{{ dotfiles_location }}"
+        owner: "{{ username }}"
+        group: "{{ user_group }}"
+        mode: "0755"
+
   roles:
     - rubemlrm.dotfiles
