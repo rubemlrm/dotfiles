@@ -1,3 +1,4 @@
+#!/bin/zsh
 ########################
 # Export PATH Variables#
 ########################
@@ -87,6 +88,7 @@ setopt HIST_REDUCE_BLANKS
 ########################
 source "$ZSH/oh-my-zsh.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# shellcheck disable=SC2203
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 emulate sh -c "source /etc/profile"
 source "$HOME/.config/zsh/alias.zsh"
