@@ -42,7 +42,7 @@
       register: fzf_installed
       changed_when: false
     - name: Install FZF
-      ansible.builtin.raw: sh -c 'bash {{ home_dir }}.fzf/install --key-bindings --completion --update-rc'
+      ansible.builtin.raw: sh -c 'bash {{ home_dir }}/.fzf/install --key-bindings --completion --update-rc'
       when: not fzf_installed.stat.exists
       tags:
         - skip_ansible_lint
