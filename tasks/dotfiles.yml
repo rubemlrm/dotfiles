@@ -99,7 +99,7 @@
 
     - name: Create temp public file
       ansible.builtin.copy: # noqa template-instead-of-copy
-        dest: '{{ home_dir }}.config/zsh/alias/host_alias.zsh'
+        dest: '{{ home_dir }}/.config/zsh/alias/host_alias.zsh'
         content: "{{ host_zsh_alias }}"
         mode: '0644'
       when: host_zsh_alias is defined
@@ -107,7 +107,7 @@
 
     - name: Restore nvim settings
       ansible.builtin.file:
-        src: "{{ dotfiles_location }}/files/nvim/"
+        src: "{{ dotfiles_location }}/files/nvim/.config/nvim"
         dest: "{{ home_dir }}/.config/nvim"
         owner: "{{ username }}"
         group: "{{ user_group }}"
