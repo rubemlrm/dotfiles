@@ -1,13 +1,14 @@
 ---
 
 - name: Copy git standard configs
-  ansible.builtin.copy:
+  ansible.builtin.file:
     src: "{{ ( dotfiles_location, 'files/git/', item) | path_join }}"
     dest: "{{ (home_dir, item) | path_join }}"
     owner: "{{ username }}"
     group: "{{ user_group }}"
-    mode: "0600"
-    follow: true
+    force: "{{ use_force }}"
+    mode: "0644"
+    state: "link"
   with_items:
     - ".gitattributes"
     - ".gitconfig"
