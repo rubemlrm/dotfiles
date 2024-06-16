@@ -87,7 +87,7 @@
     - name: Create tmux dir
       ansible.builtin.file: # noqa template-instead-of-copy
         dest: "{{ (home_dir , '.tmux/') | path_join }}"
-        mode: '0644'
+        mode: '0755'
         state: "directory"
 
     - name: Restore tmux settings
