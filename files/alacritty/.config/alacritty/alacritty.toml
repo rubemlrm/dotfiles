@@ -1,4 +1,4 @@
-import = ["/home/rubemlrm/.config/alacritty/catppuccin-mocha.toml"]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [bell]
@@ -20,10 +20,10 @@ print_events = false
 render_timer = false
 
 [font]
-size = 10.0
+size = 14.0
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "FiraCode Nerd Font"
 style = "Medium"
 
 [font.glyph_offset]
@@ -31,12 +31,12 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Hack Nerd Font"
+family = "FiraCode Nerd Font"
 style = "Light Italic"
 
 [font.normal]
-family = "Hack Nerd Font"
-style = "Light"
+family = "FiraCode Nerd Font"
+style = "Regular"
 
 [font.offset]
 x = 0
