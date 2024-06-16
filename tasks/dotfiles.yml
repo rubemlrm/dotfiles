@@ -89,7 +89,6 @@
         dest: "{{ (home_dir , '.tmux/') | path_join }}"
         mode: '0644'
         state: "directory"
-      when: host_zsh_alias is defined
 
     - name: Restore tmux settings
       ansible.builtin.file:
