@@ -1,10 +1,18 @@
 ---
 - name: Install utils
-  when: ansible_facts['distribution'] == "Fedora"
+  when: ansible_facts['os_family'] != "Darwin"
   ansible.builtin.package:
     name: '{{ item }}'
     state: present
   with_items: '{{ dotfiles_packages }}'
+  become: true
+
+- name: Install debian family utils
+  when: ansible_facts['os_family'] == "Debian"
+  ansible.builtin.package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ debian_family_packages }}'
   become: true
 
 - name: Install Macos base packages
