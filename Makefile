@@ -27,3 +27,9 @@ test-fedora-next:
 # Run role against host
 run-playbook:
 	ansible-playbook setup/setup.yml -i setup/inventory.yml --ask-become-pass
+
+.PHONY: symlink-role
+# Create symlink to role
+symlink-role:
+	mkdir -p ~/.ansible/roles
+	ln -s ~/Works/Code/Personal/dotfiles ~/.ansible/roles/rubemlrm.dotfiles
