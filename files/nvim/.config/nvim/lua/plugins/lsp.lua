@@ -33,6 +33,10 @@ return {
                 'tflint',
                 'tfsec',
                 'ansible-lint',
+                'lua-language-server',
+                'fixjson',
+                'markdown-toc',
+                'autopep8',
             }
         })
 
@@ -58,12 +62,8 @@ return {
                 'tailwindcss',
                 'volar',
                 'terraformls',
-                'ansible_language_server',
-                'lua-language-server',
-                'autopep8',
-                'fixjson',
-                'lua_format',
-                'markdown_toc'
+                'ansiblels',
+                'templs'
           },
 
         })

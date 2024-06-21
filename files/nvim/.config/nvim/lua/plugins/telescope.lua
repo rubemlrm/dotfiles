@@ -35,19 +35,9 @@ return {
     "cljoly/telescope-repo.nvim",
     "nvim-telescope/telescope-file-browser.nvim"
   },
-  config = function() 
+  config = function()
 
-    local telescopeConfig = require("telescope.config")
-    local actions = require "telescope.actions" 
-    -- Clone the default Telescope configuration
-    local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-
-    -- I want to search in hidden/dot files.
-    table.insert(vimgrep_arguments, "--hidden")
-    -- I don't want to search in the `.git` directory.
-    table.insert(vimgrep_arguments, "--glob")
-    table.insert(vimgrep_arguments, "!**/.git/*")
-
+    local actions = require "telescope.actions"
     -- Dont Preview Binaries
     local previewers = require("telescope.previewers")
     local Job = require("plenary.job")
@@ -77,7 +67,6 @@ return {
 		sorting_strategy = 'ascending',
 		selection_strategy = 'closest',
 		file_ignore_patterns = { 'node_modules', 'vendor', 'site-packages' },
-        vimgrep_arguments = vimgrep_arguments,
         mappings = {
           i = {
             -- map actions.which_key to <C-h> (default: <C-/>)
@@ -91,13 +80,25 @@ return {
 
           }
         },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+          live_grep = {
+            additional_args = function()
+              return { '--hidden', '--glob', '!**/.git/*' }
+            end,
+          },
+          grep_string = {
+            additional_args = function()
+              return { '--hidden', '--glob', '!**/.git/*' }
+            end,
+          },
+        },
         extensions = {
                 file_browser = {
+                    hidden = { file_browser = true, folder_browser = true },
                     hijack_netrw = true,
-                    hidden = true,
-                    mappings = {
-
-                        }
                 },
                 fzf = {
                     fuzzy = true,
@@ -118,7 +119,7 @@ return {
                project =  {}
             }
     }}
-  pcall(require('telescope').load_extension, 'fzf')
+  require('telescope').load_extension('fzf')
   require('telescope').load_extension('repo')
   require('telescope').load_extension('file_browser')
   end

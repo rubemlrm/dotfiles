@@ -10,6 +10,13 @@ return {
         config = function()
             vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>", {})
             vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+            require("neo-tree").setup({
+                filesystem = {
+                    filtered_items = {
+                        hide_dotfiles = false
+                    }
+                }
+            })
         end,
     },
 
