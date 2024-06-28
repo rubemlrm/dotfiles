@@ -8,6 +8,7 @@ return {
       config = function()
         require('lualine').setup({
            options = {
+            theme = 'onedark',
             icons_enabled = true,
             component_separators = '|',
             section_separators = '',
@@ -17,7 +18,7 @@ return {
             lualine_b = {
               {'branch', 'diff', 'diagnostics'}
             },
-            lualine_c = {'buffers'}
+           -- lualine_c = {'buffers'}
 
           }}
         )

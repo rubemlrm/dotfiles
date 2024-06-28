@@ -1,7 +1,7 @@
 local ss = vim.opt
 local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
 
-ss.filetype = on
+ss.filetype = "on"
 
 --=============================================
 -- Visual configs
@@ -46,7 +46,7 @@ ss.guifont="JetBrains Mono Nerd Font:h14"
 ss.autoindent=true
 ss.showtabline=2 --  Always display the tabline, even if there is only one tab
 ss.undofile = true --  set undotree to save to file
-vim.opt.undodir = os.getenv("HOME") .. "/.vim_temp/undodir"
+ss.undodir = os.getenv("HOME") .. "/.vim_temp/undodir"
 -- =============================================
 --  SEARCH CONFIGS
 -- =============================================

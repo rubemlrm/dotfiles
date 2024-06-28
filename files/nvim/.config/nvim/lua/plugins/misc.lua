@@ -1,4 +1,3 @@
-local map = vim.keymap.set
 return {
     {
       "ThePrimeagen/refactoring.nvim",
@@ -10,6 +9,11 @@ return {
         require("refactoring").setup()
       end,
    },
-   {"github/copilot.vim"},
    {"gpanders/editorconfig.nvim"},
+   {'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+  },
 }
