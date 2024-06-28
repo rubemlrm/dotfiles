@@ -17,8 +17,7 @@ return {
             lualine_a = {'mode'},
             lualine_b = {
               {'branch', 'diff', 'diagnostics'}
-            },
-           -- lualine_c = {'buffers'}
+            },           -- lualine_c = {'buffers'}
 
           }}
         )

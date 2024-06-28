@@ -21,11 +21,12 @@ return {
         map('n', '<leader>fh', builtin.help_tags, {})
         map('n', '<leader>fx', builtin.treesitter, {})
         map('n', '<leader>fd', builtin.diagnostics, {})
-        map('n', '<leader>fr', builtin.git_status, {})
+        map('n', '<leader>fgs', builtin.git_status, {})
         map('n', '<leader>fts', builtin.treesitter, {})
         map('n', '<leader>fe', ':Telescope file_browser<CR>', {})
-        map('n', '<leader>fr', ':Telescope repo list<CR>', {})
+        map('n', '<leader>fgr', ':Telescope repo list<CR>', {})
         map('n', '<leader>fk', builtin.keymaps, {})
+        map({"n", "x"}, "<leader>frr", function() require('telescope').extensions.refactoring.refactors() end)
     end,
     dependencies = {
         "nvim-lua/popup.nvim",
@@ -33,7 +34,8 @@ return {
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
         "nvim-telescope/telescope-project.nvim",
         "cljoly/telescope-repo.nvim",
-        "nvim-telescope/telescope-file-browser.nvim"
+        "nvim-telescope/telescope-file-browser.nvim",
+        "nvim-telescope/telescope-dap.nvim"
     },
     config = function()
         local actions = require "telescope.actions"
@@ -68,7 +70,7 @@ return {
                 file_ignore_patterns = { 'node_modules', 'vendor', 'site-packages' },
                 mappings = {
                     n = {
-                        ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+                        ["<c-d>"] = actions.delete_buffer,
                     },
                     i = {
                         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -76,7 +78,7 @@ return {
                         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
                         ["<C-h>"] = actions.which_key,
                         ["<C-u>"] = false,
-                        ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+                        ["<c-d>"] = actions.delete_buffer,
                         ["<C-s>"] = actions.cycle_previewers_next,
                         ["<C-a>"] = actions.cycle_previewers_prev,
 
@@ -121,8 +123,10 @@ return {
                     project = {}
                 }
             } }
+        require("telescope").load_extension("refactoring")
         require('telescope').load_extension('fzf')
         require('telescope').load_extension('repo')
         require('telescope').load_extension('file_browser')
+        require('telescope').load_extension('dap')
     end
 }

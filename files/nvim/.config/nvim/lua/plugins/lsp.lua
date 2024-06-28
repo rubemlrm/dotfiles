@@ -63,9 +63,9 @@ return {
                 'terraformls',
                 'ansiblels',
                 'templ',
-                'typescript-language-server',
-                'css-lsp',
-                'java-language-server',
+                'tsserver',
+                'cssls',
+                'java_language_server',
                 'eslint-lsp'
             },
             handlers = {
@@ -167,13 +167,7 @@ return {
             })
         })
         lspconfig.set_preferences({
-            suggest_lsp_servers = false,
-            sign_icons = {
-                error = 'E',
-                warn = 'W',
-                hint = 'H',
-                info = 'I'
-            }
+            suggest_ls_servers = true,
         })
 
         -- Key bindings to be set after LSP attaches to buffer
@@ -205,7 +199,7 @@ return {
         })
 
         vim.diagnostic.config({
-            virtual_text = true
+            virtual_text = true,
         })
 
         lspconfig.setup()
