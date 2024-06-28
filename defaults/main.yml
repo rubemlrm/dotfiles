@@ -1,8 +1,8 @@
 ---
 use_desktop: true
 use_force: false
-username: "rubemmota"
-user_group: "staff"
+username: "rubemlrm"
+user_group: "rubemlrm"
 home_dir: "/home/rubemlrm"
 git_email: rubemmota89@gmail.com
 git_name: "Rubem Mota"
