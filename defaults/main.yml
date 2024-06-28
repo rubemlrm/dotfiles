@@ -41,7 +41,6 @@ dotfiles_macos_packages:
   - gettext
   - gifsicle
   - git
-  - github/gh/gh
   - gpg
   - httpie
   - iperf

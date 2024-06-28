@@ -1,12 +1,24 @@
 return {
   {
+    "navarasu/onedark.nvim",
+    lazy = false,
+    priority = 1002,
+    config = function ()
+        require('onedark').setup {
+                style = "dark"
+        }
+        require('onedark').load()
+    end
+  },
+  {
     "folke/tokyonight.nvim",
-    priority = 1001,
+    priority = 1000,
+    lazy = false,
     config = function()
         require("tokyonight").setup({
             -- your configuration comes here
             -- or leave it empty to use the default settings
-            style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+            style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
             transparent = true, -- Enable this to disable setting the background color
             terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
             styles = {
@@ -25,9 +37,10 @@ return {
     },
   {
     "olimorris/onedarkpro.nvim",
-    priority = 1000,
+    lazy = false,
+    priority = 2000,
     config = function()
         vim.cmd.colorscheme("onedark")
     end
-  }
+  },
 }

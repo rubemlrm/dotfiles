@@ -1,3 +1,4 @@
+local map = vim.keymap.set
 return {
     {
         "nvim-neotest/neotest",
@@ -37,16 +38,16 @@ return {
                     })
                 }
             })
-            vim.keymap.set("n", "<leader>ts", function()
+            map("n", "<leader>ts", function()
                 neotest.summary.toggle()
             end)
-            vim.keymap.set("n", "<leader>tc", function()
+            map("n", "<leader>tc", function()
                 neotest.run.run()
             end)
-            vim.keymap.set("n", "<leader>td", function()
+            map("n", "<leader>td", function()
                 neotest.run.run(vim.fn.getcwd())
             end)
-            vim.keymap.set("n", "<leader>tf", function()
+            map("n", "<leader>tf", function()
                 neotest.run.run(vim.fn.expand("%"))
             end)
         end,

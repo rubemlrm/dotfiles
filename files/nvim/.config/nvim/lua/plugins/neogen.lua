@@ -1,3 +1,4 @@
+local map = vim.keymap.set
 return {
     "danymat/neogen",
     dependencies = {
@@ -7,7 +8,6 @@ return {
     config = function()
         local neogen = require("neogen")
         local dap = require("dap")
-        local map = vim.keymap.set 
 
         neogen.setup({
             snippet_engine = "luasnip"

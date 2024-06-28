@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 return {
     {
         "mfussenegger/nvim-dap",
@@ -7,9 +9,10 @@ return {
             "theHamsta/nvim-dap-virtual-text",
             "williamboman/mason.nvim",
             "jay-babu/mason-nvim-dap.nvim",
+            { "mxsdev/nvim-dap-vscode-js" },
+            { "microsoft/vscode-js-debug", build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' }
         },
-        config = function ()
-
+        config = function()
             require("mason").setup()
             require("mason-nvim-dap").setup({
                 ensure_installed = { "python", "delve" }
@@ -29,55 +32,106 @@ return {
                     max_width = nil,
                     border = "single",
                     mappings = {
-                      close = { "q", "<Esc>" },
+                        close = { "q", "<Esc>" },
                     },
                 },
                 layouts = {
                     {
-                      elements = {
-                        "scopes",
-                      },
-                      size = 0.2,
-                      position = "bottom"
+                        elements = {
+                            "scopes",
+                        },
+                        size = 0.2,
+                        position = "bottom"
                     },
                     {
-                      elements = {
-                        "repl",
-                        "breakpoints"
-                      },
-                      size = 0.2,
-                      position = "left",
+                        elements = {
+                            "repl",
+                            "breakpoints"
+                        },
+                        size = 0.2,
+                        position = "left",
                     },
                 }
             })
 
             -- enable out of the box config with dap go
             require('dap-go').setup()
-            local map = vim.keymap.set
 
             dap.adapters.ansible = {
-              type = "executable",
-              command = "python", -- or "/path/to/virtualenv/bin/python",
-              args = { "-m", "ansibug", "dap" },
+                type = "executable",
+                command = "python",
+                args = { "-m", "ansibug", "dap" },
             }
 
             local ansibug_configurations = {
-              {
-                type = "ansible",
-                request = "launch",
-                name = "Debug playbook",
-                playbook = "${file}"
-              },
+                {
+                    type = "ansible",
+                    request = "launch",
+                    name = "Debug playbook",
+                    playbook = "${file}"
+                },
             }
 
             dap.configurations["yaml.ansible"] = ansibug_configurations
 
-            -- autoload vscode debug configurations 
+            local js_languages = {
+                "typescript",
+                "javascript",
+                "typescriptreact",
+                "javascriptreact",
+                "vue",
+                "node"
+            }
             require('dap.ext.vscode').load_launchjs(nil, {})
 
-            -- load UI on debug 
+            require("dap-vscode-js").setup({
+                node_path = "node",
+                debugger_path = vim.fn.resolve(vim.fn.stdpath("data")) .. "/lazy/vscode-js-debug",
+            })
+
+            for _, language in ipairs(js_languages) do
+                dap.configurations[language] = {
+
+                    {
+                        type = "pwa-node",
+                        request = "launch",
+                        name = "Launch file",
+                        program = "${file}",
+                        cwd = "${workspaceFolder}",
+                    },
+                    {
+                        type = "pwa-node",
+                        request = "attach",
+                        name = "Attach",
+                        processId = require 'dap.utils'.pick_process,
+                        cwd = "${workspaceFolder}",
+                    },
+                    {
+                        type = "pwa-node",
+                        request = "launch",
+                        name = "Debug Jest Tests",
+                        -- trace = true, -- include debugger info
+                        runtimeExecutable = "node",
+                        runtimeArgs = {
+                            "./node_modules/jest/bin/jest.js",
+                            "--runInBand",
+                        },
+                        rootPath = "${workspaceFolder}",
+                        cwd = "${workspaceFolder}",
+                        console = "integratedTerminal",
+                        internalConsoleOptions = "neverOpen",
+                    },
+                    {
+                        name = "---- launch.json configs ----",
+                        type = "",
+                        request = "launch",
+                    }
+                }
+            end
+
+            -- load UI on debug
             dap.listeners.before.attach.dapui_config = function()
-			dapui.open()
+                dapui.open()
             end
             dap.listeners.before.launch.dapui_config = function()
                 dapui.open()
@@ -88,8 +142,8 @@ return {
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
-            vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
-            vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
+            vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
+            vim.fn.sign_define('DapStopped', { text = '▶️', texthl = '', linehl = '', numhl = '' })
             map('n', '<leader>dh', dapui.eval)
             map('n', '<leader>du', ":DapUiToggle<CR>", { noremap = true })
             map('n', '<leader>dc', dap.continue)
