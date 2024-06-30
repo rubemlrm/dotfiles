@@ -39,12 +39,12 @@ ss.softtabstop = 4
 -- enable folding
 ss.foldenable = true
 
-ss.foldlevelstart=10
-ss.foldnestmax=10      --  10 nested fold max
-ss.foldmethod="indent"   --  fold based on indent level
-ss.guifont="JetBrains Mono Nerd Font:h14"
-ss.autoindent=true
-ss.showtabline=2 --  Always display the tabline, even if there is only one tab
+ss.foldlevelstart = 10
+ss.foldnestmax = 10    --  10 nested fold max
+ss.foldmethod = "indent" --  fold based on indent level
+ss.guifont = "JetBrains Mono Nerd Font:h14"
+ss.autoindent = true
+ss.showtabline = 2 --  Always display the tabline, even if there is only one tab
 ss.undofile = true --  set undotree to save to file
 ss.undodir = os.getenv("HOME") .. "/.vim_temp/undodir"
 -- =============================================
@@ -64,13 +64,13 @@ ss.backup = false
 ss.swapfile = false
 
 -- text enconding
-ss.encoding="utf-8"
+ss.encoding = "utf-8"
 -- text formattiny
-ss.matchtime=3
-ss.modelines=0
+ss.matchtime = 3
+ss.modelines = 0
 -- set number of lines above and below the cursor
-ss.scrolloff=3
+ss.scrolloff = 3
 -- site of tab in spaces
-ss.tabstop=4
-ss.shiftwidth=4
-ss.expandtab=true
+ss.tabstop = 4
+ss.shiftwidth = 4
+ss.expandtab = true

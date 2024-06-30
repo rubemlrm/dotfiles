@@ -7,18 +7,13 @@ return {
     },
     config = function()
         local neogen = require("neogen")
-        local dap = require("dap")
 
         neogen.setup({
             snippet_engine = "luasnip"
         })
-
-        map("n", "<leader>nf", function()
-            neogen.generate({ type = "func" })
-        end)
-
-        map("n", "<leader>nt", function()
-            neogen.generate({ type = "type" })
-        end)
+        map("n", "<leader>nf", function() neogen.generate({ type = "func" }) end,
+            { desc = "Neogen: Create function annotations" })
+        map("n", "<leader>nt", function() neogen.generate({ type = "type" }) end,
+            { desc = "Neogen: Create type annotations" })
     end
 }
