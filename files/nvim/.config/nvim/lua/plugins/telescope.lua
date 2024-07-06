@@ -23,6 +23,7 @@ return {
         map('n', '<leader>fd', builtin.diagnostics, {})
         map('n', '<leader>fgs', builtin.git_status, {})
         map('n', '<leader>fts', builtin.treesitter, {})
+        map('n', '<leader>fr', builtin.registers, {})
         map('n', '<leader>fe', ':Telescope file_browser<CR>', {})
         map('n', '<leader>fgr', ':Telescope repo list<CR>', {})
         map('n', '<leader>fk', builtin.keymaps, {})
