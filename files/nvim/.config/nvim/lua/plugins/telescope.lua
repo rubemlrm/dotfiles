@@ -13,7 +13,7 @@ return {
                 })
             end,
             {})
-        map('n', '<leader>fr', builtin.registers, {})
+        map('n', '<leader>fr', builtin.registers, { desc = "Telescope: Search registers"})
         map("n", "<leader>fc", builtin.git_files, { desc = "Telescope: Search git files" })
         map("n", "<leader>ff", builtin.find_files, { desc = "Telescope: Find files" })
         map("n", "<leader>fg", builtin.live_grep, { desc = "Telescope: Grep Files" })
