@@ -10,7 +10,7 @@ return {
             "williamboman/mason.nvim",
             "jay-babu/mason-nvim-dap.nvim",
             { "mxsdev/nvim-dap-vscode-js" },
-            { "microsoft/vscode-js-debug", build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' }
+            { "microsoft/vscode-js-debug", build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" }
         },
         config = function()
             require("mason").setup()
@@ -55,7 +55,7 @@ return {
             })
 
             -- enable out of the box config with dap go
-            require('dap-go').setup()
+            require("dap-go").setup()
 
             dap.adapters.ansible = {
                 type = "executable",
@@ -82,7 +82,7 @@ return {
                 "vue",
                 "node"
             }
-            require('dap.ext.vscode').load_launchjs(nil, {})
+            require("dap.ext.vscode").load_launchjs(nil, {})
 
             require("dap-vscode-js").setup({
                 node_path = "node",
@@ -103,7 +103,7 @@ return {
                         type = "pwa-node",
                         request = "attach",
                         name = "Attach",
-                        processId = require 'dap.utils'.pick_process,
+                        processId = require "dap.utils".pick_process,
                         cwd = "${workspaceFolder}",
                     },
                     {
@@ -142,16 +142,16 @@ return {
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
-            vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
-            vim.fn.sign_define('DapStopped', { text = '▶️', texthl = '', linehl = '', numhl = '' })
-            map('n', '<leader>dh', dapui.eval)
-            map('n', '<leader>du', ":DapUiToggle<CR>", { noremap = true })
-            map('n', '<leader>dc', dap.continue)
-            map('n', '<leader>do', dap.step_over)
-            map('n', '<leader>di', dap.step_into)
-            map('n', '<leader>dx', dap.step_out)
-            map('n', '<leader>dt', dap.toggle_breakpoint)
-            map('n', '<leader>de', dap.terminate)
+            vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+            vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
+            map("n", "<leader>dh", dapui.eval, { desc = "Debug: Evalute values" })
+            map("n", "<leader>du", ":DapUiToggle<CR>", { noremap = true, desc = "Debug: Toogle UI" })
+            map("n", "<leader>dc", dap.continue, { desc = "Debug: Continue" })
+            map("n", "<leader>do", dap.step_over, { desc = "Debug: Step Over" })
+            map("n", "<leader>di", dap.step_into, { desc = "Debug: Step Into" })
+            map("n", "<leader>dx", dap.step_out, { desc = "Debug: Step Out" })
+            map("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+            map("n", "<leader>de", dap.terminate, { desc = "Debug: Terminate" })
         end
     }
 }

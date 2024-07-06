@@ -1,38 +1,38 @@
 local map = vim.keymap.set
 return {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     init = function()
-        local builtin = require('telescope.builtin')
-        map('n', '<leader>th', builtin.oldfiles, {})
-        map('n', '<leader>tt', function()
+        local builtin = require("telescope.builtin")
+        map("n", "<leader>th", builtin.oldfiles, {})
+        map("n", "<leader>tt", function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
-                require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
                     winblend = 10,
                     previewer = false,
                 })
             end,
             {})
-        map('n', '<leader>fc', builtin.git_files, {})
-        map('n', '<leader>ff', builtin.find_files, {})
-        map('n', '<leader>fg', builtin.live_grep, {})
-        map('n', '<leader>fs', builtin.grep_string, {})
-        map('n', '<leader>fb', builtin.buffers, {})
-        map('n', '<leader>fh', builtin.help_tags, {})
-        map('n', '<leader>fx', builtin.treesitter, {})
-        map('n', '<leader>fd', builtin.diagnostics, {})
-        map('n', '<leader>fgs', builtin.git_status, {})
-        map('n', '<leader>fts', builtin.treesitter, {})
         map('n', '<leader>fr', builtin.registers, {})
-        map('n', '<leader>fe', ':Telescope file_browser<CR>', {})
-        map('n', '<leader>fgr', ':Telescope repo list<CR>', {})
-        map('n', '<leader>fk', builtin.keymaps, {})
-        map({"n", "x"}, "<leader>frr", function() require('telescope').extensions.refactoring.refactors() end)
+        map("n", "<leader>fc", builtin.git_files, { desc = "Telescope: Search git files" })
+        map("n", "<leader>ff", builtin.find_files, { desc = "Telescope: Find files" })
+        map("n", "<leader>fg", builtin.live_grep, { desc = "Telescope: Grep Files" })
+        map("n", "<leader>fs", builtin.grep_string, { desc = "Telescope: Grep String" })
+        map("n", "<leader>fb", builtin.buffers, { desc = "Telescope: List buffers" })
+        map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope: Help Tags" })
+        map("n", "<leader>fx", builtin.treesitter, { desc = "Telescrope: Search treesitter" })
+        map("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope: Search diagnostics" })
+        map("n", "<leader>fgs", builtin.git_status, { desc = "Telescope: Preview git status" })
+        map("n", "<leader>fe", ":Telescope file_browser<CR>", { desc = "Telescope: File Browser" })
+        map("n", "<leader>fgr", ":Telescope repo list<CR>", { desc = "Telescope: Repo list" })
+        map("n", "<leader>fk", builtin.keymaps, { desc = "Telescope: Search keymaps" })
+        map({ "n", "x" }, "<leader>frr", function() require("telescope").extensions.refactoring.refactors() end,
+            { desc = "Telescope: Refactoring Actions" })
     end,
     dependencies = {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
         "nvim-telescope/telescope-project.nvim",
         "cljoly/telescope-repo.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
@@ -62,13 +62,13 @@ return {
             }):sync()
         end
 
-        require('telescope').setup {
+        require("telescope").setup {
             defaults = {
                 buffer_previewer_maker = new_maker,
-                layout_strategy = 'flex',
-                sorting_strategy = 'ascending',
-                selection_strategy = 'closest',
-                file_ignore_patterns = { 'node_modules', 'vendor', 'site-packages' },
+                layout_strategy = "flex",
+                sorting_strategy = "ascending",
+                selection_strategy = "closest",
+                file_ignore_patterns = { "node_modules", "vendor", "site-packages" },
                 mappings = {
                     n = {
                         ["<c-d>"] = actions.delete_buffer,
@@ -91,12 +91,12 @@ return {
                     },
                     live_grep = {
                         additional_args = function()
-                            return { '--hidden', '--glob', '!**/.git/*' }
+                            return { "--hidden", "--glob", "!**/.git/*" }
                         end,
                     },
                     grep_string = {
                         additional_args = function()
-                            return { '--hidden', '--glob', '!**/.git/*' }
+                            return { "--hidden", "--glob", "!**/.git/*" }
                         end,
                     },
                 },
@@ -125,9 +125,9 @@ return {
                 }
             } }
         require("telescope").load_extension("refactoring")
-        require('telescope').load_extension('fzf')
-        require('telescope').load_extension('repo')
-        require('telescope').load_extension('file_browser')
-        require('telescope').load_extension('dap')
+        require("telescope").load_extension("fzf")
+        require("telescope").load_extension("repo")
+        require("telescope").load_extension("file_browser")
+        require("telescope").load_extension("dap")
     end
 }

@@ -12,6 +12,15 @@ debian_family_packages:
   - cmake
   - python3-pip
   - golang-go
+  - ripgrep
+  - python3.12-venv
+  - default-jre
+  - php 
+  - libapache2-mod-php
+  - php-cli
+  - php-cgi
+  - php-mysql
+  - php-pgsql
 
 dotfiles_packages:
   - tmux
