@@ -43,6 +43,7 @@ return {
                     "editorconfig-checker",
                     "fixjson",
                     "markdown-toc",
+                    "markdownlint-cli2",
                     "autopep8",
                 }
             })
@@ -74,11 +75,17 @@ return {
                     "tsserver",
                     "cssls",
                     "java_language_server",
-                    "eslint"
+                    "eslint",
+                    "ltex"
+
                 },
                 handlers = {
                     function(server_name)
                         require("lspconfig")[server_name].setup({})
+                    end,
+                    marksman = function()
+                        local opts = {}
+                        require("lspconfig").marksman.setup(opts)
                     end,
                     eslint = function()
                         local opts = {
@@ -87,6 +94,30 @@ return {
                             }
                         }
                         require("lspconfig").eslint.setup(opts)
+                    end,
+                    ltex = function()
+                        local opts = {
+                            cmd = { "ltex-ls" },
+                            -- filetypes = { "markdown", "text" },
+                            -- flags = { debounce_text_changes = 300 },
+                            settings = {
+                                ltex =  {
+                                    enabled = { "latex", "tex", "bib", "markdown" },
+                                    language = "en",
+                                    diagnosticSeverity = "information",
+                                    setenceCacheSize = 2000,
+                                    additionalRules = {
+                                        enablePickyRules = true,
+                                        motherTongue = "en",
+                                    },
+                                    trace = { server = "verbose" },
+                                    dictionary = {},
+                                    disabledRules = {},
+                                    hiddenFalsePositives = {},
+                                }
+                            }
+                        }
+                        require("lspconfig").ltex.setup(opts)
                     end,
                     gopls = function()
                         local opts = {

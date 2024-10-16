@@ -3,7 +3,7 @@
 # Export PATH Variables#
 ########################
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:~/bin:~/.rd/bin"
 
 # Add php packages
 export PATH="$HOME/.config/composer/vendor/bin:$HOME/.symfony/bin:$PATH"
@@ -48,6 +48,10 @@ if [[ $OSTYPE == "darwin"* ]]; then
 else
     export GOPATH=$HOME/go
 fi
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 ########################
 #     ZSH CONFIGS      #
 ########################
@@ -95,3 +99,7 @@ source "$HOME/.config/zsh/alias.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 # reload kubernetes context files
 reload-kubectl-contexts
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
