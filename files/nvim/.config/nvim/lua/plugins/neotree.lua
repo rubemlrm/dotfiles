@@ -9,7 +9,7 @@ return {
             "MunifTanjim/nui.nvim",
         },
         config = function()
-            map("n", "<C-n>", ":Neotree filesystem toggle left<CR>", { desc = "NeoTree: Toggle UI" })
+            map("n", "<leader>fe", ":Neotree filesystem toggle left<CR>", { desc = "NeoTree: Toggle UI" })
             map("n", "<leader>bf", ":Neotree buffers reveal float<CR>", { desc = "NeoTree: Reveal Buffers" })
             require("neo-tree").setup({
                 filesystem = {

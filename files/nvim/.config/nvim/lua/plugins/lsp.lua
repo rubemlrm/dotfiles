@@ -21,7 +21,6 @@ return {
         },
         config = function()
             local lspconfig = require("lsp-zero")
-            lspconfig.preset("recommended")
             require("mason").setup({})
 
             require("mason-tool-installer").setup({
@@ -74,9 +73,9 @@ return {
                     "templ",
                     "tsserver",
                     "cssls",
-                    "java_language_server",
                     "eslint",
-                    "ltex"
+                    "ltex",
+                    "helm_ls"
 
                 },
                 handlers = {
@@ -198,15 +197,11 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<Tab>"] = cmp_action.tab_complete(),
-                    ["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
                     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp_action.tab_complete()
                 })
-            })
-            lspconfig.set_preferences({
-                suggest_ls_servers = true,
             })
 
             -- Key bindings to be set after LSP attaches to buffer
