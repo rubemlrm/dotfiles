@@ -8,6 +8,13 @@ return {
         config = function ()
             map("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", { desc = "MarkdownPreview: Preview Toggle" } )
         end
+    },
+    {
+        'MeanderingProgrammer/markdown.nvim',
+        main = "render-markdown",
+        opts = {},
+        name = 'render-markdown',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     }
 }
 
