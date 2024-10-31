@@ -31,4 +31,27 @@ return {
             map("n", "<leader>lg", ":LazyGit<CR>", { desc = "Lazygit: Toggle UI" })
         end,
     },
+    {
+      'topaxi/gh-actions.nvim',
+      keys = {
+        { '<leader>gh', '<cmd>GhActions<cr>', desc = 'Open Github Actions' },
+      },
+      -- optional, you can also install and use `yq` instead.
+      build = 'make',
+      opts = {},
+    },
+    {
+      'git@gitlab.com:gitlab-org/editor-extensions/gitlab.vim.git',
+      -- Activate when a file is created/opened
+      event = { 'BufReadPre', 'BufNewFile' },
+      -- Activate when a supported filetype is open
+      ft = { 'go', 'javascript', 'python', 'ruby' },
+      opts = {
+        statusline = {
+          -- Hook into the built-in statusline to indicate the status
+          -- of the GitLab Duo Code Suggestions integration
+          enabled = true,
+        },
+      },
+    }
 }
