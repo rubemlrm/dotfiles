@@ -37,6 +37,7 @@ if [[ $OSTYPE == 'linux-gnu'* ]]; then
     # java hack
     export _JAVA_AWT_WM_NONREPARENTING=1
     export AWT_TOOLKIT=MToolkit
+    export FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then
