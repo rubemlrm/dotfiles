@@ -50,20 +50,24 @@ map("n", "<leader>sh", ":split<cr>", { noremap = true, silent = true, desc = "Op
 map("n", ":sp", ":rightbelow sp<cr>", { noremap = true, silent = true, desc = "Open split right below" })
 
 -- BUFFER
+map("n", "<leader>bn", ":bnext<cr>", { desc = "Next Buffer", noremap = true, silent = true })
+map("n", "<leader>bp", ":bprevious<cr>", { desc = "Previous Buffer", noremap = true, silent = true })
+map("n", "<leader>bl", ":blast<cr>", { desc = "Last Buffer", noremap = true, silent = true })
+map("n", "<leader>bx", ":bdelete<cr>", { desc = "Last Buffer", noremap = true, silent = true })
+map("n", "<leader>bs", ":source %<cr>", { desc = "Source Buffer", noremap = true, silent = true })
+
 
 -- Quickly go forward or backward to buffer
-map("n", "<C->>", ":bn<cr>", { noremap = true, silent = true, desc = "Go to buffer forward" })
-map("n", "<C-<>", ":bp<cr>", { noremap = true, silent = true, desc = "Go to buffer backwards" })
+
+-- Navigate between quickfix items
+map("n", "<leader>j", "<cmd>cnext<CR>zz", { desc = "QuickFixList Next" })
+map("n", "<leader>k", "<cmd>cprev<CR>zz", { desc = "QuickFixList Previous" })
+
 
 -- switch to last file in buffer
 map("n", "<leader><leader>", ":b#<cr>", { noremap = true, silent = true, desc = "Switch to last file in buffer" })
 --
--- ev Shortcut to edit .vimrc file on the fly on a vertical window.
-map("n", "<leader>ev", "<C-w><C-v><C-l>:e $MYVIMRC<cr>", opts)
-map("n", "<leader>rv", ":source $MYVIMRC<cr>", opts)
 
--- space open/closes folds
-map("n", "<leader>za", "za", { noremap = true, silent = true, desc = "Toggle folds" })
 
 -- Create/edit file in the current directory
 map("n", ":ed", ":edit %:p:h/", { noremap = true, silent = true, desc = "Create edit file in the current directory" })
