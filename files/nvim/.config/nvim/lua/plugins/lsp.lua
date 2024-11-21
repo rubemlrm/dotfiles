@@ -76,7 +76,6 @@ return {
                     "eslint",
                     "ltex",
                     "helm_ls",
-                    "ansible-lint",
                 },
                 handlers = {
                     function(server_name)
