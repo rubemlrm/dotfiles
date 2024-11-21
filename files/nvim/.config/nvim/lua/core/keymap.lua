@@ -22,7 +22,7 @@ map("n", "<c-s>", ":w<CR>", { noremap = true, silent = true, desc = "Changed sav
 map("i", "<c-s>", "<Esc>:w<CR>a", { noremap = true, silent = true, desc = "Changed save to ctrl+s" })
 
 -- change quit shortcut
-map("", "<leader>q", ":quit<CR>", { noremap = true, silent = true, desc = "Changed quit to leader+q" })    -- Quit current window
+map("", "<leader>q", ":quit<CR>", { noremap = true, silent = true, desc = "Changed quit to leader+q" })       -- Quit current window
 map("", "<leader>qa", ":qa!t<CR>", { noremap = true, silent = true, desc = "Changed quit all to leader+qa" }) -- quit all windows
 
 -- bind ctrl movement
@@ -87,3 +87,16 @@ map("v", "<leader>D", '"_D', { noremap = true, silent = true, desc = "Delete sel
 -- delete to blackhole
 map("n", "<leader>d", '"_d', { noremap = true, silent = true, desc = "Delete selection to blackhole" })
 map("n", "<leader>D", '"_D', { noremap = true, silent = true, desc = "Delete selection to blackhole" })
+
+-- Disable arrow keys
+-- Disable arrow keys in insert mode with a styled message
+map('i', '<Up>', '<Nop>', { noremap = true, silent = false })
+map('i', '<Down>', '<Nop>', { noremap = true, silent = false })
+map('i', '<Left>', '<Nop>', { noremap = true, silent = false })
+map('i', '<Right>', '<Nop>', { noremap = true, silent = false })
+
+-- Disable arrow keys in normal mode with a styled message
+map('n', '<Up>', '<Nop>', { noremap = true, silent = false })
+map('n', '<Down>', '<Nop>', { noremap = true, silent = false })
+map('n', '<Left>', '<Nop>', { noremap = true, silent = false })
+map('n', '<Right>', '<Nop>', { noremap = true, silent = false })
