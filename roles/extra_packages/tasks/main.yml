@@ -4,7 +4,7 @@
   ansible.builtin.package:
     name: '{{ item }}'
     state: present
-  with_items: '{{ dotfiles_packages }}'
+  with_items: '{{ extra_packages_common_packages }}'
   become: true
 
 - name: Install debian family utils
@@ -12,7 +12,7 @@
   ansible.builtin.package:
     name: '{{ item }}'
     state: present
-  with_items: '{{ debian_family_packages }}'
+  with_items: '{{ extra_packages_debian_family_packages }}'
   become: true
 
 - name: Install Macos base packages
@@ -24,4 +24,4 @@
       community.general.homebrew:
         state: present
         name: "{{ item }}"
-      with_items: "{{ dotfiles_macos_packages }}"
+      with_items: "{{ extra_packages_macos_packages }}"

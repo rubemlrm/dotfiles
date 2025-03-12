@@ -16,7 +16,7 @@
       ansible.builtin.stat:
         path: "{{ home_dir }}/.fonts/{{ item.file_name }}"
       register: fonts_stat_results
-      with_items: "{{ dotfiles_repo_fonts }}"
+      with_items: "{{ fonts_repos }}"
       ignore_errors: true
 
 

@@ -2,7 +2,7 @@
 
 - name: Copy git standard configs
   ansible.builtin.file:
-    src: "{{ ( dotfiles_location, 'files/git/', item) | path_join }}"
+    src: "{{ (role_path, 'files/', item) | path_join }}"
     dest: "{{ (home_dir, item) | path_join }}"
     owner: "{{ username }}"
     group: "{{ user_group }}"

@@ -5,7 +5,7 @@
   block:
     - name: Check if Oh MY ZSH is already installed
       ansible.builtin.stat:
-        path: "{{ (home_dir , '.oh-my-zsh') | path_join }}"
+        path: "{{ (home_dir, '.oh-my-zsh') | path_join }}"
       register: oh_my_zsh_installed
       changed_when: false
     - name: Install Oh MY ZSH
@@ -16,12 +16,12 @@
     - name: Install Oh My ZSH Plugins
       ansible.builtin.git:
         repo: "{{ item.repo }}"
-        dest: "{{ (home_dir , item.dest) | path_join }}"
+        dest: "{{ (home_dir, item.dest) | path_join }}"
         version: "{{ item.version }}"
       with_items: "{{ dotfiles_zsh_plugins }}"
     - name: Link zsh themes
       ansible.builtin.file:
-        src: "{{ (home_dir , '.config/zsh/themes/spaceship-prompt/spaceship.zsh-theme') | path_join }}"
+        src: "{{ (home_dir, '.config/zsh/themes/spaceship-prompt/spaceship.zsh-theme') | path_join }}"
         path: "{{ (home_dir, '.config/zsh/themes/spaceship.zsh-theme') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -34,11 +34,11 @@
         version: "{{ item.version }}"
       with_items:
         - repo: 'https://github.com/junegunn/fzf.git'
-          dest: "{{ (home_dir , '.fzf') | path_join }}"
+          dest: "{{ (home_dir, '.fzf') | path_join }}"
           version: "0.53.0"
     - name: Setup fzf key bindings
       ansible.builtin.stat:
-        path: "{{ (home_dir , '.fzf.zsh') | path_join }}"
+        path: "{{ (home_dir, '.fzf.zsh') | path_join }}"
       register: fzf_installed
       changed_when: false
     - name: Install FZF
@@ -49,13 +49,13 @@
 
     - name: Remove oh my zshrc file
       ansible.builtin.file:
-        path: "{{ ( home_dir , '.zshrc') | path_join }}"
+        path: "{{ (home_dir, '.zshrc') | path_join }}"
         state: absent
       when: not oh_my_zsh_installed.stat.exists
 
     - name: Restore zsh settings
       ansible.builtin.file:
-        src: "{{ ( dotfiles_location, 'files/zsh/',  item.name ) | path_join }}"
+        src: "{{ (role_path, 'files/zsh/', item.name) | path_join }}"
         dest: "{{ (home_dir, item.name) | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -76,7 +76,7 @@
 
     - name: Restore neofetch settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location, 'files/neofetch/') | path_join }}"
+        src: "{{ (role_path, 'files/neofetch/') | path_join }}"
         path: "{{ (home_dir, '.config/neofetch') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -86,14 +86,14 @@
 
     - name: Create tmux dir
       ansible.builtin.file: # noqa template-instead-of-copy
-        dest: "{{ (home_dir , '.tmux/') | path_join }}"
+        dest: "{{ (home_dir, '.tmux/') | path_join }}"
         mode: '0755'
         state: "directory"
 
     - name: Restore tmux settings
       ansible.builtin.file:
-        src: "{{ ( dotfiles_location , 'files/tmux/',  item.name) | path_join }}"
-        path: "{{ (home_dir , item.name) | path_join }}"
+        src: "{{ (role_path, 'files/tmux/', item.name) | path_join }}"
+        path: "{{ (home_dir, item.name) | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         mode: "{{ item.mode }}"
@@ -107,7 +107,7 @@
 
     - name: Create temp public file
       ansible.builtin.copy: # noqa template-instead-of-copy
-        dest: "{{ (home_dir , '.config/zsh/alias/host_alias.zsh') | path_join }}"
+        dest: "{{ (home_dir, '.config/zsh/alias/host_alias.zsh') | path_join }}"
         content: "{{ host_zsh_alias }}"
         mode: '0644'
       when: host_zsh_alias is defined
@@ -115,8 +115,8 @@
 
     - name: Restore nvim settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/nvim/.config/nvim') | path_join }}"
-        dest: "{{ (home_dir , '.config/nvim') | path_join }}"
+        src: "{{ (role_path, 'files/nvim/.config/nvim') | path_join }}"
+        dest: "{{ (home_dir, '.config/nvim') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -125,8 +125,8 @@
 
     - name: Restore npm settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/npm/.npmrc') | path_join }}"
-        dest: "{{ (home_dir , '.npmrc') | path_join }}"
+        src: "{{ (role_path, 'files/npm/.npmrc') | path_join }}"
+        dest: "{{ (home_dir, '.npmrc') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -135,7 +135,7 @@
 
     - name: Restore stow settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/stow/.stow-global-ignore') | path_join }}"
+        src: "{{ (role_path, 'files/stow/.stow-global-ignore') | path_join }}"
         dest: "{{ (home_dir, '.stow-global-ignore') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -145,8 +145,8 @@
 
     - name: Restore Alacritty settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/alacritty/.config/alacritty') | path_join }}"
-        dest: "{{ (home_dir , '.config/alacritty') | path_join }}"
+        src: "{{ (role_path, 'files/alacritty/.config/alacritty') | path_join }}"
+        dest: "{{ (home_dir, '.config/alacritty') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -154,11 +154,11 @@
         state: "link"
 
 - name: Restore Gui Settings
-  when: use_desktop is true and  ansible_facts['distribution'] == "Fedora"
+  when: use_desktop is true and ansible_facts['system'] == "Linux"
   block:
     - name: Create wallpapers directory
       ansible.builtin.file:
-        path: "{{ (home_dir ,'Pictures/wallpapers/') | path_join }}"
+        path: "{{ (home_dir, 'Pictures/wallpapers/') | path_join }}"
         state: directory
         owner: "{{ username }}"
         force: "{{ use_force }}"
@@ -167,8 +167,8 @@
 
     - name: Restore Terminator settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location ,'files/terminator') | path_join }}"
-        dest: "{{ ( home_dir , '.config/terminator') | path_join }}"
+        src: "{{ (role_path, 'files/terminator') | path_join }}"
+        dest: "{{ (home_dir, '.config/terminator') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -177,7 +177,7 @@
 
     - name: Restore i3 settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/i3') | path_join }}"
+        src: "{{ (role_path, 'files/i3') | path_join }}"
         dest: "{{ (home_dir, '.config/i3') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -187,8 +187,8 @@
 
     - name: Restore polybar settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location, 'files/polybar/') | path_join }}"
-        dest: "{{ (home_dir , '.config/polybar') | path_join }}"
+        src: "{{ (role_path, 'files/polybar/') | path_join }}"
+        dest: "{{ (home_dir, '.config/polybar') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -197,7 +197,7 @@
 
     - name: Restore rofi settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location,  'files/rofi') | path_join }}"
+        src: "{{ (role_path, 'files/rofi') | path_join }}"
         dest: "{{ (home_dir, '.config/rofi') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
@@ -207,8 +207,8 @@
 
     - name: Restore picom settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/picom/picom.conf') | path_join }}"
-        dest: "{{ (home_dir , '.config/picom.conf') | path_join }}"
+        src: "{{ (role_path, 'files/picom/picom.conf') | path_join }}"
+        dest: "{{ (home_dir, '.config/picom.conf') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -217,8 +217,8 @@
 
     - name: Restore dunst settings
       ansible.builtin.file:
-        src: "{{ ( dotfiles_location , 'files/dunst') | path_join }}"
-        dest: "{{ (home_dir , '.config/dunst') | path_join }}"
+        src: "{{ (role_path, 'files/dunst') | path_join }}"
+        dest: "{{ (home_dir, '.config/dunst') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -227,8 +227,8 @@
 
     - name: Restore gtk settings
       ansible.builtin.file:
-        src: "{{ (dotfiles_location , 'files/', item) | path_join }}"
-        dest: "{{ ( home_dir , '.config',  item ) | path_join }}"
+        src: "{{ (role_path, 'files/', item) | path_join }}"
+        dest: "{{ (home_dir, '.config', item) | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"
@@ -240,8 +240,8 @@
 
     - name: Restore solaar settings
       ansible.builtin.file:
-        src: "{{ ( dotfiles_location , 'files/solaar') | path_join }}"
-        dest: "{{ ( home_dir , '.config/solaar') | path_join }}"
+        src: "{{ (role_path, 'files/solaar') | path_join }}"
+        dest: "{{ (home_dir, '.config/solaar') | path_join }}"
         owner: "{{ username }}"
         group: "{{ user_group }}"
         force: "{{ use_force }}"

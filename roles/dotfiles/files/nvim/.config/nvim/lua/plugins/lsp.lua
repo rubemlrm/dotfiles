@@ -37,7 +37,6 @@ return {
                     "json-to-struct",
                     "misspell",
                     "shellcheck",
-                    "ansible-lint",
                     "lua-language-server",
                     "editorconfig-checker",
                     "fixjson",
