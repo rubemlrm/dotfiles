@@ -5,6 +5,13 @@
   vars_files:
     - test_data/testing.yml
   pre_tasks:
+    - name: Ensure user groups 
+      ansible.builtin.group:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - "wheel"
+        - "{{ user_group }}"
     - name: Add system user
       ansible.builtin.user:
         name: "{{ username }}"
@@ -13,7 +20,7 @@
     - name: Update repositories cache 
       ansible.builtin.apt:
         update_cache: yes
-      when: ansible_facts['os_family'] == "Darwin"
+      when: ansible_facts['os_family'] == "Debian"
 
   roles:
     - extra_packages
