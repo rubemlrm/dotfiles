@@ -5,27 +5,25 @@
   vars_files:
     - test_data/testing.yml
   pre_tasks:
+    - name: Ensure user groups 
+      ansible.builtin.group:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - "wheel"
+        - "{{ user_group }}"
     - name: Add system user
       ansible.builtin.user:
         name: "{{ username }}"
-        shell: "/usr/bin/zsh"
-        groups: "wheel"
-        append: yes
-
-    - name: Check if files configurations exists
-      ansible.builtin.stat:
-        path: "{{ dotfiles_location }}"
-      register: state_files
-      changed_when: false
-
-    - name: Copy files to simulate symlink creation
-      ansible.builtin.copy:
-        src: "{{ playbook_dir | dirname | dirname }}/files"
-        dest: "{{ dotfiles_location }}"
-        owner: "{{ username }}"
         group: "{{ user_group }}"
-        mode: "0755"
-      when: not state_files.stat.exists
+        shell: "/usr/bin/zsh"
+    - name: Update repositories cache 
+      ansible.builtin.apt:
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
 
   roles:
-    - rubemlrm.dotfiles
+    - extra_packages
+    - git
+    - fonts
+    - dotfiles

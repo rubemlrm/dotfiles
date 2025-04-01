@@ -42,7 +42,7 @@ jobs:
       matrix:
         distro:
           [
-            "rubemlrm/fedora-ansible:40",
+            "geerlingguy/docker-debian12-ansible",
           ]
         continueOnError: [false]
     steps:

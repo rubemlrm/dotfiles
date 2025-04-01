@@ -1,0 +1,57 @@
+extra_packages_debian_family_packages:
+  - cmake
+  - python3-pip
+  - golang-go
+  - ripgrep
+  - default-jre
+  - php
+  - libapache2-mod-php
+  - php-cli
+  - php-cgi
+  - php-mysql
+  - php-pgsql
+
+extra_packages_common_packages:
+  - tmux
+  - neovim
+  - stow
+  - zsh
+  - neofetch
+  - curl
+  - wget
+  - unzip
+  - make
+  - tar
+  - gzip
+  - git
+
+extra_packages_macos_packages:
+  - sqlite
+  - mkcert
+  - stow
+  - tmux
+  - lazygit
+  - fzf
+  - pygments
+  - autoconf
+  - bash-completion
+  - doxygen
+  - gettext
+  - gifsicle
+  - git
+  - gpg
+  - httpie
+  - iperf
+  - libevent
+  - mcrypt
+  - nmap
+  - nvm
+  - ssh-copy-id
+  - cowsay
+  - readline
+  - openssl
+  - pv
+  - wget
+  - wrk
+  - zsh-history-substring-search
+  - act

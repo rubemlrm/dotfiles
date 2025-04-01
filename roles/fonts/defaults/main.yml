@@ -1,0 +1,36 @@
+fonts_repos:
+  - name: hackFont
+    pattern: Hack*Nerd*Font*Complete*
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
+    file_name: "HackNerdFont-Bold.ttf"
+    extra_opts:
+      - -x
+      - '*.ttf'
+  - name: Fira Code
+    pattern: FiraMono*Nerd*Font*Complete
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraMono.zip
+    file_name: "FiraMonoNerdFont-Bold.otf"
+    extra_opts:
+      - -x
+      - '*.ttf'
+  - name: JetBrains Mono
+    pattern: JetBrains*Nerd*Font*Complete*
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
+    file_name: "JetBrainsMonoNerdFont-Italic.ttf"
+    extra_opts:
+      - -x
+      - '*.ttf'
+  - name: Iosevka
+    pattern: Hack*Nerd*Font*Complete*
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip
+    file_name: "IosevkaNerdFont-ExtraLight.ttf"
+    extra_opts:
+      - -x
+      - '*.ttf'
+  - name: Font awesome
+    pattern: Font*Awesome
+    src: https://use.fontawesome.com/releases/v6.5.2/fontawesome-free-6.5.2-desktop.zip
+    file_name: "fontawesome-free-6.3.0-desktop"
+    extra_opts:
+      - '-x'
+      - 'otfs/*.otf'

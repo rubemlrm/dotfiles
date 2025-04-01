@@ -1,0 +1,8 @@
+---
+- hosts: all
+  gather_facts: true
+  roles:
+    - extra_packages
+    - git
+    - fonts
+    - dotfiles

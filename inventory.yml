@@ -1,0 +1,4 @@
+all:
+  hosts:
+    rmotaLaptop.local:
+      ansible_connection: local

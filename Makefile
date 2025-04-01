@@ -11,25 +11,15 @@ lint:
 .PHONY: verify-tests
 # Run molecule verify tests
 verify-tests:
-	MOLECULE_DISTRO="rubemlrm/fedora-ansible:40" molecule verify
+	MOLECULE_DISTRO="geerlingguy/docker-debian12-ansible" molecule verify
 
-.PHONY: test-fedora
+.PHONY: molecule-test
 # Test molecule
-test-fedora:
-	MOLECULE_DISTRO="rubemlrm/fedora-ansible:40" molecule test
-
-.PHONY: test-fedora-next
-# Test molecule
-test-fedora-next:
-	MOLECULE_DISTRO="rubemlrm/fedora-ansible:41" molecule test
+molecule-test:
+	MOLECULE_DISTRO="geerlingguy/docker-debian12-ansible" molecule test
 
 .PHONY: run-playbook
 # Run role against host
 run-playbook:
-	ansible-playbook setup/setup.yml -i setup/inventory.yml --ask-become-pass
+	ansible-playbook setup.yml -i inventory.yml --ask-become-pass
 
-.PHONY: symlink-role
-# Create symlink to role
-symlink-role:
-	mkdir -p ~/.ansible/roles
-	ln -s ~/Works/Code/Personal/dotfiles ~/.ansible/roles/rubemlrm.dotfiles
